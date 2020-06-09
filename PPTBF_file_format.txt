@@ -1,0 +1,99 @@
+-----------------------------------------------------------------------------------------------------------------
+Technical paper:
+Semi-Procedural Textures Using Point Process Texture Basis Functions
+P. Guehl , R. AllEgre , J.-M. Dischler, B. Benes , and E. Galin
+Computer Graphics Forum (EGSR 2020 special issue)
+-----------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+PPTBF file format
+---------------------------------------------------------------------------
+
+A PPTBF file store parameters of our PPTBF model (Point Process Texture Basis Functions) of procedural stochastic structures.
+
+Example:
+
+0.892735
+5 1 55 0.359 0.850971 0.034 0.872 0.547 1 10 0 2 0 0.812 0.01 0 2 0 5 1 1 0.855 0.855 1 1 0.0844974 1 0
+
+--------------------------------------------------
+-------------------- 1st line --------------------
+--------------------------------------------------
+
+The first line contains the threshold to apply to the PPTBF procedural model.
+This threshold HAS TO be applied after a "histogram egalization" of the PPTBF values to renormalize its values in [0;1]
+So, threshold value lies in [0;1.0]
+
+- [0] PPTBF threshold value
+
+--------------------------------------------------
+-------------------- 2nd line --------------------
+--------------------------------------------------
+
+The second line contains the concatenated list of PPTBF procedural parameters.
+They describe 5 types of PPTBF parameters :
+- code PPTBF model: point process, window function and feature feature
+- additional parameters: transformations and deformations
+
+-----------------------
+---- Point process ----
+-----------------------
+
+Point set parameters:
+
+- [0] tiling type               : tiling type (e.g., regular, irregular...)
+- [1] jittering                 : randomness
+
+------------------------
+---- Transformation ----
+------------------------
+
+NOTE: also used for normalization parameters during parameter estimation.
+
+- [2] resolution                : uniform scale (zoom/unzoom)
+- [3] rotation                  : rotation around world coordinate frame at origin (0.0;0.0)
+- [4] aspect ratio              : shear on X axis (scale)
+
+--------------------
+---- Turbulence ----
+--------------------
+
+Brownian distorsion parameters:
+
+- [5] distorsion base amplitude :
+- [6] distorsion amplitude gain :
+- [7] distorsion frequency      :
+
+-------------------------
+---- Window function ----
+-------------------------
+
+Window function parameters:
+
+- [8] window shape              : window function type
+- [9] window arity              : number of control points for smoothing
+- [10] window larp              : anisotropy of cellular basis window
+- [11] window norm              : cellular basis window norm
+- [12] window smoothness        : degree of smoothing
+- [13] window blend             : linear combination of the two basis windows
+- [14] window sigwcell          : sigma of window
+
+--------------------------
+---- Feature function ----
+--------------------------
+
+Feature function parameters:
+
+- [15] feature bombing          : mixture model
+- [16] feature norm             : feature norm
+- [17] feature winfeatcorrel    : correlation with centroids
+- [18] feature aniso            : anisotropy
+- [19] feature minNbKernels     : min number of kernels
+- [20] feature maxNbKernels     : max number of kernels
+- [21] feature sigcos           : sigma of Gabor kernel
+- [22] feature sigcosvar        : random variation of [21] (sigma of Gabor kernel)
+- [23] feature frequency        : frequency of stringed Gabor stripes
+- [24] feature phaseShift
+- [25] feature thickness        : thickness of stringed Gabor stripes
+- [26] feature curvature        : curvature of stringed Gabor stripes
+- [27] feature orientation      : orientation of stringed Gabor stripes

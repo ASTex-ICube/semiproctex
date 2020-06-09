@@ -21,6 +21,8 @@ This is the page of our EGSR 2020 CGF track paper.
  * Windows binaries for procedural binary structures synthesis from files of PPTBF parameters
  are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip).
 
+ * Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
+
  * The PPTBF parameters estimated from our database of manually segmented structures are available
  following [this link](http://igg.unistra.fr/people/semiproctex/PPTBF_Parameters_v2.zip). Note
  that this is an updated version that improves the parameter values provided with the Supplemental
