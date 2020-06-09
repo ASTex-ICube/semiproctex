@@ -2,13 +2,22 @@
 
 ![semiproctex](Images/semiproctex.png)
 
-This is the page of our EGSR 2020 CGF track paper.
+This is the page of our EGSR 2020 CGF track paper:
+
+P. Guehl, R. Allègre, J.-M. Dischler, B. Benes, E. Galin.
+Semi-Procedural Textures Using Point Process Texture Basis Functions.
+To appear in Computer Graphics Forum (EGSR 2020 special issue), 39(4),
+2020.
+
+## Paper
+
+Available soon.
 
 ## Supplemental materials
 
  * **Supplemental #1** : Available soon.
  * **Supplemental #2** : Available soon.
- * **Supplemental #3** : This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
+ * **Supplemental #3** : Available soon. This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
  folder Structures_with_PPTBF contains manually segmented binary structures with estimated PPTBF
  parameters, that can be used for procedural structure synthesis.
 
@@ -20,6 +29,8 @@ This is the page of our EGSR 2020 CGF track paper.
  
  * Windows binaries for procedural binary structures synthesis from files of PPTBF parameters
  are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip).
+
+ * Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
 
  * The PPTBF parameters estimated from our database of manually segmented structures are available
  following [this link](http://igg.unistra.fr/people/semiproctex/PPTBF_Parameters_v2.zip). Note
