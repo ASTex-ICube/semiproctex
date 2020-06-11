@@ -529,6 +529,35 @@ int SptSynthesizer::loadParameters( const char* pFilename )
 	// Close file
 	semiProcTexConfigFile.close();
 
+	//--------------------------------------
+	// TODO: load exemplar data
+	//--------------------------------------
+
+	// Load exemplar data
+	// - color
+	const std::string exemplarFilename = "";
+	loadExemplar( exemplarFilename.c_str() );
+	// - structure
+	const std::string exemplarStructureFilename = "";
+	loadStructureMap( exemplarStructureFilename.c_str() );
+	// - distance
+	const std::string exemplarDistanceFilename = "";
+	loadStructureMap( exemplarDistanceFilename.c_str() );
+	// - labels
+	const std::string exemplarLabelFilename = "";
+	loadStructureMap( exemplarLabelFilename.c_str() );
+
+	//--------------------------------------
+	// TODO: load guidance data
+	//--------------------------------------
+
+	// Load guidance data
+	// ...
+	// - pptbf
+	// - mask? or maybe we can retrieve it from pptbf and treshold value?
+	// - distance
+	// - labels
+
 	// Exit code
 	return 0;
 }
@@ -569,6 +598,17 @@ void SptSynthesizer::correction()
  ******************************************************************************/
 void SptSynthesizer::upsampling()
 {
+}
+
+/******************************************************************************
+ * Load exemplar (color texture)
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptSynthesizer::loadExemplar(const char* pFilename)
+{
+	// Delegate to hview interface
+	mHviewInterface->loadExemplar( pFilename );
 }
 
 /******************************************************************************
