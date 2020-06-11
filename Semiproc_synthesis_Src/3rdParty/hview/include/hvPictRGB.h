@@ -1,7 +1,10 @@
 /*
- * ...
+ * Publication: Semi-Procedural Textures Using Point Process Texture Basis Functions
+ *              Computer Graphics Forum (EGSR 2020 special issue)
+ * Authors: P. Guehl , R. AllEgre , J.-M. Dischler, B. Benes , and E. Galin
+ *
+ * Code author: Jean-Michel Dischler
  */
-
  /**
   * @version 1.0
   */
@@ -22,13 +25,15 @@
 #include <chrono>
 #include <iostream>
 
-namespace hview {
-
+namespace hview
+{
 
 	/******************************************************************************
-	 * parallel controllable texture synthesis with distance map and guidance
+	 * Semi-Procedural Texture synthesis
+	 * - with structure, distance and label maps
 	 ******************************************************************************/
-	void semiProcTexwdistguidanceV2(
+#if 0
+	void semiProcTexwdistguidance(
 		char *name,
 		int STOPATLEVEL,
 		int posx, int posy,
@@ -239,5 +244,8 @@ namespace hview {
 		std::cout << "\nTOTAL time: " << elapsedTime << " ms\n";
 	}
 
+#endif
 	
-#endif // !efined(AFX_PICTRGB_H__098453F0_1C38_49E9_A6F4_AABF90AA55E8__INCLUDED_)
+} // end of namespace hview
+
+#endif // _HV_SYNTHESIZER_
