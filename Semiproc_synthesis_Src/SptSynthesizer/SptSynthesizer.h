@@ -215,13 +215,14 @@ protected:
 	float mCorrectionLabelErrorAmount;
 	// - semi-procedural
 	float mSemiProcTexPPTBFThreshold;
-	float mSemiProcTexRelaxContraints;
+	float mSemiProcTexRelaxContraintMin;
+	float mSemiProcTexRelaxContraintMax;
 	float mSemiProcTexGuidanceWeight;
 	float mSemiProcTexDistancePower;
 	float mSemiProcTexInitializationError;
 	int mSemiProcTexNbLabels;
 	//	- PPTBF
-	int mPtbfShiftX;
+	int mPptbfShiftX;
 	int mPptbfShiftY;
 
 	/******************************** METHODS *********************************/
