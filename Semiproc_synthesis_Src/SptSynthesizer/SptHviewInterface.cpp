@@ -10,27 +10,27 @@
  * @version 1.0
  */
 
+#include "SptHviewInterface.h"
+ 
 /******************************************************************************
  ******************************* INCLUDE SECTION ******************************
  ******************************************************************************/
 
-// Project
-#include "SptSynthesizer.h"
+// System
+#include <cassert>
 
 // STL
-#include <string>
-#include <fstream>
 #include <iostream>
-#include <vector>
-#include <sstream>
-
-// System
-#include <cstdlib>
-#include <ctime>
+#include <algorithm>
+#include <functional>
+#include <numeric>
 
 /******************************************************************************
  ****************************** NAMESPACE SECTION *****************************
  ******************************************************************************/
+
+// Project
+using namespace Spt;
 
 /******************************************************************************
  ************************* DEFINE AND CONSTANT SECTION ************************
@@ -45,57 +45,29 @@
  ******************************************************************************/
 
 /******************************************************************************
- * Main entry program
- *
- * @param pArgc Number of arguments
- * @param pArgv List of arguments
- *
- * @return flag telling whether or not it succeeds
+ * Constructor
  ******************************************************************************/
-int main( int pArgc, char** pArgv )
+SptHviewInterface::SptHviewInterface()
 {
-	// Log info
-	std::cout << "---------------------------------" << std::endl;
-	std::cout << "- SemiProcTex Synthesizer Tool --" << std::endl;
-	std::cout << "---------------------------------" << std::endl;
+}
 
-	// Check command line arguments
-	const int nbArguments = 1;
-	if ( pArgc < ( 1 + nbArguments ) )
-	{
-		// Log info
-		std::cout << "Error: waiting for " << nbArguments << "parameter(s)" << std::endl;
-		std::cout << "       ex: program semiProcTex_params.txt"<< std::endl;
+/******************************************************************************
+ * Destructor
+ ******************************************************************************/
+SptHviewInterface::~SptHviewInterface()
+{
+}
 
-		// Exit
-		return -1;
-	}
+/******************************************************************************
+ * Initialize
+ ******************************************************************************/
+void SptHviewInterface::initialize()
+{
+}
 
-	// Retrieve program directory
-	int indexParameter = 0;
-	std::string workingDirectory = "";
-	workingDirectory = pArgv[ indexParameter++ ];
-
-	// User customizable parameters : retrieve command line parameters
-	const char* semiProcTexConfigFilename = pArgv[ indexParameter++ ];
-
-	// Initialization
-	Spt::SptSynthesizer* semiProcTexSynthesizer = new Spt::SptSynthesizer();
-	// - initialize resources
-	semiProcTexSynthesizer->initialize();
-
-	// Load synthesis parameters
-	semiProcTexSynthesizer->loadParameters( semiProcTexConfigFilename );
-
-	// Launch synthesis
-	semiProcTexSynthesizer->execute();
-	
-	// Finalization
-	// - clean/release resources
-	semiProcTexSynthesizer->finalize();
-	delete semiProcTexSynthesizer;
-	semiProcTexSynthesizer = nullptr;
-
-	// Exit
-	return 0;
+/******************************************************************************
+ * Finalize
+ ******************************************************************************/
+void SptHviewInterface::finalize()
+{
 }
