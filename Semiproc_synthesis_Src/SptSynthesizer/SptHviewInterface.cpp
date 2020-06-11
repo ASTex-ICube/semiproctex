@@ -54,6 +54,24 @@ using namespace Spt;
  * Constructor
  ******************************************************************************/
 SptHviewInterface::SptHviewInterface()
+// hview synthesis parameters
+:	mName()
+,	mSTOPATLEVEL( 0 )
+,	mPosx( 0 )
+,	mPosy( 0 )
+//,	mExample()
+//,	mExdist()
+,	mWeight( 0. )
+,	mPowr( 0. )
+,	mIndweight( 0.f )
+,	mNeighbor( 0 )
+,	mAtlevel( 0 )
+,	mBsize( 0 )
+,	mERR( 0.f )
+//,	mMask()
+//,	mGuidance()
+//,	mIndex()
+//,	mRes()
 {
 }
 
