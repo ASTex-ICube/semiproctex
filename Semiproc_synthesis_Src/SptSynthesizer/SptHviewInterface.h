@@ -17,8 +17,18 @@
  ******************************* INCLUDE SECTION ******************************
  ******************************************************************************/
 
+#ifndef M_PI
+#define M_PI       3.14159265358979323846
+#endif
+
 // hview
+#include <hvVec2.h>
+#include <hvArray2.h>
+#include <hvBitmap.h>
 #include <hvPictRGB.h>
+
+// STL
+#include <string>
 
 /******************************************************************************
  ************************* DEFINE AND CONSTANT SECTION ************************
@@ -116,14 +126,26 @@ protected:
 
 	/******************************* ATTRIBUTES *******************************/
 
-	//char *name,
-	//int STOPATLEVEL,
-	//int posx, int posy,
-	//const hvPictRGB<T> &example, const hvPictRGB<T> &exdist,
-	//double weight, // weight color vs distance
-	//double powr, float indweight, int neighbor, int atlevel, int bsize, float ERR,
-	//const hvBitmap &mask, const hvPictRGB<T> &guidance,
-	//hvArray2<hvVec2<int> > &index
+	/**
+	 * hview synthesis parameters
+	 */
+	std::string mName;
+	int mSTOPATLEVEL;
+	int mPosx;
+	int mPosy;
+	hview::hvPictRGB< unsigned char > mExample;
+	hview::hvPictRGB<unsigned char> mExdist;
+	double mWeight; // weight color vs distance
+	double mPowr;
+	float mIndweight;
+	int mNeighbor;
+	int mAtlevel;
+	int mBsize;
+	float mERR;
+	hview::hvBitmap mMask;
+	hview::hvPictRGB<unsigned char> mGuidance;
+	hview::hvArray2< hview::hvVec2< int > > mIndex;
+	hview::hvPictRGB< unsigned char > mRes;
 
 	/******************************** METHODS *********************************/
 

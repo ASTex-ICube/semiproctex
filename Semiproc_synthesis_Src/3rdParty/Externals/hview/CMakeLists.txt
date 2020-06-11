@@ -1,7 +1,10 @@
+# Check CMAKE version
+cmake_minimum_required( VERSION 3.0 )
+
 # Invite message
-message( STATUS "----------------------------------------------" )
-message( STATUS "- PROJECT GENERATION : SptSemiProcTex Module -" )
-message( STATUS "----------------------------------------------" )
+message( STATUS "-------------------------------------" )
+message( STATUS "- PROJECT GENERATION : hview Module -" )
+message( STATUS "-------------------------------------" )
 message( STATUS "" )
 
 ##################################################################################
@@ -17,7 +20,9 @@ message( STATUS "" )
 ##################################################################################
 
 # Project name
-project( SptSemiProcTex )
+project( hview )
+
+set( CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/../../hview" )
 
 # Set parallel build mode
 #set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP" )
@@ -34,42 +39,23 @@ add_definitions( -D_CRT_SECURE_NO_WARNINGS )
 # Include directories
 ##################################################################################
 
-# stb
-include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/stb" )
-
-# hview
-include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/hview/include" )
-
 ##################################################################################
 # Program
 ##################################################################################
 
 # Retrieve source files
 file( GLOB incList "${CMAKE_CURRENT_SOURCE_DIR}/*.h" )
-file( GLOB inlList "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp" )
 file( GLOB srcList "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp" )
-# - shaders
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.vert" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.frag" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.geom" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.tese" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.tesc" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.comp" )
 
 # Group files in IDE (Visual Studio)
 source_group( "Include" FILES ${incList} )
-source_group( "Inline" FILES ${inlList} )
 source_group( "Source" FILES ${srcList} )
-# - shaders
-source_group( "Shaders" FILES ${shaderList} )
 
 # Target program
 # - source files
 set( resList ${resList} ${incList} )
-set( resList ${resList} ${inlList} )
-set( resList ${resList} ${shaderList} )
 # target
-add_executable( ${PROJECT_NAME} ${srcList} ${resList} )
+add_library( ${PROJECT_NAME} STATIC ${srcList} ${resList} )
 
 #####################################################
 set( CUSTOM_DEBUG_POSTFIX "d" )
@@ -79,9 +65,6 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX ${CUSTOM_DEBUG_P
 ##################################################################################
 # Linked libraries
 ##################################################################################
-
-# hview
-target_link_libraries( ${PROJECT_NAME} debug "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/hview/lib/hviewd.lib" optimized "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/hview/lib/hview.lib" )
 
 # Project property
 set_property( TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11 )
@@ -98,4 +81,9 @@ set_property( TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11 )
 #)
 
 # Executables
-install( TARGETS ${PROJECT_NAME} DESTINATION bin )
+#install( TARGETS ${PROJECT_NAME} DESTINATION bin )
+# Libraries
+install( TARGETS ${PROJECT_NAME} ARCHIVE DESTINATION lib )
+install( FILES ${resList} DESTINATION include )
+#install( FILES $<TARGET_PDB_FILE:${PROJECT_NAME}> DESTINATION bin OPTIONAL )
+

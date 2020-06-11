@@ -28,6 +28,9 @@
 #include <functional>
 #include <numeric>
 
+// HVIEW
+#include "hvPicture.h"
+
 /******************************************************************************
  ****************************** NAMESPACE SECTION *****************************
  ******************************************************************************/
@@ -81,18 +84,16 @@ void SptHviewInterface::finalize()
 void SptHviewInterface::execute()
 {
 	// Call hview texture synthesis api
-	// TODO
-	//...
-//	hview::semiProcTexwdistguidance(
-		//char *name,
-		//int STOPATLEVEL,
-		//int posx, int posy,
-		//const hvPictRGB<T> &example, const hvPictRGB<T> &exdist,
-		//double weight, // weight color vs distance
-		//double powr, float indweight, int neighbor, int atlevel, int bsize, float ERR,
-		//const hvBitmap &mask, const hvPictRGB<T> &guidance,
-		//hvArray2<hvVec2<int> > &index
-//	);
+	mRes.pctswdistguidanceV2(
+		mName.c_str(),
+		mSTOPATLEVEL,
+		mPosx, mPosy,
+		mExample, mExdist,
+		mWeight, // weight color vs distance
+		mPowr, mIndweight, mNeighbor,mAtlevel, mBsize, mERR,
+		mMask, mGuidance,
+		mIndex
+	);
 }
 
 /******************************************************************************
