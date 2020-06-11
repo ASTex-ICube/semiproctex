@@ -88,19 +88,20 @@ SptSynthesizer::SptSynthesizer()
 ,	mUseLabelSampler( false )
 ,	mLabelSamplerAreaThreshold( 0.f )
 // - guidance
-,	mCorrectionGuidanceWeight( 1.f )
-,	mCorrectionExemplarWeightDistance( 1.f )
-,	mCorrectionGuidanceWeightDistance( 1.f )
-,	mCorrectionLabelErrorAmount( 1.f )
+,	mCorrectionGuidanceWeight( 0.f )
+,	mCorrectionExemplarWeightDistance( 0.f )
+,	mCorrectionGuidanceWeightDistance( 0.f )
+,	mCorrectionLabelErrorAmount( 0.f )
 // - semi-procedural
-,	mSemiProcTexPPTBFThreshold( 1.f )
-,	mSemiProcTexRelaxContraints( 1.f )
-,	mSemiProcTexGuidanceWeight( 1.f )
-,	mSemiProcTexDistancePower( 1.f )
-,	mSemiProcTexInitializationError( 1.f )
+,	mSemiProcTexPPTBFThreshold( 0.f )
+,	mSemiProcTexRelaxContraintMin( 0.f )
+,	mSemiProcTexRelaxContraintMax( 0.f )
+,	mSemiProcTexGuidanceWeight( 0.f )
+,	mSemiProcTexDistancePower( 0.f )
+,	mSemiProcTexInitializationError( 0.f )
 ,	mSemiProcTexNbLabels( 1 )
 //	[PPTBF]
-,	mPtbfShiftX( 0 )
+,	mPptbfShiftX( 0 )
 ,	mPptbfShiftY( 0 )
 {
 }
@@ -130,8 +131,10 @@ void SptSynthesizer::finalize()
  * Load synthesis parameters
  *
  * @param pFilename
+ *
+ * @return error status
  ******************************************************************************/
-void SptSynthesizer::loadParameters( const char* pFilename )
+int SptSynthesizer::loadParameters( const char* pFilename )
 {
 	// Open file
 	std::ifstream semiProcTexConfigFile;
@@ -142,16 +145,19 @@ void SptSynthesizer::loadParameters( const char* pFilename )
 		// Log info
 		std::cout << "ERROR: file cannot be opened: " << std::string( semiProcTexConfigFilename ) << std::endl;
 		
-		// Handle error (TODO)
+		// Handle error
 		assert( false );
-		//return -1;
+		return -1;
 	}
 
 	// Temp variables
 	std::string lineData;
 	std::string text;
 
+	//----------------------------------------------
 	// [EXEMPLAR]
+	//----------------------------------------------
+
 	std::getline( semiProcTexConfigFile, lineData );
 
 	// - name
@@ -171,12 +177,348 @@ void SptSynthesizer::loadParameters( const char* pFilename )
 		ss >> mExemplarHeight;
 	}
 
-	// TODO
-	// - continue reading parameter file
-	// ...
+	//----------------------------------------------
+	// [SYNTHESIS]
+	//----------------------------------------------
+
+	std::getline( semiProcTexConfigFile, lineData );
+	
+	// - outputSize
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mOutputWidth;
+		ss >> mOutputHeight;
+	}
+
+	//----------------------------------------------
+	// [PYRAMID]
+	//----------------------------------------------
+
+	std::getline( semiProcTexConfigFile, lineData );
+
+	// - nbMipmapLevels
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mPyramidNbMipmapLevels;
+	}
+
+	// - pyramidMaxLevel
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mPyramidMaxLevel;
+	}
+
+	// - pyramidMinSize
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mPyramidMinSize;
+	}
+
+	// - nbPyramidLevels
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mPyramidNbLevels;
+	}
+
+	//----------------------------------------------
+	// [BLOCK INITIALIZATION]
+	//----------------------------------------------
+
+	std::getline( semiProcTexConfigFile, lineData );
+
+	// - blockGrid
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mblockInitGridWidth;
+		ss >> mblockInitGridHeight;
+	}
+
+	// - blockSize
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mblockInitBlockWidth;
+		ss >> mblockInitBlockHeight;
+	}
+
+	// - useSmartInitialization
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		int value;
+		ss >> value;
+		mblockInitUseSmartInitialization = value > 0 ? true : false;
+	}
+
+	// - smartInitNbPasses
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mblockInitSmartInitNbPasses;
+	}
+
+	//----------------------------------------------
+	// [CORRECTION PASS]
+	//----------------------------------------------
+
+	std::getline( semiProcTexConfigFile, lineData );
+
+	// - correctionNbPasses
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionNbPasses;
+	}
+
+	// - correctionSubPassBlockSize
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionSubPassBlockSize;
+	}
+
+	// - correctionNeighborhoodSize
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionNeighborhoodSize;
+	}
+
+	// - correctionNeighborSearchRadius
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionNeighborSearchRadius;
+	}
+
+	// - correctionNeighborSearchNbSamples
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionNeighborSearchNbSamples;
+	}
+
+	// - correctionNeighborSearchDepth
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionNeighborSearchDepth;
+	}
+
+	//----------------------------------------------
+	// [MATERIAL]
+	//----------------------------------------------
+
+	std::getline( semiProcTexConfigFile, lineData );
+
+	// - correctionWeightAlbedo
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionWeightAlbedo;
+	}
+
+	// - correctionWeightHeight
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionWeightHeight;
+	}
+
+	// - correctionWeightNormal
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionWeightNormal;
+	}
+
+	// - correctionWeightRoughness
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionWeightRoughness;
+	}
+
+	//----------------------------------------------
+	// [LABEL MAP]
+	//----------------------------------------------
+
+	std::getline( semiProcTexConfigFile, lineData );
+	
+	// - useLabelMap
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		int value;
+		ss >> value;
+		mUseLabelMap = value > 0 ? true : false;
+	}
+
+	// - labelmapType
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mLabelmapType;
+	}
+
+	// - useLabelSampler
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		int value;
+		ss >> value;
+		mUseLabelSampler = value > 0 ? true : false;
+	}
+
+	// - labelSamplerAreaThreshold
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mLabelSamplerAreaThreshold;
+	}
+
+	//----------------------------------------------
+	// [GUIDANCE]
+	//----------------------------------------------
+
+	std::getline( semiProcTexConfigFile, lineData );
+	
+	// - correctionGuidanceWeight
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionGuidanceWeight;
+	}
+
+	// - correctionExemplarWeightDistance
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionExemplarWeightDistance;
+	}
+
+	// - correctionGuidanceWeightDistance
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionGuidanceWeightDistance;
+	}
+
+	// - correctionLabelErrorAmount
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mCorrectionLabelErrorAmount;
+	}
+
+	//----------------------------------------------
+	// [SEMI PROCEDURAL]
+	//----------------------------------------------
+
+	std::getline( semiProcTexConfigFile, lineData );
+
+	// - PPTBFThreshold
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mSemiProcTexPPTBFThreshold;
+	}
+
+	// - relaxContraints
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mSemiProcTexRelaxContraintMin;
+		ss >> mSemiProcTexRelaxContraintMax;
+	}
+
+	// - guidanceWeight
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mSemiProcTexGuidanceWeight;
+	}
+
+	// - distancePower
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mSemiProcTexDistancePower;
+	}
+
+	// - initializationError
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mSemiProcTexInitializationError;
+	}
+
+	// - nbLabels
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mSemiProcTexNbLabels;
+	}
+
+	//----------------------------------------------
+	// [PPTBF]
+	//----------------------------------------------
+
+	std::getline( semiProcTexConfigFile, lineData );
+
+	// - shift
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mPptbfShiftX;
+		ss >> mPptbfShiftY;
+	}
 
 	// Close file
 	semiProcTexConfigFile.close();
+
+	// Exit code
+	return 0;
 }
 
 /******************************************************************************
