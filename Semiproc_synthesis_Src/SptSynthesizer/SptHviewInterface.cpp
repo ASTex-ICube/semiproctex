@@ -25,6 +25,9 @@
 #include <functional>
 #include <numeric>
 
+// hview
+#include <hvPictRGB.h>
+
 /******************************************************************************
  ****************************** NAMESPACE SECTION *****************************
  ******************************************************************************/
@@ -70,4 +73,24 @@ void SptHviewInterface::initialize()
  ******************************************************************************/
 void SptHviewInterface::finalize()
 {
+}
+
+/******************************************************************************
+ * Launch the synthesis pipeline
+ ******************************************************************************/
+void SptHviewInterface::execute()
+{
+	// Call hview texture synthesis api
+	// TODO
+	//...
+//	hview::semiProcTexwdistguidance(
+		//char *name,
+		//int STOPATLEVEL,
+		//int posx, int posy,
+		//const hvPictRGB<T> &example, const hvPictRGB<T> &exdist,
+		//double weight, // weight color vs distance
+		//double powr, float indweight, int neighbor, int atlevel, int bsize, float ERR,
+		//const hvBitmap &mask, const hvPictRGB<T> &guidance,
+		//hvArray2<hvVec2<int> > &index
+//	);
 }

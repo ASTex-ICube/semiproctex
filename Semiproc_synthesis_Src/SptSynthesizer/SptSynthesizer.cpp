@@ -61,6 +61,20 @@ SptSynthesizer::SptSynthesizer()
 ,	mPyramidMaxLevel( 0 )
 ,	mPyramidMinSize( 0 )
 ,	mPyramidNbLevels( 0 )
+// - block initialization
+,	mblockInitGridWidth( 0 )
+,	mblockInitGridHeight( 0 )
+,	mblockInitBlockWidth( 0 )
+,	mblockInitBlockHeight( 0 )
+,	mblockInitUseSmartInitialization( false )
+,	mblockInitSmartInitNbPasses( 0 )
+// - correction pass
+,	mCorrectionNbPasses( 0 )
+,	mCorrectionSubPassBlockSize( 0 )
+,	mCorrectionNeighborhoodSize( 0 )
+,	mCorrectionNeighborSearchRadius( 0 )
+,	mCorrectionNeighborSearchNbSamples( 0 )
+,	mCorrectionNeighborSearchDepth( 0 )
 // TODO: continue...
 {
 }
@@ -100,6 +114,7 @@ void SptSynthesizer::loadParameters( const char* pFilename )
  ******************************************************************************/
 void SptSynthesizer::execute()
 {
+	mHviewInterface.execute();
 }
 
 /******************************************************************************
