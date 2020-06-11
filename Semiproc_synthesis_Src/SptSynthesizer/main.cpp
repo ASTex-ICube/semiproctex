@@ -27,6 +27,7 @@
 // System
 #include <cstdlib>
 #include <ctime>
+#include <cassert>
 
 /******************************************************************************
  ****************************** NAMESPACE SECTION *****************************
@@ -85,7 +86,8 @@ int main( int pArgc, char** pArgv )
 	semiProcTexSynthesizer->initialize();
 
 	// Load synthesis parameters
-	semiProcTexSynthesizer->loadParameters( semiProcTexConfigFilename );
+	int errorStatus = semiProcTexSynthesizer->loadParameters( semiProcTexConfigFilename );
+	assert( errorStatus != -1 );
 
 	// Launch synthesis
 	semiProcTexSynthesizer->execute();

@@ -50,6 +50,56 @@ namespace Spt
   * Semi-procedural texture synthesis separate process in two:
   * procedural stochastic structures are synthesized procedurally,
   * then color details are transfer through data-driven by-example synthesis.
+  *
+  * Example of parameter file:
+  *
+  *  [EXEMPLAR]
+  *  name TexturesCom_Crackles0011_S
+  *  exemplarSize 512 512
+  *  [SYNTHESIS]
+  *  outputSize 1024 1024
+  *  [PYRAMID]
+  *  nbMipmapLevels 10
+  *  pyramidMaxLevel 9
+  *  pyramidMinSize 32
+  *  nbPyramidLevels 5
+  *  [BLOCK INITIALIZATION]
+  *  blockGrid 8 8
+  *  blockSize 128 128
+  *  useSmartInitialization 0
+  *  smartInitNbPasses 10
+  *  [CORRECTION PASS]
+  *  correctionNbPasses 3
+  *  correctionSubPassBlockSize 3
+  *  correctionNeighborhoodSize 2
+  *  correctionNeighborSearchRadius 4
+  *  correctionNeighborSearchNbSamples 11
+  *  correctionNeighborSearchDDepth 3
+  *  [MATERIAL]
+  *  correctionWeightAlbedo 1
+  *  correctionWeightHeight 1
+  *  correctionWeightNormal 1
+  *  correctionWeightRoughness 1
+  *  [LABEL MAP]
+  *  useLabelMap 1
+  *  labelmapType 0
+  *  useLabelSampler 0
+  *  labelSamplerAreaThreshold 2500
+  *  [GUIDANCE]
+  *  correctionGuidanceWeight 0.85
+  *  correctionExemplarWeightDistance 0
+  *  correctionGuidanceWeightDistance 0
+  *  correctionLabelErrorAmount 0.25
+  *  [SEMI PROCEDURAL]
+  *  PPTBFThreshold 0.109375
+  *  relaxContraints 0.09375 0.210938
+  *  guidanceWeight 0.763 0
+  *  distancePower 0.1
+  *  initializationError 0.196078
+  *  nbLabels 6
+  *  [PPTBF]
+  *  shift 10 10
+  *
   */
 class SptSynthesizer
 {
@@ -89,8 +139,10 @@ public:
 	 * Load synthesis parameters
 	 *
 	 * @param pFilename
+	 *
+	 * @return error status
 	 */
-	void loadParameters( const char* pFilename );
+	int loadParameters( const char* pFilename );
 
 	/**
 	 * Launch the synthesis pipeline
@@ -168,7 +220,7 @@ protected:
 	float mSemiProcTexDistancePower;
 	float mSemiProcTexInitializationError;
 	int mSemiProcTexNbLabels;
-	//	[PPTBF]
+	//	- PPTBF
 	int mPtbfShiftX;
 	int mPptbfShiftY;
 
