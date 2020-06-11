@@ -1,0 +1,14 @@
+-----------------------------------------------------------------------------------------------------------------
+Technical paper:
+Semi-Procedural Textures Using Point Process Texture Basis Functions
+P. Guehl , R. AllEgre , J.-M. Dischler, B. Benes , and E. Galin
+Computer Graphics Forum (EGSR 2020 special issue)
+-----------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------
+Semi-Procedural Texture file format
+---------------------------------------------------------------------------
+
+A semi-procedural texture file store parameters of our semi-procedural texture synthesis model.
+
+// TODO: add description below...

@@ -32,15 +32,8 @@ Available soon.
  and real-time visualizer/designer
  are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip).
 
- * Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
-
- * The PPTBF parameters estimated from our database of manually segmented structures are available
- following [this link](http://igg.unistra.fr/people/semiproctex/PPTBF_Parameters_v2.zip). Note
- that this is an updated version that improves the parameter values provided with the Supplemental
- materials.
-
  * The [Semiproc_synthesis_Src](Semiproc_synthesis_Src) directory contains code required to synthesize
- textures from files of our semi-procedural texture synthesis parameters and PPTBF parameters (works under Windows, Linux port soon).
+ textures from files of our semi-procedural texture synthesis parameters and PPTBF parameters (works under Windows, Linux port soon). Work in progress...
   
  * The [Semiproc_synthesis_Bin](http://igg.unistra.fr/people/semiproctex/Semiproctex_synthesis_Bin.zip) archive
  contains Windows binaries for our semi-procedural texture synthesis method. The program is able
@@ -48,6 +41,17 @@ Available soon.
  We provide the binaries of our GPU implementation. Note that a software version will be
  made available soon (for reasons of intellectual property, the GPU code cannot be
  distributed).
+ 
+ ## Data
+ 
+ * Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
+
+ * The PPTBF parameters estimated from our database of manually segmented structures are available
+ following [this link](http://igg.unistra.fr/people/semiproctex/PPTBF_Parameters_v2.zip). Note
+ that this is an updated version that improves the parameter values provided with the Supplemental
+ materials.
+ 
+ * Check [this file](semiProcTex_file_format.txt) to get a description of the semi-procedural texture file format. Work in progress...
 
 <!--
 ### Prerequisites
