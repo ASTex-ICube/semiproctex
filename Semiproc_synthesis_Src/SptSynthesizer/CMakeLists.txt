@@ -37,6 +37,9 @@ add_definitions( -D_CRT_SECURE_NO_WARNINGS )
 # stb
 include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/stb" )
 
+# hview
+include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/hview/include" )
+
 ##################################################################################
 # Program
 ##################################################################################
