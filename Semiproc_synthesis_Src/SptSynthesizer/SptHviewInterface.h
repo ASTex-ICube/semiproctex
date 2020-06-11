@@ -96,6 +96,13 @@ public:
 	void execute();
 
 	/**
+	 * Load exemplar (color texture)
+	 *
+	 * @param pFilename
+	 */
+	void loadExemplar( const char* pFilename );
+
+	/**
 	 * Load structure map (binary)
 	 *
 	 * @param pFilename

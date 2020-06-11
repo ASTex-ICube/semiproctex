@@ -97,6 +97,26 @@ void SptHviewInterface::execute()
 }
 
 /******************************************************************************
+ *  * Load exemplar (color texture)
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptHviewInterface::loadExemplar( const char* pFilename )
+{
+	// Read image
+	int width = 0;
+	int height = 0;
+	int nrChannels = 0;
+	const int desired_channels = 0; // TODO: handle this parameter!
+	unsigned char* pData = nullptr;
+	SptImageHelper::loadImage( pFilename, width, height, nrChannels, pData, desired_channels );
+
+	// Store data in hview container: mExample
+	// TODO
+	// ...
+}
+
+/******************************************************************************
  * Load structure map (binary)
  *
  * @param pFilename
@@ -131,7 +151,7 @@ void SptHviewInterface::loadDistanceMap( const char* pFilename )
 	unsigned char* pData = nullptr;
 	SptImageHelper::loadImage( pFilename, width, height, nrChannels, pData, desired_channels );
 
-	// Store data in hview container
+	// Store data in hview container: mExdist
 	// TODO
 	// ...
 }

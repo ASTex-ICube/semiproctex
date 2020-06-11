@@ -45,6 +45,20 @@
  ***************************** METHOD DEFINITION ******************************
  ******************************************************************************/
 
+//-----------------------------------------------------------------------------
+// SOFTWARE INPUT
+//-----------------------------------------------------------------------------
+//
+//1) 2 images of PPTBF (pptbf in grey levels + random pptbf labels at feature points (in grey level also?)
+//
+//2) 3 images of exemplar: color + binary structure + les labels
+//
+//3) 1 file containg numperical valeus of parameters :
+//- threshold
+//- synthesis parameters (smart init, neighborhoods, errors, etc.)
+//
+//The batch software load these files (5 images + 1 file) et generates the synthesis.
+
 /******************************************************************************
  * Main entry program
  *
