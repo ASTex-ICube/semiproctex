@@ -539,24 +539,31 @@ int SptSynthesizer::loadParameters( const char* pFilename )
 	loadExemplar( exemplarFilename.c_str() );
 	// - structure
 	const std::string exemplarStructureFilename = "";
-	loadStructureMap( exemplarStructureFilename.c_str() );
+	loadExemplarStructureMap( exemplarStructureFilename.c_str() );
 	// - distance
 	const std::string exemplarDistanceFilename = "";
-	loadStructureMap( exemplarDistanceFilename.c_str() );
+	loadExemplarStructureMap( exemplarDistanceFilename.c_str() );
 	// - labels
 	const std::string exemplarLabelFilename = "";
-	loadStructureMap( exemplarLabelFilename.c_str() );
+	loadExemplarStructureMap( exemplarLabelFilename.c_str() );
 
 	//--------------------------------------
 	// TODO: load guidance data
 	//--------------------------------------
 
 	// Load guidance data
-	// ...
-	// - pptbf
-	// - mask? or maybe we can retrieve it from pptbf and treshold value?
+	// - PPTBF
+	const std::string guidancePPTBFFilename = "";
+	loadGuidancePPTBF( guidancePPTBFFilename.c_str() );
+	// - mask
+	const std::string guidanceMaskFilename = "";
+	loadGuidanceMask( guidanceMaskFilename.c_str() );
 	// - distance
+	const std::string guidanceDistanceFilename = "";
+	loadGuidanceDistanceMap( guidanceDistanceFilename.c_str() );
 	// - labels
+	const std::string guidanceLabelFilename = "";
+	loadGuidanceLabelMap( guidanceLabelFilename.c_str() );
 
 	// Exit code
 	return 0;
@@ -616,10 +623,10 @@ void SptSynthesizer::loadExemplar(const char* pFilename)
  *
  * @param pFilename
  ******************************************************************************/
-void SptSynthesizer::loadStructureMap( const char* pFilename )
+void SptSynthesizer::loadExemplarStructureMap( const char* pFilename )
 {
 	// Delegate to hview interface
-	mHviewInterface->loadStructureMap( pFilename );
+	mHviewInterface->loadExemplarStructureMap( pFilename );
 }
 
 /******************************************************************************
@@ -627,10 +634,10 @@ void SptSynthesizer::loadStructureMap( const char* pFilename )
  *
  * @param pFilename
  ******************************************************************************/
-void SptSynthesizer::loadDistanceMap( const char* pFilename )
+void SptSynthesizer::loadExemplarDistanceMap( const char* pFilename )
 {
 	// Delegate to hview interface
-	mHviewInterface->loadDistanceMap( pFilename );
+	mHviewInterface->loadExemplarDistanceMap( pFilename );
 }
 
 /******************************************************************************
@@ -638,8 +645,52 @@ void SptSynthesizer::loadDistanceMap( const char* pFilename )
  *
  * @param pFilename
  ******************************************************************************/
-void SptSynthesizer::loadLabelMap( const char* pFilename )
+void SptSynthesizer::loadExemplarLabelMap( const char* pFilename )
 {
 	// Delegate to hview interface
-	mHviewInterface->loadLabelMap( pFilename );
+	mHviewInterface->loadExemplarLabelMap( pFilename );
+}
+
+/******************************************************************************
+ * Load guidance PPTBF
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptSynthesizer::loadGuidancePPTBF( const char* pFilename )
+{
+	// Delegate to hview interface
+	mHviewInterface->loadGuidancePPTBF( pFilename );
+}
+
+/******************************************************************************
+ * Load guidance mask
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptSynthesizer::loadGuidanceMask( const char* pFilename )
+{
+	// Delegate to hview interface
+	mHviewInterface->loadGuidanceMask( pFilename) ;
+}
+
+/******************************************************************************
+ * Load guidance distance map
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptSynthesizer::loadGuidanceDistanceMap( const char* pFilename )
+{
+	// Delegate to hview interface
+	mHviewInterface->loadGuidanceDistanceMap( pFilename );
+}
+
+/******************************************************************************
+ * Load guidance label map
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptSynthesizer::loadGuidanceLabelMap( const char* pFilename )
+{
+	// Delegate to hview interface
+	mHviewInterface->loadGuidanceLabelMap( pFilename );
 }

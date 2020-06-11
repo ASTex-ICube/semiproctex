@@ -121,7 +121,7 @@ void SptHviewInterface::loadExemplar( const char* pFilename )
  *
  * @param pFilename
  ******************************************************************************/
-void SptHviewInterface::loadStructureMap( const char* pFilename )
+void SptHviewInterface::loadExemplarStructureMap( const char* pFilename )
 {
 	// Read image
 	int width = 0;
@@ -141,7 +141,7 @@ void SptHviewInterface::loadStructureMap( const char* pFilename )
  *
  * @param pFilename
  ******************************************************************************/
-void SptHviewInterface::loadDistanceMap( const char* pFilename )
+void SptHviewInterface::loadExemplarDistanceMap( const char* pFilename )
 {
 	// Read image
 	int width = 0;
@@ -161,7 +161,87 @@ void SptHviewInterface::loadDistanceMap( const char* pFilename )
  *
  * @param pFilename
  ******************************************************************************/
-void SptHviewInterface::loadLabelMap( const char* pFilename )
+void SptHviewInterface::loadExemplarLabelMap( const char* pFilename )
+{
+	// Read image
+	int width = 0;
+	int height = 0;
+	int nrChannels = 0;
+	const int desired_channels = 0; // TODO: handle this parameter!
+	unsigned char* pData = nullptr;
+	SptImageHelper::loadImage( pFilename, width, height, nrChannels, pData, desired_channels );
+
+	// Store data in hview container
+	// TODO
+	// ...
+}
+
+/******************************************************************************
+ * Load guidance PPTBF
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptHviewInterface::loadGuidancePPTBF( const char* pFilename )
+{
+	// Read image
+	int width = 0;
+	int height = 0;
+	int nrChannels = 0;
+	const int desired_channels = 0; // TODO: handle this parameter!
+	unsigned char* pData = nullptr;
+	SptImageHelper::loadImage( pFilename, width, height, nrChannels, pData, desired_channels );
+
+	// Store data in hview container
+	// TODO
+	// ...
+}
+
+/******************************************************************************
+ * Load guidance mask
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptHviewInterface::loadGuidanceMask( const char* pFilename )
+{
+	// Read image
+	int width = 0;
+	int height = 0;
+	int nrChannels = 0;
+	const int desired_channels = 0; // TODO: handle this parameter!
+	unsigned char* pData = nullptr;
+	SptImageHelper::loadImage( pFilename, width, height, nrChannels, pData, desired_channels );
+
+	// Store data in hview container
+	// TODO
+	// ...
+}
+
+/******************************************************************************
+ * Load guidance distance map
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptHviewInterface::loadGuidanceDistanceMap( const char* pFilename )
+{
+	// Read image
+	int width = 0;
+	int height = 0;
+	int nrChannels = 0;
+	const int desired_channels = 0; // TODO: handle this parameter!
+	unsigned char* pData = nullptr;
+	SptImageHelper::loadImage( pFilename, width, height, nrChannels, pData, desired_channels );
+
+	// Store data in hview container
+	// TODO
+	// ...
+}
+
+/******************************************************************************
+ * Load guidance label map
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptHviewInterface::loadGuidanceLabelMap( const char* pFilename )
 {
 	// Read image
 	int width = 0;
