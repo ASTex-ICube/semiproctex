@@ -49,6 +49,19 @@ using namespace Spt;
  ******************************************************************************/
 SptSynthesizer::SptSynthesizer()
 :	mHviewInterface()
+// - exemplar
+,	mExemplarName()
+,	mExemplarWidth( 0 )
+,	mExemplarHeight( 0 )
+// - output
+,	mOutputWidth( 0 )
+,	mOutputHeight( 0 )
+// - pyramid
+,	mPyramidNbMipmapLevels( 0 )
+,	mPyramidMaxLevel( 0 )
+,	mPyramidMinSize( 0 )
+,	mPyramidNbLevels( 0 )
+// TODO: continue...
 {
 }
 
@@ -90,16 +103,23 @@ void SptSynthesizer::execute()
 }
 
 /******************************************************************************
+ * Save/export synthesis results
+ ******************************************************************************/
+void SptSynthesizer::saveResults()
+{
+}
+
+/******************************************************************************
  * Initialization stage
  *  - strategies/policies to choose blocks at initialization
-******************************************************************************/
+ ******************************************************************************/
 void SptSynthesizer::smartInitialization()
 {
 }
 
 /******************************************************************************
  * Correction pass
-******************************************************************************/
+ ******************************************************************************/
 void SptSynthesizer::correction()
 {
 }
@@ -108,5 +128,32 @@ void SptSynthesizer::correction()
  * Upsampling pass
  ******************************************************************************/
 void SptSynthesizer::upsampling()
+{
+}
+
+/******************************************************************************
+ * Load structure map (binary)
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptSynthesizer::loadStructureMap( const char* pFilename )
+{
+}
+
+/******************************************************************************
+ * Load distance map
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptSynthesizer::loadDistanceMap( const char* pFilename )
+{
+}
+
+/******************************************************************************
+ * Load label map
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptSynthesizer::loadLabelMap( const char* pFilename )
 {
 }

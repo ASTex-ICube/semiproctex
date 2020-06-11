@@ -20,6 +20,9 @@
 // Project
 #include "SptHviewInterface.h"
 
+// STL
+#include <string>
+
 /******************************************************************************
  ************************* DEFINE AND CONSTANT SECTION ************************
  ******************************************************************************/
@@ -94,6 +97,11 @@ public:
 	 */
 	virtual void execute();
 
+	/**
+	 * Save/export synthesis results
+	 */
+	virtual void saveResults();
+
 	/**************************************************************************
 	 **************************** PROTECTED SECTION ***************************
 	 **************************************************************************/
@@ -108,6 +116,23 @@ protected:
 	 * Interface to hview api
 	 */
 	SptHviewInterface mHviewInterface;
+
+	/**
+	 * Semi-procedural texture synthesis parameters
+	 */
+	// - exemplar
+	std::string mExemplarName;
+	int mExemplarWidth;
+	int mExemplarHeight;
+	// - output
+	int mOutputWidth;
+	int mOutputHeight;
+	// - pyramid
+	int mPyramidNbMipmapLevels;
+	int mPyramidMaxLevel;
+	int mPyramidMinSize;
+	int mPyramidNbLevels;
+	// TODO: continue...
 
 	/******************************** METHODS *********************************/
 
@@ -126,6 +151,27 @@ protected:
 	 * Upsampling pass
 	 */
 	virtual void upsampling();
+
+	/**
+	 * Load structure map (binary)
+	 *
+	 * @param pFilename
+	 */
+	void loadStructureMap( const char* pFilename );
+
+	/**
+	 * Load distance map
+	 *
+	 * @param pFilename
+	 */
+	void loadDistanceMap( const char* pFilename );
+
+	/**
+	 * Load label map
+	 *
+	 * @param pFilename
+	 */
+	void loadLabelMap( const char* pFilename );
 
 	/**************************************************************************
 	 ***************************** PRIVATE SECTION ****************************
