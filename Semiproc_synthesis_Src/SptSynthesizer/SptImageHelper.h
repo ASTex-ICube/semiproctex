@@ -10,17 +10,14 @@
  * @version 1.0
  */
 
-#ifndef _SPT_HVIEW_INTERFACE_H_
-#define _SPT_HVIEW_INTERFACE_H_
+#ifndef _SPT_IMAGE_HELPER_H_
+#define _SPT_IMAGE_HELPER_H_
 
 /******************************************************************************
  ******************************* INCLUDE SECTION ******************************
  ******************************************************************************/
 
-// hview
-#include <hvPictRGB.h>
-
-/******************************************************************************
+ /******************************************************************************
  ************************* DEFINE AND CONSTANT SECTION ************************
  ******************************************************************************/
 
@@ -40,14 +37,13 @@ namespace Spt
 {
 
  /**
-  * @class SptHviewInterface
+  * @class SptImageHelper
   *
-  * @brief The SptHviewInterface class provides interface to the hview software texture synthesis api.
-  *
-  * SptHviewInterface is an wrapper interaface the hview software texture synthesis api.
+  * @brief The SptImageHelper class provides interface to the stb image management library.
   */
-class SptHviewInterface
-{
+class SptImageHelper
+{	
+	
 	/**************************************************************************
 	 ***************************** PUBLIC SECTION *****************************
 	 **************************************************************************/
@@ -61,51 +57,20 @@ public:
 	/******************************** METHODS *********************************/
 	
 	/**
-	 * Constructor
+	 * Load image
 	 */
-	SptHviewInterface();
+	static void loadImage( const char* pFilename, int& pWidth, int& pHeight, int& pNrChannels, unsigned char*& pData, int desired_channels = 0 );
 
 	/**
-	 * Destructor
+	 * Save image
 	 */
-	virtual ~SptHviewInterface();
+	static int saveImage( const char* pFilename, const int pWidth, const int pHeight, const int pNrChannels, const void* pData );
 
 	/**
-	 * Initialize
+	 * Free image data
 	 */
-	void initialize();
-
-	/**
-	 * Finalize
-	 */
-	void finalize();
-
-	/**
-	 * Launch the synthesis pipeline
-	 */
-	void execute();
-
-	/**
-	 * Load structure map (binary)
-	 *
-	 * @param pFilename
-	 */
-	void loadStructureMap( const char* pFilename );
-
-	/**
-	 * Load distance map
-	 *
-	 * @param pFilename
-	 */
-	void loadDistanceMap( const char* pFilename );
-
-	/**
-	 * Load label map
-	 *
-	 * @param pFilename
-	 */
-	void loadLabelMap( const char* pFilename );
-
+	static void freeImage( unsigned char* pData );
+	
 	/**************************************************************************
 	 **************************** PROTECTED SECTION ***************************
 	 **************************************************************************/
@@ -116,17 +81,8 @@ protected:
 
 	/******************************* ATTRIBUTES *******************************/
 
-	//char *name,
-	//int STOPATLEVEL,
-	//int posx, int posy,
-	//const hvPictRGB<T> &example, const hvPictRGB<T> &exdist,
-	//double weight, // weight color vs distance
-	//double powr, float indweight, int neighbor, int atlevel, int bsize, float ERR,
-	//const hvBitmap &mask, const hvPictRGB<T> &guidance,
-	//hvArray2<hvVec2<int> > &index
-
 	/******************************** METHODS *********************************/
-
+	
 	/**************************************************************************
 	 ***************************** PRIVATE SECTION ****************************
 	 **************************************************************************/
@@ -139,8 +95,7 @@ private:
 
 	/******************************** METHODS *********************************/
 
-
-}; // end of class SptHviewInterface
+}; // end of class SptImageHelper
 
 } // end of namespace Spt
 
@@ -148,4 +103,4 @@ private:
  ******************************* INLINE SECTION ******************************
  ******************************************************************************/
 
-#endif // _SPT_HVIEW_INTERFACE_H_
+#endif // _SPT_IMAGE_HELPER_H_

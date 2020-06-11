@@ -16,6 +16,9 @@
  ******************************* INCLUDE SECTION ******************************
  ******************************************************************************/
 
+// Project
+#include "SptImageHelper.h" 
+
 // System
 #include <cassert>
 
@@ -24,9 +27,6 @@
 #include <algorithm>
 #include <functional>
 #include <numeric>
-
-// hview
-#include <hvPictRGB.h>
 
 /******************************************************************************
  ****************************** NAMESPACE SECTION *****************************
@@ -93,4 +93,49 @@ void SptHviewInterface::execute()
 		//const hvBitmap &mask, const hvPictRGB<T> &guidance,
 		//hvArray2<hvVec2<int> > &index
 //	);
+}
+
+/******************************************************************************
+ * Load structure map (binary)
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptHviewInterface::loadStructureMap( const char* pFilename )
+{
+	int width = 0;
+	int height = 0;
+	int nrChannels = 0;
+	const int desired_channels = 0; // TODO: handle this parameter!
+	unsigned char* pData = nullptr;
+	SptImageHelper::loadImage( pFilename, width, height, nrChannels, pData, desired_channels );
+}
+
+/******************************************************************************
+ * Load distance map
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptHviewInterface::loadDistanceMap( const char* pFilename )
+{
+	int width = 0;
+	int height = 0;
+	int nrChannels = 0;
+	const int desired_channels = 0; // TODO: handle this parameter!
+	unsigned char* pData = nullptr;
+	SptImageHelper::loadImage( pFilename, width, height, nrChannels, pData, desired_channels );
+}
+
+/******************************************************************************
+ * Load label map
+ *
+ * @param pFilename
+ ******************************************************************************/
+void SptHviewInterface::loadLabelMap( const char* pFilename )
+{
+	int width = 0;
+	int height = 0;
+	int nrChannels = 0;
+	const int desired_channels = 0; // TODO: handle this parameter!
+	unsigned char* pData = nullptr;
+	SptImageHelper::loadImage( pFilename, width, height, nrChannels, pData, desired_channels );
 }
