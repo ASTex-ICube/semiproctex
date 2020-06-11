@@ -258,21 +258,49 @@ protected:
 	 *
 	 * @param pFilename
 	 */
-	void loadStructureMap( const char* pFilename );
+	void loadExemplarStructureMap( const char* pFilename );
 
 	/**
 	 * Load distance map
 	 *
 	 * @param pFilename
 	 */
-	void loadDistanceMap( const char* pFilename );
+	void loadExemplarDistanceMap( const char* pFilename );
 
 	/**
 	 * Load label map
 	 *
 	 * @param pFilename
 	 */
-	void loadLabelMap( const char* pFilename );
+	void loadExemplarLabelMap( const char* pFilename );
+
+	/**
+	 * Load guidance PPTBF
+	 *
+	 * @param pFilename
+	 */
+	void loadGuidancePPTBF( const char* pFilename );
+
+	/**
+	 * Load guidance mask
+	 *
+	 * @param pFilename
+	 */
+	void loadGuidanceMask( const char* pFilename );
+
+	/**
+	 * Load guidance distance map
+	 *
+	 * @param pFilename
+	 */
+	void loadGuidanceDistanceMap( const char* pFilename );
+
+	/**
+	 * Load guidance label map
+	 *
+	 * @param pFilename
+	 */
+	void loadGuidanceLabelMap( const char* pFilename );
 
 	/**************************************************************************
 	 ***************************** PRIVATE SECTION ****************************
