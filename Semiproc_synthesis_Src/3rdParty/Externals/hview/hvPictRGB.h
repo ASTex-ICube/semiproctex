@@ -67,7 +67,6 @@ typedef struct {
 #define RGBE_VALID_EXPOSURE    0x04
 
 template <class T> class hvPictRGBA;
-template <class R, unsigned int n> class hvQPictRGB;
 
 ////////////////////////////////////////////////////////////
 template <class T> class hvPictRGB : public hvField2< hvColRGB<T> >  
