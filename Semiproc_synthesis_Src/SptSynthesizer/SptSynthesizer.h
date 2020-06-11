@@ -17,9 +17,6 @@
  ******************************* INCLUDE SECTION ******************************
  ******************************************************************************/
 
-// Project
-#include "SptHviewInterface.h"
-
 // STL
 #include <string>
 
@@ -34,6 +31,12 @@
 /******************************************************************************
  ******************************** CLASS USED **********************************
  ******************************************************************************/
+
+// Project
+namespace Spt
+{
+	class SptHviewInterface;
+}
 
  /******************************************************************************
  ****************************** CLASS DEFINITION ******************************
@@ -167,7 +170,7 @@ protected:
 	/**
 	 * Interface to hview api
 	 */
-	SptHviewInterface mHviewInterface;
+	SptHviewInterface* mHviewInterface;
 
 	/**
 	 * Semi-procedural texture synthesis parameters

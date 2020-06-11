@@ -16,6 +16,9 @@
  ******************************* INCLUDE SECTION ******************************
  ******************************************************************************/
 
+// Project
+#include "SptHviewInterface.h"
+
 // System
 #include <cassert>
 
@@ -50,7 +53,7 @@ using namespace Spt;
  * Constructor
  ******************************************************************************/
 SptSynthesizer::SptSynthesizer()
-:	mHviewInterface()
+:	mHviewInterface( nullptr )
 // - exemplar
 ,	mExemplarName()
 ,	mExemplarWidth( 0 )
@@ -104,6 +107,8 @@ SptSynthesizer::SptSynthesizer()
 ,	mPptbfShiftX( 0 )
 ,	mPptbfShiftY( 0 )
 {
+	// Hview interface
+	mHviewInterface = new SptHviewInterface;
 }
 
 /******************************************************************************
@@ -111,6 +116,9 @@ SptSynthesizer::SptSynthesizer()
  ******************************************************************************/
 SptSynthesizer::~SptSynthesizer()
 {
+	// Hview interface
+	delete mHviewInterface;
+	mHviewInterface = nullptr;
 }
 
 /******************************************************************************
@@ -118,6 +126,8 @@ SptSynthesizer::~SptSynthesizer()
  ******************************************************************************/
 void SptSynthesizer::initialize()
 {
+	// Hview interface
+	mHviewInterface->initialize();
 }
 
 /******************************************************************************
@@ -125,6 +135,8 @@ void SptSynthesizer::initialize()
  ******************************************************************************/
 void SptSynthesizer::finalize()
 {
+	// Hview interface
+	mHviewInterface->finalize();
 }
 
 /******************************************************************************
@@ -527,7 +539,7 @@ int SptSynthesizer::loadParameters( const char* pFilename )
 void SptSynthesizer::execute()
 {
 	// Delegate synthesis to hview interface
-	mHviewInterface.execute();
+	mHviewInterface->execute();
 }
 
 /******************************************************************************
@@ -566,6 +578,8 @@ void SptSynthesizer::upsampling()
  ******************************************************************************/
 void SptSynthesizer::loadStructureMap( const char* pFilename )
 {
+	// Delegate to hview interface
+	mHviewInterface->loadStructureMap( pFilename );
 }
 
 /******************************************************************************
@@ -575,6 +589,8 @@ void SptSynthesizer::loadStructureMap( const char* pFilename )
  ******************************************************************************/
 void SptSynthesizer::loadDistanceMap( const char* pFilename )
 {
+	// Delegate to hview interface
+	mHviewInterface->loadDistanceMap( pFilename );
 }
 
 /******************************************************************************
@@ -584,4 +600,6 @@ void SptSynthesizer::loadDistanceMap( const char* pFilename )
  ******************************************************************************/
 void SptSynthesizer::loadLabelMap( const char* pFilename )
 {
+	// Delegate to hview interface
+	mHviewInterface->loadLabelMap( pFilename );
 }
