@@ -530,6 +530,13 @@ int SptSynthesizer::loadParameters( const char* pFilename )
 	semiProcTexConfigFile.close();
 
 	//--------------------------------------
+	// TODO: adapt semi-procedural texture synthesis parameters to hview api ones
+	//--------------------------------------
+
+	// TODO
+	// ...
+
+	//--------------------------------------
 	// TODO: load exemplar data
 	//--------------------------------------
 
@@ -542,10 +549,10 @@ int SptSynthesizer::loadParameters( const char* pFilename )
 	loadExemplarStructureMap( exemplarStructureFilename.c_str() );
 	// - distance
 	const std::string exemplarDistanceFilename = "";
-	loadExemplarStructureMap( exemplarDistanceFilename.c_str() );
+	loadExemplarDistanceMap( exemplarDistanceFilename.c_str() );
 	// - labels
 	const std::string exemplarLabelFilename = "";
-	loadExemplarStructureMap( exemplarLabelFilename.c_str() );
+	loadExemplarLabelMap( exemplarLabelFilename.c_str() );
 
 	//--------------------------------------
 	// TODO: load guidance data
