@@ -1,6 +1,6 @@
 # Semi-Procedural Textures Using Point Process Texture Basis Functions
 
-![semiproctex](Images/representative_image_good.png)
+![semiproctex](Images/semiproctex.png)
 
 This is the page of our EGSR 2020 CGF track paper:
 
