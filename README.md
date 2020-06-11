@@ -24,8 +24,9 @@ Available soon.
 ## Code
 
  * The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
- procedural binary structures from files of PPTBF parameters (works under Windows, Linux
- port soon).
+ procedural binary structures from files of PPTBF parameters, and a real-time viewer to be able
+ to design and edit PPTBF parameters interactively (works under Windows, Linux port soon).
+ More tools to come (ex: PPTBF database generator, spanning the space of PPTBF parameters).
  
  * Windows binaries for procedural binary structures synthesis from files of PPTBF parameters
  are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip).
