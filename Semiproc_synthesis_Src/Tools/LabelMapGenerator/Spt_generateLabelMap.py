@@ -34,7 +34,13 @@ print('pandas: %s' % pd.__version__)
 # FUNCTIONS
 # --------------------------------
 
-def start():
+# --------------------------------
+# Generate label maps
+# --------------------------------
+def generateLabelMaps():
+    # LOG info
+    print( 'Execute generateLabelMaps function...' )
+
 
 # --------------------------------
 # MAIN
