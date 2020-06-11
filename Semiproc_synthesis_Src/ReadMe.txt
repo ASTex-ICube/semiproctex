@@ -8,7 +8,25 @@ Computer Graphics Forum (EGSR 2020 special issue)
 NOTE : It works on Windows systems for the moment. (Linux port soon)
 
 -----------------------------------------
-[1] - Compile the project
+[1] - Compile 3rd party dependencies
+-----------------------------------------
+
+- go to 3rdParty directory
+
+---------------
+---- hview ----
+
+- go to Externals directory
+
+- launch script build_hview.bat
+  => BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..\hview
+- go to hview-build directory
+- open and compile hview.sln Visual Studio solution
+=> NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes
+- the "hview" library is automatically installed in the "3rdParty\hview" directory
+
+-----------------------------------------
+[2] - Compile the project
 -----------------------------------------
 
 - launch script cmake_generateProjects.bat
