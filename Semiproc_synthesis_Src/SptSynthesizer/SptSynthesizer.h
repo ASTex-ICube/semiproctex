@@ -146,31 +146,31 @@ protected:
 	int mCorrectionNeighborSearchRadius;
 	int mCorrectionNeighborSearchNbSamples;
 	int mCorrectionNeighborSearchDepth;
-	// TODO: continue...
-	//[MATERIAL]
-	//correctionWeightAlbedo 1
-	//	correctionWeightHeight 1
-	//	correctionWeightNormal 1
-	//	correctionWeightRoughness 1
-	//[LABEL MAP]
-	//useLabelMap 1
-	//	labelmapType 0
-	//	useLabelSampler 0
-	//	labelSamplerAreaThreshold 2500
-	//	[GUIDANCE]
-	//correctionGuidanceWeight 0.85
-	//	correctionExemplarWeightDistance 0
-	//	correctionGuidanceWeightDistance 0
-	//	correctionLabelErrorAmount 0.25
-	//	[SEMI PROCEDURAL]
-	//PPTBFThreshold 0.109375
-	//	relaxContraints 0.09375 0.210938
-	//	guidanceWeight 0.763 0
-	//	distancePower 0.1
-	//	initializationError 0.196078
-	//	nbLabels 6
+	// - material
+	float mCorrectionWeightAlbedo;
+	float mCorrectionWeightHeight;
+	float mCorrectionWeightNormal;
+	float mCorrectionWeightRoughness;
+	// - label map
+	bool mUseLabelMap;
+	int mLabelmapType;
+	bool mUseLabelSampler;
+	float mLabelSamplerAreaThreshold;
+	// - guidance
+	float mCorrectionGuidanceWeight;
+	float mCorrectionExemplarWeightDistance;
+	float mCorrectionGuidanceWeightDistance;
+	float mCorrectionLabelErrorAmount;
+	// - semi-procedural
+	float mSemiProcTexPPTBFThreshold;
+	float mSemiProcTexRelaxContraints;
+	float mSemiProcTexGuidanceWeight;
+	float mSemiProcTexDistancePower;
+	float mSemiProcTexInitializationError;
+	int mSemiProcTexNbLabels;
 	//	[PPTBF]
-	//shift 10 10
+	int mPtbfShiftX;
+	int mPptbfShiftY;
 
 	/******************************** METHODS *********************************/
 
