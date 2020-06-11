@@ -24,6 +24,8 @@
 #include <algorithm>
 #include <functional>
 #include <numeric>
+#include <fstream>
+#include <sstream>
 
 /******************************************************************************
  ****************************** NAMESPACE SECTION *****************************
@@ -75,7 +77,31 @@ SptSynthesizer::SptSynthesizer()
 ,	mCorrectionNeighborSearchRadius( 0 )
 ,	mCorrectionNeighborSearchNbSamples( 0 )
 ,	mCorrectionNeighborSearchDepth( 0 )
-// TODO: continue...
+// - material
+,	mCorrectionWeightAlbedo( 1.f )
+,	mCorrectionWeightHeight( 1.f )
+,	mCorrectionWeightNormal( 1.f )
+,	mCorrectionWeightRoughness( 1.f )
+// - label map
+,	mUseLabelMap( false )
+,	mLabelmapType( 0 )
+,	mUseLabelSampler( false )
+,	mLabelSamplerAreaThreshold( 0.f )
+// - guidance
+,	mCorrectionGuidanceWeight( 1.f )
+,	mCorrectionExemplarWeightDistance( 1.f )
+,	mCorrectionGuidanceWeightDistance( 1.f )
+,	mCorrectionLabelErrorAmount( 1.f )
+// - semi-procedural
+,	mSemiProcTexPPTBFThreshold( 1.f )
+,	mSemiProcTexRelaxContraints( 1.f )
+,	mSemiProcTexGuidanceWeight( 1.f )
+,	mSemiProcTexDistancePower( 1.f )
+,	mSemiProcTexInitializationError( 1.f )
+,	mSemiProcTexNbLabels( 1 )
+//	[PPTBF]
+,	mPtbfShiftX( 0 )
+,	mPptbfShiftY( 0 )
 {
 }
 
@@ -107,6 +133,50 @@ void SptSynthesizer::finalize()
  ******************************************************************************/
 void SptSynthesizer::loadParameters( const char* pFilename )
 {
+	// Open file
+	std::ifstream semiProcTexConfigFile;
+	std::string semiProcTexConfigFilename = std::string( pFilename );
+	semiProcTexConfigFile.open( semiProcTexConfigFilename );
+	if ( ! semiProcTexConfigFile.is_open() )
+	{
+		// Log info
+		std::cout << "ERROR: file cannot be opened: " << std::string( semiProcTexConfigFilename ) << std::endl;
+		
+		// Handle error (TODO)
+		assert( false );
+		//return -1;
+	}
+
+	// Temp variables
+	std::string lineData;
+	std::string text;
+
+	// [EXEMPLAR]
+	std::getline( semiProcTexConfigFile, lineData );
+
+	// - name
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mExemplarName;
+	}
+
+	// - exemplarSize
+	std::getline( semiProcTexConfigFile, lineData );
+	{
+		std::stringstream ss( lineData );
+		ss >> text;
+		ss >> mExemplarWidth;
+		ss >> mExemplarHeight;
+	}
+
+	// TODO
+	// - continue reading parameter file
+	// ...
+
+	// Close file
+	semiProcTexConfigFile.close();
 }
 
 /******************************************************************************
@@ -114,6 +184,7 @@ void SptSynthesizer::loadParameters( const char* pFilename )
  ******************************************************************************/
 void SptSynthesizer::execute()
 {
+	// Delegate synthesis to hview interface
 	mHviewInterface.execute();
 }
 
