@@ -4,7 +4,7 @@
 
 This is the page of our EGSR 2020 CGF track paper:
 
-P. Guehl, R. Allègre, J.-M. Dischler, B. Benes, E. Galin.
+[P. Guehl](https://pascalguehl.jimdofree.com/), R. Allègre, J.-M. Dischler, B. Benes, E. Galin.
 Semi-Procedural Textures Using Point Process Texture Basis Functions.
 To appear in Computer Graphics Forum (EGSR 2020 special issue), 39(4),
 2020.
