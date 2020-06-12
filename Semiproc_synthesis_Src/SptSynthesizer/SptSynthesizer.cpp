@@ -148,9 +148,55 @@ void SptSynthesizer::finalize()
  ******************************************************************************/
 int SptSynthesizer::loadParameters( const char* pFilename )
 {
+	//-------------------------------------------------------------------------
+	
+	// Analyse name to extract data info
+
+	// - filename
+	const std::string filename = std::string( pFilename );
+	// - image directory
+	const size_t directoryIndex = filename.find_last_of( "/\\" );
+	const std::string imageDirectory = filename.substr( 0, directoryIndex );
+	// - file extension
+	const size_t extensionIndex = filename.find_last_of( "." );
+	const std::string imageExtension = filename.substr( extensionIndex + 1 );
+	// - image name
+	std::string imageName = filename.substr( directoryIndex + 1 );
+	const size_t nameIndex = imageName.find_last_of( "." );
+	const std::string imageSuffix = "_scrop";
+	imageName = imageName.substr( 0, nameIndex - imageSuffix.size() );
+	
+	//-------------------------------------------------------------------------
+
+	// Load synthesis parameter file
+	std::string synthesisParameterFilename = "";
+	{
+		// - filename
+		const std::string filename = std::string( pFilename );
+		// - image directory
+		const size_t directoryIndex = filename.find_last_of( "/\\" );
+		const std::string imageDirectory = filename.substr( 0, directoryIndex );
+		// - file extension
+		const size_t extensionIndex = filename.find_last_of( "." );
+		const std::string imageExtension = filename.substr( extensionIndex + 1 );
+		// - image name
+		std::string imageName = filename.substr( directoryIndex + 1 );
+		const size_t nameIndex = imageName.find_last_of( "." );
+		const std::string imageSuffix = "_scrop";
+		imageName = imageName.substr( 0, nameIndex - imageSuffix.size() );
+		// Load segmented file (structure map)
+		const std::string synthesisParameterFileSuffix = "_scrop_synthesis_params.txt";
+		synthesisParameterFilename = imageDirectory + std::string( "/" ) + imageName + synthesisParameterFileSuffix;
+	}
+
+	//-------------------------------------------------------------------------
+
 	// Open file
 	std::ifstream semiProcTexConfigFile;
-	std::string semiProcTexConfigFilename = std::string( pFilename );
+	
+	//std::string semiProcTexConfigFilename = std::string( pFilename );
+	std::string semiProcTexConfigFilename = synthesisParameterFilename;
+
 	semiProcTexConfigFile.open( semiProcTexConfigFilename );
 	if ( ! semiProcTexConfigFile.is_open() )
 	{
@@ -542,16 +588,16 @@ int SptSynthesizer::loadParameters( const char* pFilename )
 
 	// Load exemplar data
 	// - color
-	const std::string exemplarFilename = "";
+	const std::string exemplarFilename = imageDirectory + std::string( "/" ) + imageName + std::string( "_scrop" ) + std::string( ".png" );
 	loadExemplar( exemplarFilename.c_str() );
 	// - structure
-	const std::string exemplarStructureFilename = "";
+	const std::string exemplarStructureFilename = imageDirectory + std::string( "/" ) + imageName + std::string( "_seg" ) + std::string( "_scrop" ) + std::string( ".png" );
 	loadExemplarStructureMap( exemplarStructureFilename.c_str() );
 	// - distance
-	const std::string exemplarDistanceFilename = "";
+	const std::string exemplarDistanceFilename = imageDirectory + std::string( "/" ) + imageName + std::string( "_distance" ) + std::string( "_scrop" ) + std::string( ".png" );
 	loadExemplarDistanceMap( exemplarDistanceFilename.c_str() );
-	// - labels
-	const std::string exemplarLabelFilename = "";
+	// - labels (TODO: change this naming convention with _label_scrop?)
+	const std::string exemplarLabelFilename = imageDirectory + std::string( "/" ) + imageName + std::string( "_featcol_class" ) + std::string( ".png" );
 	loadExemplarLabelMap( exemplarLabelFilename.c_str() );
 
 	//--------------------------------------
@@ -560,16 +606,16 @@ int SptSynthesizer::loadParameters( const char* pFilename )
 
 	// Load guidance data
 	// - PPTBF
-	const std::string guidancePPTBFFilename = "";
+	const std::string guidancePPTBFFilename = imageDirectory + std::string( "/" ) + imageName + std::string( "_pptbf" ) + std::string( "_guidance" ) + std::string( ".png" );
 	loadGuidancePPTBF( guidancePPTBFFilename.c_str() );
 	// - mask
-	const std::string guidanceMaskFilename = "";
+	const std::string guidanceMaskFilename = imageDirectory + std::string( "/" ) + imageName + std::string( "_mask" ) + std::string( "_guidance" ) + std::string( ".png" );
 	loadGuidanceMask( guidanceMaskFilename.c_str() );
 	// - distance
-	const std::string guidanceDistanceFilename = "";
+	const std::string guidanceDistanceFilename = imageDirectory + std::string( "/" ) + imageName + std::string( "_distance" ) + std::string( "_guidance" ) + std::string( ".png" );
 	loadGuidanceDistanceMap( guidanceDistanceFilename.c_str() );
 	// - labels
-	const std::string guidanceLabelFilename = "";
+	const std::string guidanceLabelFilename = imageDirectory + std::string( "/" ) + imageName + std::string( "_label" ) + std::string( "_guidance" ) + std::string( ".png" );
 	loadGuidanceLabelMap( guidanceLabelFilename.c_str() );
 
 	// Exit code
