@@ -16,7 +16,7 @@ Available soon.
 ## Supplemental materials
 
  * **Supplemental #1** : Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods (detail: 11 different texture synthesis methods applied on all of our 138 textures database).
- * **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation, comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
+ * **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation (147 images), comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
  * **Supplemental #3** : Available soon. This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
  folder Structures_with_PPTBF contains manually segmented binary structures with estimated PPTBF
  parameters, that can be used for procedural structure synthesis.
