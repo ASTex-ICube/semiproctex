@@ -58,6 +58,17 @@
 //- synthesis parameters (smart init, neighborhoods, errors, etc.)
 //
 //The batch software load these files (5 images + 1 file) et generates the synthesis.
+//
+// To sumplify data management when loading multiple files,
+// data MUST respect a strict naming convention :
+//
+// the SemiProcTexProject.exe software works by providing a semi-procedural texture file as parameter, such as :
+//C:\PPTBF\Bin\SemiProcTexProject.exe C : \PPTBF\Data\Matching_structures\cells\TexturesCom_FloorsRounded0112_S_v2_scrop_synthesis_params.txt
+//	BEWARE : required data MUST be in same directory than parameter file :
+//    - xxx_scrop.png(input exemplar)
+//	  - xxx_seg_scrop.png(binary structure of input exemplar)
+//	  - xxx_scrop_semiproctex_pptbf_params.txt(PPTBF parameter file of input exemplar)
+//	  - xxx_scrop_synthesis_params.txt(semi - procedural texture parameter file of input exemplar)
 
 /******************************************************************************
  * Main entry program
