@@ -1,14 +1,10 @@
 /*
- * Publication: Semi-Procedural Textures Using Point Process Texture Basis Functions
- *              Computer Graphics Forum (EGSR 2020 special issue)
- * Authors: P. Guehl , R. AllEgre , J.-M. Dischler, B. Benes , and E. Galin
- *
- * Code author: Pascal Guehl
+ * Code author: Jean-Michel Dischler
  */
 
- /**
-  * @version 1.0
-  */
+/**
+ * @version 1.0
+ */
 
 #ifndef _HV_NOISE_H_
 #define _HV_NOISE_H_

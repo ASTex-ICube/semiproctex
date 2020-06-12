@@ -1,6 +1,10 @@
-// hvField.h: interface for the field class.
-//
-//////////////////////////////////////////////////////////////////////
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
 
 #if !defined(AFX_FIELD_H__B6AC0A32_75EF_428E_BC10_6219F619FA29__INCLUDED_)
 #define AFX_FIELD_H__B6AC0A32_75EF_428E_BC10_6219F619FA29__INCLUDED_

@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hvFrame3.h: interface for the frame3 class.
 //
 // hvFrame3: defines a frame for an euclidian 3D space

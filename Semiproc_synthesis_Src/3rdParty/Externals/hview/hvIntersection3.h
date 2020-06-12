@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // intersection3.h: interface for the intersection 3D class.
 //
 // intersection3<T>: is an Intersection computed in dimension 3

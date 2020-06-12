@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // List.h: interface for the List class.
 //
 //////////////////////////////////////////////////////////////////////

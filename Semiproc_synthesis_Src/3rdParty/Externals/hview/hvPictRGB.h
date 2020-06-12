@@ -1,10 +1,14 @@
 /*
- * ...
+ * Publication: Semi-Procedural Textures Using Point Process Texture Basis Functions
+ *              Computer Graphics Forum (EGSR 2020 special issue)
+ * Authors: P. Guehl , R. AllEgre , J.-M. Dischler, B. Benes , and E. Galin
+ *
+ * Code author: Jean-Michel Dischler
  */
 
- /**
-  * @version 1.0
-  */
+/** 
+ * @version 1.0
+ */
 
 #ifndef _HV_SYNTHESIZER_
 #define _HV_SYNTHESIZER_
@@ -1920,9 +1924,9 @@ public:
 	}
 
 	/******************************************************************************
-	 * smartinitV2()
+	 * smartInitialization()
 	 ******************************************************************************/
-	void smartinitV2( const int shiftx, const int shifty, const float MERR, const float indweight, int bb,
+	void smartInitialization( const int shiftx, const int shifty, const float MERR, const float indweight, int bb,
 		hvPictRGB<T> &guidance, const hvPict<T> &labels, const hvBitmap &mask,
 		const hvPictRGB<T> &example, const hvPictRGB<T> &distance, const hvPict<T> &exlabels,
 		hvArray2<hvVec2<int> > &index,
@@ -2126,8 +2130,8 @@ public:
 		{
 			hvFatal( "guidance size must be divisible by (factor*bsize)" );
 		}
-		// initialization
-		this->smartinitV2(posx/factor-bsize, posy/factor-bsize, ERR, indweight, bsize, 
+		// Block initialization
+		this->smartInitialization(posx/factor-bsize, posy/factor-bsize, ERR, indweight, bsize, 
 			guid[s], labels[s], gmask[s], pyr[s], pyrdist[s], pyrlabels[s],
 			index, synth[s], synthdist[s], synthlabels[s]);
 

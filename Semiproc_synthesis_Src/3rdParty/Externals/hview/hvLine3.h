@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // line3.h: interface for the line3 class.
 //
 // line3 defines a line in a 3D space: L= O+Dl, where O is origin and D direction

@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // vec3.h: interface for the generic vec3 class.
 //
 // defines a vector in 3D

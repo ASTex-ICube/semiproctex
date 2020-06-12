@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // LinearTransform3.h: interface for the LinearTransform3 class.
 //
 // Define a linear transform in 3D space (scaling, translation, rotation, projection, etc.) 
