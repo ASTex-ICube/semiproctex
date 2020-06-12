@@ -12,3 +12,52 @@ Semi-Procedural Texture file format
 A semi-procedural texture file store parameters of our semi-procedural texture synthesis model.
 
 // TODO: add description below...
+
+Example of semi-procedural texture synthesis parameter file:
+
+[EXEMPLAR]
+name parched_cracked_mud_rainspots_2260562
+exemplarSize 512 512
+[SYNTHESIS]
+outputSize 1024 1024
+[PYRAMID]
+nbMipmapLevels 10
+pyramidMaxLevel 3
+pyramidMinSize 32
+nbPyramidLevels 4
+[BLOCK INITIALIZATION]
+blockGrid 16 16
+blockSize 64 64
+useSmartInitialization 1
+smartInitNbPasses 131
+[CORRECTION PASS]
+correctionNbPasses 1
+correctionSubPassBlockSize 3
+correctionNeighborhoodSize 2
+correctionNeighborSearchRadius 6
+correctionNeighborSearchNbSamples 19
+correctionNeighborSearchDDepth 2
+[MATERIAL]
+correctionWeightAlbedo 1
+correctionWeightHeight 1
+correctionWeightNormal 1
+correctionWeightRoughness 1
+[LABEL MAP]
+useLabelMap 1
+labelmapType 0
+useLabelSampler 0
+labelSamplerAreaThreshold 2500
+[GUIDANCE]
+correctionGuidanceWeight 0.85
+correctionExemplarWeightDistance 0
+correctionGuidanceWeightDistance 0
+correctionLabelErrorAmount 0.25
+[SEMI PROCEDURAL]
+PPTBFThreshold 0.0859375
+relaxContraints 0.078125 0.117188
+guidanceWeight 0.937 0
+distancePower 0.042
+initializationError 0.906
+nbLabels 6
+[PPTBF]
+shift 10 10
