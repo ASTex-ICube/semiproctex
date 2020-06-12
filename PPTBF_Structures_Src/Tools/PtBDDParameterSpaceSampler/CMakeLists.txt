@@ -1,7 +1,7 @@
 # Invite message
-message( STATUS "------------------------------------------" )
-message( STATUS "- PROJECT GENERATION : PtGraphics Module -" )
-message( STATUS "------------------------------------------" )
+message( STATUS "-----------------------------------------------------" )
+message( STATUS "- PROJECT GENERATION : PtBDDParameterSpaceSampler Tool -" )
+message( STATUS "-----------------------------------------------------" )
 message( STATUS "" )
 
 ##################################################################################
@@ -12,12 +12,13 @@ message( STATUS "" )
 # Copy resources
 ##################################################################################
 
+
 ##################################################################################
 # Project
 ##################################################################################
 
 # Project name
-project( PtGraphics )
+project( PtBDDParameterSpaceSampler )
 
 # Set parallel build mode
 #set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP" )
@@ -25,9 +26,6 @@ project( PtGraphics )
 
 # Remove some compilation warnings
 add_definitions( -D_CRT_SECURE_NO_WARNINGS ) 
-
-# Shared library
-add_definitions( -DPTGRAPHICS_MAKEDLL )
 
 # GLFW
 add_definitions( -DGLFW_DLL )
@@ -44,23 +42,23 @@ find_package( OpenGL REQUIRED )
 ##################################################################################
 
 # PtDataModel
-include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../PtModel" )
+include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../../PtModel" )
+include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../../PtGraphics" )
 
 # glad
-set( glad_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/glad/lib/cmake/glad" )
+set( glad_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../3rdParty/glad/lib/cmake/glad" )
 find_package( glad CONFIG REQUIRED )
 
 # glm
-#include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/glm" )
-set( glm_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/glm/lib/cmake/glm" )
+set( glm_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../3rdParty/glm/lib/cmake/glm" )
 find_package( glm CONFIG REQUIRED )
 include_directories( ${GLM_INCLUDE_DIRS} )
 
 # stb
-include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/stb" )
+include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../../3rdParty/stb" )
 
 # glfw
-set( glfw3_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/glfw/lib/cmake/glfw3 )
+set( glfw3_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../3rdParty/glfw/lib/cmake/glfw3 )
 find_package( glfw3 CONFIG REQUIRED )
 
 ##################################################################################
@@ -72,12 +70,12 @@ file( GLOB incList "${CMAKE_CURRENT_SOURCE_DIR}/*.h" )
 file( GLOB inlList "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp" )
 file( GLOB srcList "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp" )
 # - shaders
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.vert" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.frag" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.geom" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.tese" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.tesc" )
-file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../Shaders/*.comp" )
+file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../../Shaders/*.vert" )
+file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../../Shaders/*.frag" )
+file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../../Shaders/*.geom" )
+file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../../Shaders/*.tese" )
+file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../../Shaders/*.tesc" )
+file( GLOB shaderList "${CMAKE_CURRENT_SOURCE_DIR}/../../Shaders/*.comp" )
 
 # Group files in IDE (Visual Studio)
 source_group( "Include" FILES ${incList} )
@@ -92,7 +90,7 @@ set( resList ${resList} ${incList} )
 set( resList ${resList} ${inlList} )
 set( resList ${resList} ${shaderList} )
 # target
-add_library( ${PROJECT_NAME} SHARED ${srcList} ${resList} )
+add_executable( ${PROJECT_NAME} ${srcList} ${resList} )
 
 #####################################################
 set( CUSTOM_DEBUG_POSTFIX "d" )
@@ -108,6 +106,7 @@ target_link_libraries( ${PROJECT_NAME} ${OPENGL_gl_LIBRARY} )
 
 # PtDataModel
 target_link_libraries( ${PROJECT_NAME} PtModel )
+target_link_libraries( ${PROJECT_NAME} PtGraphics )
 
 # GLFW
 target_link_libraries( ${PROJECT_NAME} glfw )
@@ -115,8 +114,18 @@ target_link_libraries( ${PROJECT_NAME} glfw )
 # glad
 target_link_libraries( ${PROJECT_NAME} glad::glad )
 
-# dlopen/dlclose
-target_link_libraries( ${PROJECT_NAME} ${CMAKE_DL_LIBS} )
+# ImGui
+set( ImGui_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../3rdParty/ImGui" )
+file( GLOB imguiIncList "${ImGui_DIR}/*.h" )
+file( GLOB imguiSrcList "${ImGui_DIR}/*.cpp" )
+file( GLOB addons1imguiIncList "${ImGui_DIR}/addons/imguifilesystem/*.h" )
+file( GLOB addons1imguiSrcList "${ImGui_DIR}/addons/imguifilesystem/*.cpp" )
+file( GLOB addons2imguiIncList "${ImGui_DIR}/addons/imguiyesaddons/imguitinyfiledialogs.h" )
+file( GLOB addons2imguiSrcList "${ImGui_DIR}/addons/imguiyesaddons/imguitinyfiledialogs.cpp" )
+#add_library( "ImGui" ${imguiSrcList} ${imguiIncList} ${addons1imguiSrcList} ${addons1imguiIncList} ${addons2imguiSrcList} ${addons2imguiIncList} )
+target_include_directories( "ImGui" PRIVATE "${ImGui_DIR}" )
+target_include_directories( ${PROJECT_NAME} PRIVATE "${ImGui_DIR}" )
+target_link_libraries( ${PROJECT_NAME} "ImGui" )
 
 # Project property
 set_property( TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11 )
@@ -126,16 +135,7 @@ set_property( TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11 )
 ##################################################################################
 
 # Libraries
-install( TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin )
-install( TARGETS ${PROJECT_NAME} ARCHIVE DESTINATION lib ) 
-install( FILES ${resList} DESTINATION include/PtGraphics )
-
-# Copy library
-#add_custom_command(TARGET ${PROJECT_NAME}
-#           POST_BUILD
-#           #COMMAND ${CMAKE_COMMAND} -E echo "Copy DLL"		   
-#		   COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:${PROJECT_NAME}> ${CMAKE_CURRENT_BINARY_DIR}/../PtViewer/$<CONFIG>
-#)
+install( TARGETS ${PROJECT_NAME} DESTINATION bin )
 
 # Copy library
 #add_custom_command(TARGET ${PROJECT_NAME}

@@ -47,6 +47,14 @@ using namespace PtGraphics;
  ************************* DEFINE AND CONSTANT SECTION ************************
  ******************************************************************************/
 
+//#define PROBE
+
+#define PRODUCT
+
+//#define WTRANSF
+
+//#define REFINEMENT
+
 /******************************************************************************
  ***************************** TYPE DEFINITION ********************************
  ******************************************************************************/
@@ -2139,11 +2147,6 @@ void PtGraphicsPPTBF::generateDatabase( const unsigned int pWidth, const unsigne
 
 #else
 
-//#define PROBE
-//#define PRODUCT
-#define REFINEMENT
-//#define WTRANSF
-
 	//int descriptor = 2;
 	int descriptor = 1;
 	//const int KEEPNBEST = 1;
@@ -4040,8 +4043,6 @@ void PtGraphicsPPTBF::sampleParameterSpace( const unsigned int pWidth, const uns
 	// USER Experiment
 	// - sampling the space of PPTBF structures
 	///////////////////////////////////////////
-
-#define REFINEMENT
 
 	const int descriptor = pDescriptor; // default: 1
 	const int KEEPNBEST = pKEEPNBEST; // default: 5
