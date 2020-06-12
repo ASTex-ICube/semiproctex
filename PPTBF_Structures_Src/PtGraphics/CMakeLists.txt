@@ -8,21 +8,9 @@ message( STATUS "" )
 # Copy 3rd party dependencies
 ##################################################################################
 
-# Graphics
-#file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GsGraphics/bin/GsGraphicsd.dll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug )
-#file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GsGraphics/bin/GsGraphics.dll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/MinSizeRel )
-#file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GsGraphics/bin/GsGraphics.dll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Release )
-#file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GsGraphics/bin/GsGraphics.dll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/RelWithDebInfo )
-
 ##################################################################################
 # Copy resources
 ##################################################################################
-
-# Shaders
-#file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GsGraphics/data/Shaders/*.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug )
-#file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GsGraphics/data/Shaders/*.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/MinSizeRel )
-#file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GsGraphics/data/Shaders/*.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Release )
-#file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GsGraphics/data/Shaders/*.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/RelWithDebInfo )
 
 ##################################################################################
 # Project
@@ -59,7 +47,6 @@ find_package( OpenGL REQUIRED )
 include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../PtModel" )
 
 # glad
-#include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/glad/include" )
 set( glad_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/glad/lib/cmake/glad" )
 find_package( glad CONFIG REQUIRED )
 
@@ -72,12 +59,6 @@ include_directories( ${GLM_INCLUDE_DIRS} )
 # stb
 include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/stb" )
 
-# # GLFW
-# set( glfw3_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GLFW/lib/cmake/glfw3" )
-# #find_package( glfw3 3.2 CONFIG REQUIRED PATH_SUFFIXES "/lib/cmake/glfw3" )
-# find_package( glfw3 3.2 CONFIG REQUIRED )
-# file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GLFW/lib/glfw3.dll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug )
-# file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/GLFW/lib/glfw3.dll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Release )
 # glfw
 set( glfw3_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/glfw/lib/cmake/glfw3 )
 find_package( glfw3 CONFIG REQUIRED )
@@ -130,24 +111,6 @@ target_link_libraries( ${PROJECT_NAME} PtModel )
 
 # GLFW
 target_link_libraries( ${PROJECT_NAME} glfw )
-
-# glad
-# set( GLAD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/glad" )
-# add_library( "glad" SHARED "${GLAD_DIR}/src/glad.c" )
-# target_include_directories("glad" PRIVATE "${GLAD_DIR}/include")
-# target_include_directories(${PROJECT_NAME} PRIVATE "${GLAD_DIR}/include")
-# target_compile_definitions( glad PUBLIC GLAD_GLAPI_EXPORT PRIVATE GLAD_GLAPI_EXPORT_BUILD )
-# target_link_libraries(${PROJECT_NAME} "glad" "${CMAKE_DL_LIBS}")
-#target_link_libraries( ${PROJECT_NAME} glad "${CMAKE_DL_LIBS}" )
-#target_link_libraries( ${PROJECT_NAME} debug "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/Externals/lib/MultiScaleLabelMapExtractiond.lib" optimized "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/MultiScaleLabelMapExtraction/Release/lib/MultiScaleLabelMapExtraction.lib" )
-
-# find_library( PT_GLAD_LIBRARY
-    # NAMES glad
-    # HINTS "${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/Externals/lib"
-# )
-# #message( STATUS ${PT_GLAD_LIBRARY} )
-# target_compile_definitions( ${PROJECT_NAME} PUBLIC GLAD_GLAPI_EXPORT )
-# target_link_libraries( ${PROJECT_NAME} ${PT_GLAD_LIBRARY} "${CMAKE_DL_LIBS}" )
 
 # glad
 target_link_libraries( ${PROJECT_NAME} glad::glad )
