@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hvMat2.h: interface for the mat2 class.
 //
 // Defines a 2x2 matrix

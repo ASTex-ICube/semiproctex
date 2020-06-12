@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hvVec4.h: interface for the vec4 class.
 //
 // Defines a vector in 4D homogenous coordinates

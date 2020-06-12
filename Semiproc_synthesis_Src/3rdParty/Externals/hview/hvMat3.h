@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hvMat3.h: interface for the mat3 class.
 //
 // Defines a 3x3 matrix

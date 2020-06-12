@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hvPair.h: interface for the pair class.
 //
 //////////////////////////////////////////////////////////////////////

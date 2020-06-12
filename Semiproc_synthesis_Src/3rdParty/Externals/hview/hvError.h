@@ -1,6 +1,10 @@
-// hvError.h: interface for the runtime Error class.
-//
-//////////////////////////////////////////////////////////////////////
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
 
 #if !defined(AFX_ERROR_H__09002DDD_2472_43B9_B7B6_FCB6FF1B6B0D__INCLUDED_)
 #define AFX_ERROR_H__09002DDD_2472_43B9_B7B6_FCB6FF1B6B0D__INCLUDED_

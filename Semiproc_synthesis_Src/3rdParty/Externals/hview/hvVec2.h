@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hvVec2.h: interface for the vec2 class.
 //
 // defines a vector in 2D

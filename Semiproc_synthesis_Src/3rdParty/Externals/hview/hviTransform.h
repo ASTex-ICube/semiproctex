@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hviTransform.h: interface (abstract object) for a Transformation.
 //
 // JMD 1/01/2007

@@ -1,3 +1,11 @@
+/*
+ * Code author: Frederic Larue
+ */
+
+/**
+ * @version 1.0
+ */
+
 #ifndef __MYTHREADPOOL_H__
 #define __MYTHREADPOOL_H__
 

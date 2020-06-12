@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hvVec.h: interface for the vector class.
 //
 //////////////////////////////////////////////////////////////////////

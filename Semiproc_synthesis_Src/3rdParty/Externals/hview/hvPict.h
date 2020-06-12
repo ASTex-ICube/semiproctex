@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hvPicture.h: interface for the picture class.
 //
 //////////////////////////////////////////////////////////////////////

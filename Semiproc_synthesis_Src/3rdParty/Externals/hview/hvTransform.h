@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // transform.h: interface for the transform class.
 //
 // Uses a 4x4 matrix in homogenous coordinates to define linear transforms (rotation, shift, etc.)

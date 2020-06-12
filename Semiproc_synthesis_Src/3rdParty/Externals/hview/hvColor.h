@@ -1,6 +1,10 @@
-// hvColor.h: interface for the color class.
-//
-//////////////////////////////////////////////////////////////////////
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
 
 #if !defined(AFX_COLOR_H__098453F0_1C38_49E9_A6F4_AABF90AA55E8__INCLUDED_)
 #define AFX_COLOR_H__098453F0_1C38_49E9_A6F4_AABF90AA55E8__INCLUDED_

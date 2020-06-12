@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // LinearTransform2.h: interface for the LinearTransform2 class.
 //
 // Define a linear transform in 2D space (scaling, translation, rotation, etc.) 

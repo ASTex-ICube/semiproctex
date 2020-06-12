@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // hvMat4.h: interface for the mat4 class.
 //
 // Defines a 4x4 matrix in homogenous coordinates

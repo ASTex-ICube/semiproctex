@@ -1,3 +1,11 @@
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
+
 // plan3.h: interface for the plan3 class.
 //
 // Defines a plane in 3D space, it is defined by equation: aX+bY+cZ+d=0

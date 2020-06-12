@@ -1,6 +1,10 @@
-// array2.h: interface for the array2 class.
-//
-//////////////////////////////////////////////////////////////////////
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
 
 #if !defined(AFX_ARRAY2_H__164A3508_C961_4D87_AD7A_9D43051600EA__INCLUDED_)
 #define AFX_ARRAY2_H__164A3508_C961_4D87_AD7A_9D43051600EA__INCLUDED_

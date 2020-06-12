@@ -1,6 +1,10 @@
-// hvBitmap.h: interface for the bitmap class.
-//
-//////////////////////////////////////////////////////////////////////
+/*
+ * Code author: Jean-Michel Dischler
+ */
+
+/**
+ * @version 1.0
+ */
 
 #if !defined(AFX_BITMAP_H__098453F0_1C38_49E9_A6F4_AABF90AA55E8__INCLUDED_)
 #define AFX_BITMAP_H__098453F0_1C38_49E9_A6F4_AABF90AA55E8__INCLUDED_
