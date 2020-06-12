@@ -102,7 +102,7 @@ void SptHviewInterface::finalize()
 void SptHviewInterface::execute()
 {
 	// Call hview texture synthesis api
-	mRes.pctswdistguidanceV2(
+	mRes.semiProceduralTextureSynthesis(
 		mName.c_str(),
 		mSTOPATLEVEL,
 		mPosx, mPosy,

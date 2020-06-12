@@ -105,6 +105,9 @@ int main( int pArgc, char** pArgv )
 
 	// Launch synthesis
 	semiProcTexSynthesizer->execute();
+
+	// Save/export results and data
+	semiProcTexSynthesizer->saveResults();
 	
 	// Finalization
 	// - clean/release resources
