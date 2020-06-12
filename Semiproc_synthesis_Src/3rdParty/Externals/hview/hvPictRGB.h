@@ -1894,13 +1894,13 @@ public:
 		{
 			s++; factor *= 2;  
 			pyr[s].shrink(&(pyr[s - 1]), 0);
-			sprintf(buff, "%s_pcts_%02d_ex.ppm", name, s);
+			sprintf(buff, "%s_spt_%02d_ex.ppm", name, s);
 			fd = fopen(buff, "wb");
 			if (fd == 0) { perror("cannot load file:"); }
 			pyr[s].savePPM(fd, 1);
 			fclose(fd);
 			pyrdist[s].shrink(&(pyrdist[s - 1]), 0);
-			sprintf(buff, "%s_pcts_%02d_mask.ppm", name, s);
+			sprintf(buff, "%s_spt_%02d_mask.ppm", name, s);
 			fd = fopen(buff, "wb");
 			if (fd == 0) { perror("cannot load file:"); }
 			pyrdist[s].savePPM(fd, 1);
@@ -1911,7 +1911,7 @@ public:
 				pyrlabel[s].update(ii, jj, pyrlabel[s-1].get(2 * ii, 2 * jj));
 			}
 			hvPictRGB<unsigned char> labelrgb(pyrlabel[s], 1);
-			sprintf(buff, "%s_pcts_%02d_label.ppm", name, s);
+			sprintf(buff, "%s_spt_%02d_label.ppm", name, s);
 			fd = fopen(buff, "wb");
 			if (fd == 0) { perror("cannot load file:"); }
 			labelrgb.savePPM(fd, 1);
@@ -2013,9 +2013,9 @@ public:
 	}
 
 	/******************************************************************************
-	 * parallel controllable texture synthesis with distance map and guidance
+	 * Semi-Procedural Texture Synthesis using Point Process Texture Basis Functions.
 	 ******************************************************************************/
-	void pctswdistguidanceV2(
+	void semiProceduralTextureSynthesis(
 		const char *name,
 		int STOPATLEVEL,
 		int posx, int posy,
@@ -2086,14 +2086,14 @@ public:
 			gmask[i].shrink(gmask[i - 1]);
 
 #ifndef USE_NO_TEMPORARY_IMAGE_EXPORT
-			sprintf(buff, "%s_pcts_%02d_guidance.ppm", name, i);
+			sprintf(buff, "%s_spt_%02d_guidance.ppm", name, i);
 			fd = fopen(buff, "wb");
 			if (fd == 0) { perror("cannot load file:"); }
 			guid[i].savePPM(fd, 1);
 			fclose(fd);
 
 			hvPictRGB<unsigned char> labelsrgb(labels[i], 1);
-			sprintf(buff, "%s_pcts_%02d_guidancelabels.ppm", name, i);
+			sprintf(buff, "%s_spt_%02d_guidancelabels.ppm", name, i);
 			fd = fopen(buff, "wb");
 			if (fd == 0) { perror("cannot load file:"); }
 			labelsrgb.savePPM(fd, 1);
@@ -2151,41 +2151,41 @@ public:
 		}
 
 #ifndef USE_NO_TEMPORARY_IMAGE_EXPORT
-		sprintf(buff, "%s_pcts_%02d_blocinit.ppm", name, s);
+		sprintf(buff, "%s_spt_%02d_blocinit.ppm", name, s);
 		fd = fopen(buff, "wb");
 		if (fd == 0) { perror("cannot load file:"); }
 		pinit.savePPM(fd, 1);
 		fclose(fd);
 
-		sprintf(buff, "%s_pcts_%02d_distinit.ppm", name, s);
+		sprintf(buff, "%s_spt_%02d_distinit.ppm", name, s);
 		fd = fopen(buff, "wb");
 		if (fd == 0) { perror("cannot load file:"); }
 		finit.savePPM(fd, 1);
 		fclose(fd);
 
-		sprintf(buff, "%s_pcts_%02d_labinit.ppm", name, s);
+		sprintf(buff, "%s_spt_%02d_labinit.ppm", name, s);
 		fd = fopen(buff, "wb");
 		if (fd == 0) { perror("cannot load file:"); }
 		labinit.savePPM(fd, 1);
 		fclose(fd);
 #endif
 
-		//printf("%s_pcts_%02d_init\n", name, s);
+		//printf("%s_spt_%02d_init\n", name, s);
 #ifndef USE_NO_TEMPORARY_IMAGE_EXPORT
-		sprintf(buff, "%s_pcts_%02d_init.ppm", name, s);
+		sprintf(buff, "%s_spt_%02d_init.ppm", name, s);
 		fd = fopen(buff, "wb");
 		if (fd == 0) { perror("cannot load file:"); }
 		synth[s].savePPM(fd, 1);
 		fclose(fd);
 
-		sprintf(buff, "%s_pcts_%02d_dist.ppm", name, s);
+		sprintf(buff, "%s_spt_%02d_dist.ppm", name, s);
 		fd = fopen(buff, "wb");
 		if (fd == 0) { perror("cannot load file:"); }
 		synthdist[s].savePPM(fd, 1);
 		fclose(fd);
 
 		hvPictRGB<unsigned char> synthlabrgb(synthlabels[s], 1);
-		sprintf(buff, "%s_pcts_%02d_distlabel.ppm", name, s);
+		sprintf(buff, "%s_spt_%02d_distlabel.ppm", name, s);
 		fd = fopen(buff, "wb");
 		if (fd == 0) { perror("cannot load file:"); }
 		synthlabrgb.savePPM(fd, 1);
@@ -2204,8 +2204,8 @@ public:
 
 		const int niter = 2;
 		//synthdist[s].imagefromindex(pyrdist[s], index);
-		printf("starting pcts at level:%d, shift:%d,%d\n", s, posx / factor - bsize/factor, posy / factor - bsize/factor);
-		this->pctsiterwdistguidanceV2(
+		printf("starting spt at level:%d, shift:%d,%d\n", s, posx / factor - bsize/factor, posy / factor - bsize/factor);
+		this->semiProceduralTextureSynthesisIteration(
 					name,
 					STOPATLEVEL,
 					posx / factor - bsize/factor, posy / factor - bsize/factor,
@@ -2226,9 +2226,9 @@ public:
 	}
 	
 /******************************************************************************
- * pctsiterwdistguidanceV2
+ * semiProceduralTextureSynthesisIteration
  ******************************************************************************/
-void pctsiterwdistguidanceV2( const char *name, int STOPATLEVEL, int shiftx, int shifty, hvPictRGB<T> pyr[], hvPictRGB<T> pyrdist[], hvPict<unsigned char> pyrlabels[],
+void semiProceduralTextureSynthesisIteration( const char *name, int STOPATLEVEL, int shiftx, int shifty, hvPictRGB<T> pyr[], hvPictRGB<T> pyrdist[], hvPict<unsigned char> pyrlabels[],
 	hvPictRGB<T> synth[], hvPictRGB<T> synthdist[], hvPict<unsigned char> synthlabels[],
 	hvPictRGB<T> guid[], hvPict<unsigned char> labels[], hvBitmap gmask[], hvArray2<hvVec2<int> > &index,
 	double weight, double powr,
@@ -2262,7 +2262,7 @@ void pctsiterwdistguidanceV2( const char *name, int STOPATLEVEL, int shiftx, int
 	}
 
 #ifndef USE_NO_TEMPORARY_IMAGE_EXPORT
-	sprintf(buff, "%s_pcts_%02d_offsets.ppm", name, s);
+	sprintf(buff, "%s_spt_%02d_offsets.ppm", name, s);
 	fd = fopen(buff, "wb");
 	if (fd == 0) { perror("cannot load file:"); }
 	offsets.savePPM(fd, 1);
@@ -2338,25 +2338,25 @@ void pctsiterwdistguidanceV2( const char *name, int STOPATLEVEL, int shiftx, int
 					prefine.update(i, j, hvColRGB<unsigned char>(255));
 			}
 #ifndef USE_NO_TEMPORARY_IMAGE_EXPORT
-			sprintf(buff, "%s_pcts_%02d_corr%doffsets.ppm", name, s, k);
+			sprintf(buff, "%s_spt_%02d_corr%doffsets.ppm", name, s, k);
 			fd = fopen(buff, "wb");
 			if (fd == 0) { perror("cannot load file:"); }
 			offsets.savePPM(fd, 1);
 			fclose(fd);
 
-			sprintf(buff, "%s_pcts_%02d_corr%d.ppm", name, s, k);
+			sprintf(buff, "%s_spt_%02d_corr%d.ppm", name, s, k);
 			fd = fopen(buff, "wb");
 			if (fd == 0) { perror("cannot load file:"); }
 			synth[s].savePPM(fd, 1);
 			fclose(fd);
 
-			sprintf(buff, "%s_pcts_%02d_dist%d.ppm", name, s, k);
+			sprintf(buff, "%s_spt_%02d_dist%d.ppm", name, s, k);
 			fd = fopen(buff, "wb");
 			if (fd == 0) { perror("cannot load file:"); }
 			synthdist[s].savePPM(fd, 1);
 			fclose(fd);
 
-			sprintf(buff, "%s_pcts_%02d_ref%d.ppm", name, s, k);
+			sprintf(buff, "%s_spt_%02d_ref%d.ppm", name, s, k);
 			fd = fopen(buff, "wb");
 			if (fd == 0) { perror("cannot load file:"); }
 			prefine.savePPM(fd, 1);
@@ -2372,13 +2372,13 @@ void pctsiterwdistguidanceV2( const char *name, int STOPATLEVEL, int shiftx, int
 		shiftx *= 2; shifty *= 2;
 		
 #ifndef USE_NO_TEMPORARY_IMAGE_EXPORT
-		sprintf(buff, "%s_pcts_%02d_init.ppm", name, s);
+		sprintf(buff, "%s_spt_%02d_init.ppm", name, s);
 		fd = fopen(buff, "wb");
 		if (fd == 0) { perror("cannot load file:"); }
 		synth[s].savePPM(fd, 1);
 		fclose(fd);
 		
-		sprintf(buff, "%s_pcts_%02d_dist.ppm", name, s);
+		sprintf(buff, "%s_spt_%02d_dist.ppm", name, s);
 		fd = fopen(buff, "wb");
 		if (fd == 0) { perror("cannot load file:"); }
 		synthdist[s].savePPM(fd, 1);
@@ -2390,7 +2390,7 @@ void pctsiterwdistguidanceV2( const char *name, int STOPATLEVEL, int shiftx, int
 			offsets.update(i, j, hvColRGB<unsigned char>((unsigned char)((double)index.get(i, j).X() / (double)pyr[s].sizeX() * 128.0 + 128.0),
 				(unsigned char)((double)index.get(i, j).Y() / (double)pyr[s].sizeY() * 128.0 + 128.0), 0));
 		}
-		sprintf(buff, "%s_pcts_%02d_offsets.ppm", name, s);
+		sprintf(buff, "%s_spt_%02d_offsets.ppm", name, s);
 		fd = fopen(buff, "wb");
 		if (fd == 0) { perror("cannot load file:"); }
 		offsets.savePPM(fd, 1);

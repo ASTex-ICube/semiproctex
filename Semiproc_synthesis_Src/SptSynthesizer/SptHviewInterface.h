@@ -123,7 +123,7 @@ public:
 	 */
 	void loadExemplarLabelMap( const char* pFilename );
 
-		/**
+	/**
 	 * Load guidance PPTBF
 	 *
 	 * @param pFilename
@@ -164,22 +164,32 @@ protected:
 	/**
 	 * hview synthesis parameters
 	 */
+	// - input exemplar name
 	std::string mName;
+	// - synthesis algorithm
 	int mSTOPATLEVEL;
+	// - global translation (used for large maps generated in smaller tiles)
 	int mPosx;
 	int mPosy;
+	// - exemplar
 	hview::hvPictRGB< unsigned char > mExample;
+	// - exemplar distance map
 	hview::hvPictRGB<unsigned char> mExdist;
 	double mWeight; // weight color vs distance
-	double mPowr;
-	float mIndweight;
-	int mNeighbor;
-	int mAtlevel;
-	int mBsize;
-	float mERR;
+	// - synthesis algorithm
+	double mPowr; // ...
+	float mIndweight; // amount of error added when error on labels while searching for better pixel candidates
+	int mNeighbor; // neighborhood half-patch size while searching for better pixel candidates
+	int mAtlevel; // starting level of the pyramid LOD hierarchy
+	int mBsize; // block size at starting level
+	float mERR; // error at smart initialization
+	// - guidance mask (thresholded PPTBF + potential constraints relaxation on structure borders)
 	hview::hvBitmap mMask;
+	// - guidance distance and labels
 	hview::hvPictRGB<unsigned char> mGuidance;
+	// - main synthesized UV map (indirection map: texture coordinates)
 	hview::hvArray2< hview::hvVec2< int > > mIndex;
+	// - synthesized output texture
 	hview::hvPictRGB< unsigned char > mRes;
 
 	/******************************** METHODS *********************************/
