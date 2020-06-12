@@ -1,0 +1,46 @@
+[EXEMPLAR]
+name 20181215_153153
+exemplarSize 450 450
+[SYNTHESIS]
+outputSize 900 900
+[PYRAMID]
+nbMipmapLevels 9
+pyramidMaxLevel 8
+pyramidMinSize 14
+nbPyramidLevels 6
+[BLOCK INITIALIZATION]
+blockGrid 4 4
+blockSize 256 256
+useSmartInitialization 1
+smartInitNbPasses 136
+[CORRECTION PASS]
+correctionNbPasses 1
+correctionSubPassBlockSize 3
+correctionNeighborhoodSize 2
+correctionNeighborSearchRadius 3
+correctionNeighborSearchNbSamples 16
+correctionNeighborSearchDDepth 2
+[MATERIAL]
+correctionWeightAlbedo 1
+correctionWeightHeight 1
+correctionWeightNormal 1
+correctionWeightRoughness 1
+[LABEL MAP]
+useLabelMap 1
+labelmapType 0
+useLabelSampler 0
+labelSamplerAreaThreshold 2500
+[GUIDANCE]
+correctionGuidanceWeight 0.85
+correctionExemplarWeightDistance 0
+correctionGuidanceWeightDistance 0
+correctionLabelErrorAmount 0.765
+[SEMI PROCEDURAL]
+PPTBFThreshold 0.0546875
+relaxContraints 0.0546875 0.0546875
+guidanceWeight 1 0
+distancePower 0.1
+initializationError 0.196078
+nbLabels 6
+[PPTBF]
+shift 10 10
