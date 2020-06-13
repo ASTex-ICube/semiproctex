@@ -95,7 +95,8 @@ namespace hview
  * Constructor
  ******************************************************************************/
 SptBasicHviewInterface::SptBasicHviewInterface()
-:	GUIDE( 0.f )
+:	mExemplarName()
+,	GUIDE( 0.f )
 ,	STRENGTH( 0.f )
 ,	INITLEVEL( 0 )
 ,	BLOCSIZE( 0 )
@@ -193,6 +194,7 @@ void SptBasicHviewInterface::execute()
 	const int MAXPPTBF = 10;
 
 	k = 0;
+	name[ 0 ] = const_cast< char* >( mExemplarName.c_str() );
 
 	sprintf( pname, "%s_scrop.png", name[ k ] );
 
@@ -1069,4 +1071,60 @@ void SptBasicHviewInterface::execute()
 	fclose(fd);
 
 	printf("\nfinish.(press return)\n");
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicHviewInterface::setExemplarName( const char* pText )
+{
+	mExemplarName = std::string( pText );
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicHviewInterface::setGUIDE( const float pValue )
+{
+	GUIDE = pValue;
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicHviewInterface::setSTRENGTH( const float pValue )
+{
+	STRENGTH = pValue;
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicHviewInterface::setINITLEVEL( const int pValue )
+{
+	INITLEVEL = pValue;
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicHviewInterface::setBLOCSIZE( const int pValue )
+{
+	BLOCSIZE = pValue;
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicHviewInterface::setINITERR( const float pValue )
+{
+	INITERR = pValue;
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicHviewInterface::setINDEXWEIGHT( const float pValue )
+{
+	INDEXWEIGHT = pValue;
 }

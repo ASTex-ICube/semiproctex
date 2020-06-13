@@ -115,6 +115,17 @@ public:
 	 */
 	virtual void saveResults();
 
+	/**
+	 * Semi-procedural texture synthesis parameters
+	 */
+	void setExemplarName( const char* pText );
+	void setGUIDE( const float pValue );
+	void setSTRENGTH( const float pValue );
+	void setINITLEVEL( const int pValue );
+	void setBLOCSIZE( const int pValue );
+	void setINITERR( const float pValue );
+	void setINDEXWEIGHT( const float pValue );
+
 	/**************************************************************************
 	 **************************** PROTECTED SECTION ***************************
 	 **************************************************************************/

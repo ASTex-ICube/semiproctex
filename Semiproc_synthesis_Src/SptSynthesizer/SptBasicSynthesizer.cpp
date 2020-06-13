@@ -108,3 +108,66 @@ void SptBasicSynthesizer::execute()
 void SptBasicSynthesizer::saveResults()
 {
 }
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicSynthesizer::setExemplarName( const char* pText )
+{
+	// Hview interface
+	mHviewInterface->setExemplarName( pText );
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicSynthesizer::setGUIDE( const float pValue )
+{
+	// Hview interface
+	mHviewInterface->setGUIDE( pValue );
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicSynthesizer::setSTRENGTH( const float pValue )
+{
+	// Hview interface
+	mHviewInterface->setSTRENGTH( pValue );
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicSynthesizer::setINITLEVEL( const int pValue )
+{
+	// Hview interface
+	mHviewInterface->setINITLEVEL( pValue );
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicSynthesizer::setBLOCSIZE( const int pValue )
+{
+	// Hview interface
+	mHviewInterface->setBLOCSIZE( pValue );
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicSynthesizer::setINITERR( const float pValue )
+{
+	// Hview interface
+	mHviewInterface->setINITERR( pValue );
+}
+
+/******************************************************************************
+ * Semi-procedural texture synthesis parameters
+ ******************************************************************************/
+void SptBasicSynthesizer::setINDEXWEIGHT( const float pValue )
+{
+	// Hview interface
+	mHviewInterface->setINDEXWEIGHT( pValue );
+}
