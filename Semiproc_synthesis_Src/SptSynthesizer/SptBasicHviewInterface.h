@@ -32,6 +32,12 @@
  ******************************** CLASS USED **********************************
  ******************************************************************************/
 
+namespace hview
+{
+	template< class T >
+	class hvPict;
+}
+
  /******************************************************************************
  ****************************** CLASS DEFINITION ******************************
  ******************************************************************************/
@@ -109,7 +115,9 @@ protected:
 	/**
 	 * Semi-procedural texture synthesis parameters
 	 */
+
 	std::string mExemplarName;
+	
 	float GUIDE;
 	float STRENGTH;
 	int INITLEVEL;
@@ -117,7 +125,11 @@ protected:
 	float INITERR;
 	float INDEXWEIGHT;
 
+	int padding;
+
 	/******************************** METHODS *********************************/
+
+	void pptbfshader( float pixelzoom, hview::hvPict< float >& pptbfpi, hview::hvPict< float >& ppval );
 
 	/**************************************************************************
 	 ***************************** PRIVATE SECTION ****************************
