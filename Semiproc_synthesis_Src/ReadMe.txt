@@ -39,9 +39,36 @@ NOTE : It works on Windows systems for the moment. (Linux port soon)
 Tool(s)
 -----------------------------------------------------------------------------------------------------------------
 
--------------------------------------------------
----- [1] Semi-procedural texture synthesizer ----
--------------------------------------------------
+There are two software/CPU versions of our semi-procedural texture synthesizers:
+- BASIC (AVAILABLE)
+- FULL (WORK IN PROGRESS...)
+
+Currently, switch is done in the "main.cpp" file with the help of the macro:
+#define _USE_BASIC_SYNTHESIZER_
+
+-------------------------------------------------------
+---- [1] BASIC Semi-procedural texture synthesizer ----
+-------------------------------------------------------
+
+---- Launching the synthesizer in command line ---- 
+
+MANUAL PROCESSING
+
+The SemiProcTexProject.exe software works by providing a semi-procedural texture file as parameter, such as :
+SemiProcTexProject.exe textureName GUIDE STRENGTH INITLEVEL BLOCSIZE INITERR INDEXWEIGHT
+BEWARE: required data MUST be in same directory than parameter file :
+- xxx_scrop.png (input exemplar)
+- xxx_seg_scrop.png (binary structure of input exemplar)
+- xxx_seg_scrop_pptbf_params.txt (PPTBF parameter file of input exemplar)
+
+Example:
+SemiProcTexProject.exe cracked_asphalt_160796 0.9 0.5 2 64 100 0.0
+
+------------------------------------------------------
+---- [2] FULL Semi-procedural texture synthesizer ----
+------------------------------------------------------
+
+WORK IN PROGRESS...
 
 ---- Launching the synthesizer in command line ---- 
 
