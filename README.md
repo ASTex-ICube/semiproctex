@@ -23,7 +23,7 @@ Available soon.
 
 ## Code
 
-### PPTBF: stochastic procedural structures
+### PPTBF: procedural stochastic structures
 
  * The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
  procedural binary structures from files of PPTBF parameters, and a real-time viewer to be able
@@ -40,7 +40,9 @@ Available soon.
  
  * The [Semiproc_synthesis_Src](Semiproc_synthesis_Src) directory contains code required to synthesize
  textures from files of our semi-procedural texture synthesis parameters and PPTBF parameters (works under Windows, Linux port soon). Work in progress...
-  
+ 
+#### Tools
+ 
  * The [Semiproc_synthesis_Bin](http://igg.unistra.fr/people/semiproctex/Semiproctex_synthesis_Bin.zip) archive
  contains Windows binaries for our semi-procedural texture synthesis method. The program is able
  to reproduce our texture synthesis results (i.e. color images) of Supplemental material #1.
