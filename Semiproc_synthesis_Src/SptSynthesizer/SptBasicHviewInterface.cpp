@@ -51,6 +51,71 @@ using namespace Spt;
  ************************* DEFINE AND CONSTANT SECTION ************************
  ******************************************************************************/
 
+/**
+ * OUTPUT SIZE
+ */
+const int SS = 400;
+
+const int NPPTBFS = 1;
+const int MAXPPTBF = 10;
+
+int pptbfid = 0;
+int di = 1; // for transition, next pptbf is pptbfid + di 
+
+std::string pptbfParameters[NPPTBFS];
+char *pptbf_param[NPPTBFS] = {
+	"0 0.91 75 0 3 0 0 1 1 8 0.9 2 0 1 0.7 1 2 0 0 5 5 1 0.2 2 0 0.1 0.2 0"
+};
+
+const bool TRANSITION = false;
+const float threshtransition = 1.0; // 1.0 = keep same tresh
+
+const int SPOSX = 0;
+const int SPOSY = 0;
+
+//float ZZ = 1.0;
+/*const */int PSIZE = 512;
+/*const*/ int STARTX = 10 * PSIZE;
+/*const*/ int STARTY = 10 * PSIZE;
+int shiftx = STARTX + SPOSX * PSIZE + 0 * PSIZE, shifty = STARTY + SPOSY * PSIZE;
+
+float featpercent[10];
+
+const int npptbf = 1;
+
+char* name[npptbf] = {
+		"cracked_asphalt_160796"
+};
+
+int do_tiling[NPPTBFS];
+
+float jittering[MAXPPTBF];
+int resolution[MAXPPTBF];
+float rotation[MAXPPTBF];
+float rescalex[MAXPPTBF];
+float turbAmp[MAXPPTBF][3];
+
+int windowShape[MAXPPTBF];
+float windowArity[MAXPPTBF];
+float windowLarp[MAXPPTBF];
+float windowNorm[MAXPPTBF];
+float windowSmoothness[MAXPPTBF];
+float windowBlend[MAXPPTBF];
+float windowSigwcell[MAXPPTBF];
+
+int featureBombing[MAXPPTBF];
+float featureNorm[MAXPPTBF];
+float featureWinfeatcorrel[MAXPPTBF];
+float featureAniso[MAXPPTBF];
+int featureMinNbKernels[MAXPPTBF], featureMaxNbKernels[MAXPPTBF];
+float featureSigcos[MAXPPTBF];
+float featureSigcosvar[MAXPPTBF];
+int featureFrequency[MAXPPTBF];
+float featurePhaseShift[MAXPPTBF];
+float featureThickness[MAXPPTBF];
+float featureCurvature[MAXPPTBF];
+float featureOrientation[MAXPPTBF];
+
 /******************************************************************************
  ***************************** TYPE DEFINITION ********************************
  ******************************************************************************/
@@ -92,6 +157,141 @@ namespace hview
 }
 
 /******************************************************************************
+ * PPTBF synthesis
+ *
+ * @param pixelzoom
+ * @param pptbfpi
+ * @param ppval
+ ******************************************************************************/
+void SptBasicHviewInterface::pptbfshader( float pixelzoom, hview::hvPict< float >& pptbfpi, hview::hvPict< float >& ppval )
+{
+#ifndef USE_MULTITHREADED_PPTBF
+	int i, j;
+#else
+	float pointvalue, cellpointx, cellpointy;
+	float pointvalue2, cellpointx2, cellpointy2;
+#endif
+
+	for (int ipara = 0; ipara < NPPTBFS; ipara++)
+	{
+#if 0
+		sscanf(pptbf_param[ipara], "%d %g %d %g %g %g %g %g %d %g %g %g %g %g %g %d %g %g %g %d %d %g %g %d %g %g %g %g\n",
+			&do_tiling[ipara], &jittering[ipara],
+			&resolution[ipara], &rotation[ipara], &rescalex[ipara],
+			&turbAmp[ipara][0], &turbAmp[ipara][1], &turbAmp[ipara][2],
+			&windowShape[ipara], &windowArity[ipara], &windowLarp[ipara], &windowNorm[ipara], &windowSmoothness[ipara], &windowBlend[ipara], &windowSigwcell[ipara],
+			&featureBombing[ipara], &featureNorm[ipara], &featureWinfeatcorrel[ipara], &featureAniso[ipara], &featureMinNbKernels[ipara], &featureMaxNbKernels[ipara], &featureSigcos[ipara], &featureSigcosvar[ipara], &featureFrequency[ipara], &featurePhaseShift[ipara], &featureThickness[ipara], &featureCurvature[ipara], &featureOrientation[ipara]);
+#else
+		sscanf(pptbfParameters[ipara].c_str(), "%d %g %d %g %g %g %g %g %d %g %g %g %g %g %g %d %g %g %g %d %d %g %g %d %g %g %g %g\n",
+			&do_tiling[ipara], &jittering[ipara],
+			&resolution[ipara], &rotation[ipara], &rescalex[ipara],
+			&turbAmp[ipara][0], &turbAmp[ipara][1], &turbAmp[ipara][2],
+			&windowShape[ipara], &windowArity[ipara], &windowLarp[ipara], &windowNorm[ipara], &windowSmoothness[ipara], &windowBlend[ipara], &windowSigwcell[ipara],
+			&featureBombing[ipara], &featureNorm[ipara], &featureWinfeatcorrel[ipara], &featureAniso[ipara], &featureMinNbKernels[ipara], &featureMaxNbKernels[ipara], &featureSigcos[ipara], &featureSigcosvar[ipara], &featureFrequency[ipara], &featurePhaseShift[ipara], &featureThickness[ipara], &featureCurvature[ipara], &featureOrientation[ipara]);
+#endif
+	}
+
+	//for (int ipara = 0; ipara<NPPTBFS; ipara++) turbAmp[ipara][0] *= 2.0;
+
+	//hvPictRGB<unsigned char> testImage(pptbfpi.sizeX(), example[pptbfid].sizeY(), hvColRGB<unsigned char>(0));
+
+#ifdef USE_MULTITHREADED_PPTBF
+	const int nbPixels = pptbfpi.sizeX() * pptbfpi.sizeY();
+	PtThreadPool.AppendTask([&](const MyThreadPool::ThreadData* thread)
+		{
+			int beg = thread->id * pptbfpi.sizeY() / thread->nThreads;
+			int end = (thread->id + 1) * pptbfpi.sizeY() / thread->nThreads;
+			end = std::min(end, pptbfpi.sizeY());
+
+			for (int j = beg; j < end; ++j)
+				for (int i = 0; i < pptbfpi.sizeX(); ++i)
+					//for ( int k = thread->id; k < nbPixels; k += thread->nThreads )
+#else
+	//#pragma omp parallel
+	for (i = 0; i < pptbfpi.sizeX(); i++) for (j = 0; j < pptbfpi.sizeY(); j++)
+#endif
+	{
+#ifdef USE_MULTITHREADED_PPTBF
+		//int i = k % pptbfpi.sizeX();
+		//int j = k / pptbfpi.sizeX();
+		//std::cout << "thread->id: " << thread->id << " (" << i << "," << j << ")" << std::endl;
+#endif
+		float pointvalue, cellpointx, cellpointy;
+		float pointvalue2, cellpointx2, cellpointy2;
+
+		float x = ((float)i*pixelzoom + (float)(shiftx - padding)) / (float)SS + 10.0;
+		float y = ((float)j*pixelzoom + (float)(shifty - padding)) / (float)SS + 10.0;
+		float zoom = 0.0;
+		float pptbfvv = 0.f;
+
+		float transition = (float)i / (float)pptbfpi.sizeX(); // +0.3*(1.0 - 2.5*hvNoise::turbulence((double)x*2.0, (double)y*2.0, 1.24, 0.0001));
+		if (transition < 0.25) transition = 0.0;
+		else if (transition < 0.75) transition = (transition - 0.25) / 0.5;
+		else transition = 1.0;
+
+		if (!TRANSITION)
+		{
+			int qq = pptbfid;
+			zoom = (float)SS / (float)resolution[qq];
+			//windowBlend[qq] = transition;
+			//if (j > 200) windowLarp[qq] = 0.0;
+			//else windowLarp[qq] = 0.5-0.5*(float)j / 200.0;
+			//windowSmoothness[qq] = 1.5;
+			//if (i >= pptbfpi.sizeX() - 100) windowSmoothness[qq] -= 0.5*(float)(i - pptbfpi.sizeX() + 100) / 100.0;
+			pptbfvv = hview::hvNoise::cpptbf_gen_v2c(x, y,
+				zoom, rotation[qq] * M_PI, rescalex[qq], turbAmp[qq],
+				do_tiling[qq], jittering[qq],
+				windowShape[qq], windowArity[qq], windowLarp[qq], windowSmoothness[qq], windowNorm[qq], windowBlend[qq], windowSigwcell[qq],
+				featureBombing[qq], featureNorm[qq], featureWinfeatcorrel[qq], featureAniso[qq],
+				featureMinNbKernels[qq], featureMaxNbKernels[qq], featureSigcos[qq], featureSigcosvar[qq],
+				featureFrequency[qq], featurePhaseShift[qq] * M_PI*0.5, featureThickness[qq], featureCurvature[qq], featureOrientation[qq] * M_PI,
+				pointvalue, cellpointx, cellpointy
+			);
+			//pptbfvv = 1.0 - pptbfvv;
+			//pptbfvv = 1.0 - pptbfvv;
+			//int subid = pptbfid+1;
+			//float scx = 1.0, scy = 1.0;
+			//if (pptbfvv >= 0.0) //thresh[pptbfid])
+			//{
+			//	zoom = (float)SS / (float)resolution[subid];
+			//	float pptbfvvsub = hvNoise::cpptbf_gen_v2(x*scx, y*scy, //cellpointx*100.0 + x*scx, cellpointy*100.0 + y*scy,
+			//		zoom, rotation[subid], rescalex[subid], turbAmp[subid],
+			//		do_tiling[subid], jittering[subid],
+			//		windowShape[subid], windowArity[subid], windowLarp[subid], windowSmoothness[subid], windowNorm[subid], windowBlend[subid], windowSigwcell[subid],
+			//		featureBombing[subid], featureNorm[subid], featureWinfeatcorrel[subid], featureAniso[subid],
+			//		featureMinNbKernels[subid], featureMaxNbKernels[subid], featureSigcos[subid], featureSigcosvar[subid],
+			//		featureFrequency[subid], featurePhaseShift[subid], featureThickness[subid], featureCurvature[subid], featureOrientation[subid]
+			//	);
+			//	//pptbfvv = pptbfvvsub;
+			//	pptbfvv = pow(pptbfvv < pptbfvvsub ? pptbfvv : pptbfvvsub, 0.5);
+			//	//pptbfvv = pow(pptbfvvsub, 1.0);
+			//}
+		}
+		else
+		{
+			// Not provided in this version...
+			assert( false );
+		}
+
+		if (!std::isnan(pptbfvv) && !std::isinf(pptbfvv))
+		{
+			// Write data
+			// - pptbf
+			pptbfpi.update(i, j, pptbfvv);
+			// - random value
+			ppval.update(i, j, pointvalue);
+		}
+		else
+		{
+			printf("\nPPTBF: nan or inf...");
+		}
+	}
+#ifdef USE_MULTITHREADED_PPTBF
+		}); // multi-thread
+#endif
+}
+
+/******************************************************************************
  * Constructor
  ******************************************************************************/
 SptBasicHviewInterface::SptBasicHviewInterface()
@@ -102,6 +302,7 @@ SptBasicHviewInterface::SptBasicHviewInterface()
 ,	BLOCSIZE( 0 )
 ,	INITERR( 0.f )
 ,	INDEXWEIGHT( 0.f )
+,	padding( 0 )
 {
 }
 
@@ -149,29 +350,6 @@ void SptBasicHviewInterface::execute()
 	float vvmin[10] = { 0.0 };
 	float vvmax[10] = { 1.0 };
 
-	float featpercent[10];
-
-	const int NPPTBFS = 1;
-
-	//float ZZ = 1.0;
-	/*const */int PSIZE = 512;
-	/*const*/ int STARTX = 10 * PSIZE;
-	/*const*/ int STARTY = 10 * PSIZE;
-	int shiftx = STARTX + SPOSX * PSIZE + 0 * PSIZE, shifty = STARTY + SPOSY * PSIZE;
-
-	const int npptbf = 1;
-
-	std::string pptbfParameters[NPPTBFS];
-	char *pptbf_param[NPPTBFS] = {
-		"0 0.91 75 0 3 0 0 1 1 8 0.9 2 0 1 0.7 1 2 0 0 5 5 1 0.2 2 0 0.1 0.2 0"
-	};
-
-	/*const*/ int padding = (1 << INITLEVEL)*BLOCSIZE;
-
-	char* name[ npptbf ] = {
-		"cracked_asphalt_160796"
-	};
-
 	char pname[ 500 ];
 
 	hview::hvPictRGB<unsigned char> example[NPPTBFS];
@@ -180,18 +358,15 @@ void SptBasicHviewInterface::execute()
 
 	int i, j, k, ii, jj;
 
+	// Update automatic padding
+	padding = (1 << INITLEVEL) * BLOCSIZE;
+
 	hview::hvColRGB<unsigned char> pptbf_col1[] = { hview::hvColRGB<unsigned char>(208,68,43),hview::hvColRGB<unsigned char>(208,68,43),hview::hvColRGB<unsigned char>(93,80,68), hview::hvColRGB<unsigned char>(200,150,130),hview::hvColRGB<unsigned char>(200,150,130), hview::hvColRGB<unsigned char>(113,174, 210),hview::hvColRGB<unsigned char>(113,174, 210),
 		//hvColRGB<unsigned char>(177,157,133),hvColRGB<unsigned char>(177,157,133),  hvColRGB<unsigned char>(208,208,208),hvColRGB<unsigned char>(208,208,208),hvColRGB<unsigned char>(200,126,113), hvColRGB<unsigned char>(200,126,113), 
 		hview::hvColRGB<unsigned char>(239,224,95),hview::hvColRGB<unsigned char>(239,224,195), hview::hvColRGB<unsigned char>(87,80,71),hview::hvColRGB<unsigned char>(87,80,71),hview::hvColRGB<unsigned char>(179, 129, 103), hview::hvColRGB<unsigned char>(179, 129, 103), hview::hvColRGB<unsigned char>(68,89,113), hview::hvColRGB<unsigned char>(68,89,113) };
 	hview::hvColRGB<unsigned char> pptbf_col2[] = { hview::hvColRGB<unsigned char>(108,38,23),hview::hvColRGB<unsigned char>(108,38,23), hview::hvColRGB<unsigned char>(208, 206, 202),hview::hvColRGB<unsigned char>(208, 206, 202), hview::hvColRGB<unsigned char>(90,80,70),hview::hvColRGB<unsigned char>(90,80,70), hview::hvColRGB<unsigned char>(154,104,80),hview::hvColRGB<unsigned char>(154,104,80),
 		//hvColRGB<unsigned char>(85,74,64),hvColRGB<unsigned char>(85,74,64), hvColRGB<unsigned char>(63,63,65),hvColRGB<unsigned char>(63,63,65),hvColRGB<unsigned char>(70,55,55), hvColRGB<unsigned char>(70,50,55), 
 		hview::hvColRGB<unsigned char>(123,84,44),hview::hvColRGB<unsigned char>(123,84,44), hview::hvColRGB<unsigned char>(27,26,23),hview::hvColRGB<unsigned char>(27,26,23), hview::hvColRGB<unsigned char>(156,165,163), hview::hvColRGB<unsigned char>(156,165,163), hview::hvColRGB<unsigned char>(201,230,249), hview::hvColRGB<unsigned char>(201,230,249) };
-
-	int pptbfid = 0;
-	int di = 1; // for transition, next pptbf is pptbfid + di 
-
-	const int SS = 400;
-	const int MAXPPTBF = 10;
 
 	k = 0;
 	name[ 0 ] = const_cast< char* >( mExemplarName.c_str() );
@@ -796,7 +971,7 @@ void SptBasicHviewInterface::execute()
 	startTime = std::chrono::high_resolution_clock::now();
 	//-------------------------------------
 	// Launch PPTBF software generation computer
-	//pptbfshader(1.f, pptbfpi, ppval);
+	pptbfshader( 1.f, pptbfpi, ppval );
 	//-------------------------------------
 	// - timer
 	endTime = std::chrono::high_resolution_clock::now();
