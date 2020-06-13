@@ -16,6 +16,7 @@
 
 // Project
 #include "SptSynthesizer.h"
+#include "SptBasicSynthesizer.h"
 
 // STL
 #include <string>
@@ -36,6 +37,8 @@
 /******************************************************************************
  ************************* DEFINE AND CONSTANT SECTION ************************
  ******************************************************************************/
+
+#define _USE_BASIC_SYNTHESIZER_
 
 /******************************************************************************
  ***************************** TYPE DEFINITION ********************************
@@ -86,6 +89,7 @@ int main( int pArgc, char** pArgv )
 	std::cout << "---------------------------------" << std::endl;
 
 	// Check command line arguments
+#ifndef _USE_BASIC_SYNTHESIZER_
 	const int nbArguments = 1;
 	if ( pArgc < ( 1 + nbArguments ) )
 	{
@@ -96,6 +100,19 @@ int main( int pArgc, char** pArgv )
 		// Exit
 		return -1;
 	}
+#else
+	// Example: SptBasicSynthesizer.exe cracked_asphalt_160796 0.9 0.5 2 64 100 0.0
+	const int nbArguments = 7;
+	if ( pArgc < ( 1 + nbArguments ) )
+	{
+		// Log info
+		std::cout << "Error: waiting for " << nbArguments << "parameter(s)" << std::endl;
+		std::cout << "       ex: program textureName GUIDE STRENGTH INITLEVEL BLOCSIZE INITERR INDEXWEIGHT" << std::endl;
+
+		// Exit
+		return -1;
+	}
+#endif
 
 	// Retrieve program directory
 	int indexParameter = 0;
@@ -106,19 +123,27 @@ int main( int pArgc, char** pArgv )
 	const char* semiProcTexConfigFilename = pArgv[ indexParameter++ ];
 
 	// Initialization
+#ifndef _USE_BASIC_SYNTHESIZER_
 	Spt::SptSynthesizer* semiProcTexSynthesizer = new Spt::SptSynthesizer();
+#else
+	Spt::SptBasicSynthesizer* semiProcTexSynthesizer = new Spt::SptBasicSynthesizer();
+#endif
 	// - initialize resources
 	semiProcTexSynthesizer->initialize();
 
+#ifndef _USE_BASIC_SYNTHESIZER_
 	// Load synthesis parameters
 	int errorStatus = semiProcTexSynthesizer->loadParameters( semiProcTexConfigFilename );
 	assert( errorStatus != -1 );
+#endif
 
 	// Launch synthesis
 	semiProcTexSynthesizer->execute();
 
+#ifndef _USE_BASIC_SYNTHESIZER_
 	// Save/export results and data
 	semiProcTexSynthesizer->saveResults();
+#endif
 	
 	// Finalization
 	// - clean/release resources
