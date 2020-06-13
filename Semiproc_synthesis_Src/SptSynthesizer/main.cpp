@@ -38,6 +38,15 @@
  ************************* DEFINE AND CONSTANT SECTION ************************
  ******************************************************************************/
 
+/**
+ * Basic software synthesizer
+ *
+ * SptBasicSynthesizer is a basic synthesizer that only requires 3 files:
+ * - an input exemplar name xxx_scrop.png
+ * - an input segmented exemplar name xxx_seg_scrop.png
+ * - a pptbf parameters file xxx_seg_scrop_pptbf_params.txt
+ * where xxx is texture name.
+ */
 #define _USE_BASIC_SYNTHESIZER_
 
 /******************************************************************************
@@ -94,7 +103,7 @@ int main( int pArgc, char** pArgv )
 	if ( pArgc < ( 1 + nbArguments ) )
 	{
 		// Log info
-		std::cout << "Error: waiting for " << nbArguments << "parameter(s)" << std::endl;
+		std::cout << "Error: waiting for " << nbArguments << " parameter(s)" << std::endl;
 		std::cout << "       ex: program semiProcTex_params.txt"<< std::endl;
 
 		// Exit
@@ -106,7 +115,7 @@ int main( int pArgc, char** pArgv )
 	if ( pArgc < ( 1 + nbArguments ) )
 	{
 		// Log info
-		std::cout << "Error: waiting for " << nbArguments << "parameter(s)" << std::endl;
+		std::cout << "Error: waiting for " << nbArguments << " parameter(s)" << std::endl;
 		std::cout << "       ex: program textureName GUIDE STRENGTH INITLEVEL BLOCSIZE INITERR INDEXWEIGHT" << std::endl;
 
 		// Exit
@@ -120,7 +129,18 @@ int main( int pArgc, char** pArgv )
 	workingDirectory = pArgv[ indexParameter++ ];
 
 	// User customizable parameters : retrieve command line parameters
+#ifndef _USE_BASIC_SYNTHESIZER_
 	const char* semiProcTexConfigFilename = pArgv[ indexParameter++ ];
+#else
+	const char* textureName = pArgv[ indexParameter++ ];
+	std::string mExemplarName = std::string( textureName );
+	float GUIDE = std::stof( pArgv[ indexParameter++ ] ); // default: 0.99
+	float STRENGTH = std::stof( pArgv[ indexParameter++ ] ); // default: 0.5
+	int INITLEVEL = std::stoi( pArgv[ indexParameter++ ] ); // default: 0
+	int BLOCSIZE = std::stoi( pArgv[ indexParameter++ ] ); // default: 0
+	float INITERR = std::stof( pArgv[ indexParameter++ ] ); // default: 0.5
+	float INDEXWEIGHT = std::stof( pArgv[ indexParameter++ ] ); // default: 0.5
+#endif
 
 	// Initialization
 #ifndef _USE_BASIC_SYNTHESIZER_
@@ -135,6 +155,15 @@ int main( int pArgc, char** pArgv )
 	// Load synthesis parameters
 	int errorStatus = semiProcTexSynthesizer->loadParameters( semiProcTexConfigFilename );
 	assert( errorStatus != -1 );
+#else
+	// Set synthesis parameters
+	semiProcTexSynthesizer->setExemplarName( mExemplarName.c_str() );
+	semiProcTexSynthesizer->setGUIDE( GUIDE );
+	semiProcTexSynthesizer->setSTRENGTH( STRENGTH );
+	semiProcTexSynthesizer->setINITLEVEL( INITLEVEL );
+	semiProcTexSynthesizer->setBLOCSIZE( BLOCSIZE );
+	semiProcTexSynthesizer->setINITERR( INITERR );
+	semiProcTexSynthesizer->setINDEXWEIGHT( INDEXWEIGHT );
 #endif
 
 	// Launch synthesis
