@@ -46,6 +46,9 @@ There are two software/CPU versions of our semi-procedural texture synthesizers:
 Currently, switch is done in the "main.cpp" file with the help of the macro:
 #define _USE_BASIC_SYNTHESIZER_
 
+To use the BASIC software synthesizer launch the script "tool_launchBasicSynthesizer.bat" in the "Semiproc_synthesis_Src" directory.
+To choose your input exemplar and synthesis parameters, edit the user customizable parameters in the script file.
+
 -------------------------------------------------------
 ---- [1] BASIC Semi-procedural texture synthesizer ----
 -------------------------------------------------------
