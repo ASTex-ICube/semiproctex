@@ -52,9 +52,9 @@ Available soon.
  made available soon (for reasons of intellectual property, the GPU code cannot be
  distributed).
  
- * Check [this file](semiProcTex_file_format.txt) to get a description of the semi-procedural texture file format. Work in progress...
- 
  * Here is a beta version of our semi-procedural texture software synthesizer [Semiproctex_synthesis_CPU_Bin](link soon available...) (not GPU-accelerated). More info to come about available features and parameters description...
+ 
+ Check [this file](semiProcTex_file_format.txt) to get a description of the semi-procedural texture file format. Work in progress...
  
  ## Data
  
