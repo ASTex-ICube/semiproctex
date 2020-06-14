@@ -28,6 +28,7 @@ Available soon.
  The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
  procedural binary structures from files of PPTBF parameters, and a real-time viewer to be able
  to design and edit PPTBF parameters interactively (works under Windows, Linux port soon).
+ More tools to come (ex: PPTBF database generator, spanning the space of PPTBF parameters).
  
 #### Tools
  
@@ -36,8 +37,6 @@ Available soon.
  * a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
 
  Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
-
- More tools to come (ex: PPTBF database generator, spanning the space of PPTBF parameters).
 
 ### Semi-Procedural Texture Synthesis
  
@@ -53,7 +52,7 @@ Available soon.
  made available soon (for reasons of intellectual property, the GPU code cannot be
  distributed).
  
- * Here is a beta version of our semi-procedural texture software synthesizer [Semiproctex_synthesis_CPU_Bin](link soon available...) (not GPU-accelerated). More info to come (about available features and parameters description)...
+ * Here is a beta version of our semi-procedural texture software synthesizer [Semiproctex_synthesis_CPU_Bin](link soon available...) (not GPU-accelerated). More info to come about available features and parameters description...
  
  ## Data
  
