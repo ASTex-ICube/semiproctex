@@ -33,8 +33,10 @@ Available soon.
 #### Tools
  
  Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide two tools for experimenting with the PPTBF model:
- * real-time PPTBF viewer/designer [GPU-accelerated]
- * PPTBF synthesizer from parameter file [GPU-accelerated] (for procedural PPTNF and binary structures synthesis)
+ * a real-time PPTBF viewer/designer [GPU-accelerated]
+ * a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
+
+ Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
 
 ### Semi-Procedural Texture Synthesis
  
@@ -54,8 +56,6 @@ Available soon.
  
  ## Data
  
- * Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
-
  * The PPTBF parameters estimated from our database of manually segmented structures are available
  following [this link](http://igg.unistra.fr/people/semiproctex/PPTBF_Parameters_v2.zip). Note
  that this is an updated version that improves the parameter values provided with the Supplemental
