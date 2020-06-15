@@ -28,11 +28,13 @@ Available soon.
 Operating systems
 - [x] Windows 10
 - [ ] Linux (Ubuntu soon, but not yet available...)
+
 Tested graphics cards:
 - [x] NVidia GeForce 1060 GTX (6Go)
 - [x] NVidia RTX 2070 (8 Go)
+
 Technologies:
-- OpenGL (4.6, at least >= 4.5), glad, glfw, glm, imgui, CMake, C++
+- OpenGL (4.6, at least >= 4.5, compute shaders), glad, glfw, glm, ImGui, CMake, C++, [Python to come]
 
 ### PPTBF: procedural stochastic structures
 
