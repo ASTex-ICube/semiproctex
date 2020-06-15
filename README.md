@@ -36,7 +36,7 @@ Tested graphics cards:
 Technologies:
 - OpenGL (4.6, at least >= 4.5, compute shaders), glad, glfw, glm, ImGui, CMake, C++, [Python to come]
 
-### PPTBF: procedural stochastic structures
+### [1] PPTBF: procedural stochastic structures
 
  The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
  procedural binary structures from files of PPTBF parameters, and a real-time viewer to be able
@@ -52,7 +52,9 @@ Technologies:
 
  Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
 
-### Semi-Procedural Texture Synthesis
+ ![semiproctex](Images/tools_editing_1024.png)
+ 
+### [2] Semi-Procedural Texture Synthesis
  
  The [Semiproc_synthesis_Src](Semiproc_synthesis_Src) directory contains code required to synthesize
  textures from files of our semi-procedural texture synthesis parameters and PPTBF parameters (works under Windows, Linux port soon). Work in progress...
@@ -69,6 +71,8 @@ Technologies:
  * Here is a beta version of our semi-procedural texture software synthesizer [Semiproctex_synthesis_CPU_Bin](http://igg.unistra.fr/people/semiproctex/SemiProcTex_synthesizerCPU_v100_beta.zip) (not GPU-accelerated). More info to come about available features and parameters description...
  
  Check [this file](semiProcTex_file_format.txt) to get a description of the semi-procedural texture file format. Work in progress...
+ 
+ ![semiproctex](Images/semiproctex_tools_1024.png)
  
  ## Data
  
