@@ -23,6 +23,17 @@ Available soon.
 
 ## Code
 
+### Target Machines
+
+Operating systems
+- [x] Windows 10
+- [ ] Linux (Ubuntu soon, but not yet available...)
+Tested graphics cards:
+- [x] NVidia GeForce 1060 GTX (6Go)
+- [x] NVidia RTX 2070 (8 Go)
+Technologies:
+- OpenGL (4.6, at least >= 4.5), glad, glfw, glm, imgui, CMake, C++
+
 ### PPTBF: procedural stochastic structures
 
  The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
