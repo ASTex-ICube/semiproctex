@@ -23,6 +23,19 @@ Available soon.
 
 ## Code
 
+### Target Machines
+
+Operating systems:
+- [x] Windows 10
+- [ ] Linux (Ubuntu soon, but not yet available...)
+
+Tested graphics cards:
+- [x] NVidia GeForce 1060 GTX (6Go)
+- [x] NVidia RTX 2070 (8 Go)
+
+Technologies:
+- OpenGL (4.6, at least >= 4.5, compute shaders), glad, glfw, glm, ImGui, CMake, C++, [Python to come]
+
 ### PPTBF: procedural stochastic structures
 
  The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
@@ -32,9 +45,10 @@ Available soon.
  
 #### Tools
  
- Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide two tools for experimenting with the PPTBF model:
- * a real-time PPTBF viewer/designer [GPU-accelerated]
- * a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
+ Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide tools for experimenting with the PPTBF model:
+ - [x] a real-time PPTBF viewer/designer [GPU-accelerated]
+ - [x] a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
+ - [ ] a PPTBF database generator [GPU-accelerated] (spanning space of parameters) [not yet...]
 
  Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
 
