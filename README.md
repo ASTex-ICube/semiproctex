@@ -52,6 +52,8 @@ Technologies:
 
  Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
 
+ ![semiproctex](Images/tools_editing_1024.png)
+ 
 ### Semi-Procedural Texture Synthesis
  
  The [Semiproc_synthesis_Src](Semiproc_synthesis_Src) directory contains code required to synthesize
