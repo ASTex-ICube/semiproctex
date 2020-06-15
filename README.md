@@ -72,6 +72,8 @@ Technologies:
  
  Check [this file](semiProcTex_file_format.txt) to get a description of the semi-procedural texture file format. Work in progress...
  
+ ![semiproctex](Images/semiproctex_tools_1024.png)
+ 
  ## Data
  
  * The PPTBF parameters estimated from our database of manually segmented structures are available
