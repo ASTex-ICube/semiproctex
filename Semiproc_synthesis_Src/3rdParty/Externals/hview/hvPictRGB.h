@@ -2018,15 +2018,23 @@ public:
 
 	/******************************************************************************
 	 * Semi-Procedural Texture Synthesis using Point Process Texture Basis Functions.
+	 *
+	 * @param name ...
 	 ******************************************************************************/
 	void semiProceduralTextureSynthesis(
+		// - input texture name
 		const char *name,
 		int STOPATLEVEL,
+		// - position in 2D world space (translation useful when synthesizing tiles of large textures)
 		int posx, int posy,
+		// - input exemplar color and distance map
 		const hvPictRGB<T> &example, const hvPictRGB<T> &exdist,
+		// semi-procedural synthesis parameters
 		double weight, // weight color vs distance
 		double powr, float indweight, int neighbor, int atlevel, int bsize, float ERR,
+		// - guidance mask, distance and labels
 		const hvBitmap &mask, const hvPictRGB<T> &guidance,
+		// - synthesized 2D uv coordinates
 		hvArray2<hvVec2<int> > &index )
 	{
 		// - timer
