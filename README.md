@@ -25,7 +25,7 @@ Available soon.
 
 ### Target Machines
 
-Operating systems
+Operating systems:
 - [x] Windows 10
 - [ ] Linux (Ubuntu soon, but not yet available...)
 
