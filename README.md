@@ -32,7 +32,7 @@ Available soon.
  
 #### Tools
  
- Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide two tools for experimenting with the PPTBF model:
+ Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide tools for experimenting with the PPTBF model:
  - [x] a real-time PPTBF viewer/designer [GPU-accelerated]
  - [x] a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
  - [ ] a PPTBF database generator [GPU-accelerated] (spanning space of parameters) [not yet...]
