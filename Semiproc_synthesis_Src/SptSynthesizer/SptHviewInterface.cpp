@@ -101,16 +101,33 @@ void SptHviewInterface::finalize()
  ******************************************************************************/
 void SptHviewInterface::execute()
 {
+	// User customizable parameter(s)
+	const int nbCorrectionPasses = 2;
+	const bool useSmartInitialization = false;
+
+	// Parameter conversion:
+	//
+	// GUIDE 0.9       <=> guidanceWeight
+	// STRENGTH 0.5
+	// INITLEVEL 2     <=> pyramidMaxLevel
+	// BLOCSIZE 64     <=> mSmartInitNbPasses (pb: can be any value!)
+	// INITERR 100     <=> initializationError (per-pixel threshold error in a block to keep it or not, % in [0;1])
+	// INDEXWEIGHT 0   <=> correctionLabelErrorAmount (3x²)
+	
 	// Call hview texture synthesis api
-	mRes.semiProceduralTextureSynthesis(
+	mRes.execute_semiProceduralTextureSynthesis(
 		mName.c_str(),
-		mSTOPATLEVEL,
-		mPosx, mPosy,
-		mExample, mExdist,
-		mWeight, // weight color vs distance
-		mPowr, mIndweight, mNeighbor,mAtlevel, mBsize, mERR,
+		mSTOPATLEVEL,  // should be 0 (for debug purpose only: can stop synthesis a given coarse level)
+		mPosx, mPosy,  // translation used to be able to tie tiles for large textrues
+		mExample, mExdist, // exemplar
+		mWeight, // weight color vs distance when searching for neighborhood candidates (i.e. new pixels)
+		mPowr, mIndweight, mNeighbor,
+		mAtlevel, mBsize, mERR,
 		mMask, mGuidance,
-		mIndex
+		mIndex,
+		// user customizable parameter(s)
+		nbCorrectionPasses,
+		useSmartInitialization
 	);
 }
 

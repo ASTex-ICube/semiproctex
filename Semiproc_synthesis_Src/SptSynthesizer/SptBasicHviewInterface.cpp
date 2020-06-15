@@ -1197,8 +1197,12 @@ void SptBasicHviewInterface::execute()
 	// - timer
 	startTime = std::chrono::high_resolution_clock::now();
 
+	// User customizable parameter(s)
+	const int nbCorrectionPasses = 2;
+	const bool useSmartInitialization = false;
+
 	// Launch color/material synthesis
-	res.semiProceduralTextureSynthesis(const_cast<char*>(name[pptbfid]),
+	res.execute_semiProceduralTextureSynthesis( const_cast<char*>(name[pptbfid]),
 		STOPATLEVEL,
 		shiftx, shifty,
 		example[pptbfid], featdog,
@@ -1211,7 +1215,11 @@ void SptBasicHviewInterface::execute()
 		INITERR, // maximum acceptable error for smart initialization
 		maskextrapol, // guidance mask (binary pptbf)
 		pictdogextrapol, // guidance (pptbf)
-		indexx); // main uv map (i.e. indirection map)
+		indexx, // main uv map (i.e. indirection map)
+		// user customizable parameter(s)
+		nbCorrectionPasses,
+		useSmartInitialization
+		); 
 
 	// - timer
 	endTime = std::chrono::high_resolution_clock::now();

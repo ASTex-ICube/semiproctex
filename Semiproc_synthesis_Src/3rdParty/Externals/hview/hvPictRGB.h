@@ -76,7 +76,9 @@ template <class T> class hvPictRGBA;
 template <class T> class hvPictRGB : public hvField2< hvColRGB<T> >  
 ////////////////////////////////////////////////////////////
 {
+
 public:
+
 	hvPictRGB<T>() : hvField2< hvColRGB<T> >(),hvArray2< hvColRGB<T> >() { }
 	hvPictRGB<T>(int sx, int sy, const hvColRGB<T> &nil) : hvField2< hvColRGB<T> >(sx, sy, nil),hvArray2< hvColRGB<T> >(sx, sy, nil) { }
 	void reset(int sx, int sy,const hvColRGB<T> &nil)
@@ -1337,67 +1339,6 @@ public:
 		return errmin;
 	}
 
-	
-	// Use a random walk like strategy to find best match
-	void refineBestNeighborMatch(const hvPictRGB<unsigned char> &ex, int x, int y, int neighbor, int ix[], int iy[], int nn, int &rx, int &ry, int SX = 0, int SY = 0, int DX = 0, int DY = 0)
-	{
-		const int NSAMPLES = 5;
-		const int DEPTH = 3;
-		if (SX == 0) { SX = ex.sizeX(); }
-		if (SY == 0) { SY = ex.sizeY(); }
-		int RADIUS = 4*neighbor;
-		if (RADIUS < 1) RADIUS = 1;
-		int i, j, k;
-		double minerr, searcherr, besterr;
-		int spx, spy, bestx, besty;
-		for (i = 0; i < nn; i++)
-		{
-			int deltax = ix[i] / SX, deltay = iy[i] / SY;
-			for (j = 0; j < NSAMPLES; j++) // first level is random
-			{
-				int px = ix[i] - deltax*SX - RADIUS + (int)(2.0*(double)rand() / (double)RAND_MAX*(double)RADIUS);
-				if (px < neighbor) px = neighbor;
-				if (px >= SX - neighbor) px = SX - neighbor - 1;
-				int py = iy[i] - deltay*SY - RADIUS + (int)(2.0*(double)rand() / (double)RAND_MAX*(double)RADIUS);
-				if (py < neighbor) py = neighbor;
-				if (py >= SY - neighbor) py = SY - neighbor - 1;
-				px += SX*deltax; py += SY*deltay;
-				if (px < neighbor) px = neighbor; if (py < neighbor) py = neighbor;
-				if (px >= this->sizeX() - neighbor) px = this->sizeX() - neighbor - 1;
-				if (py >= this->sizeY() - neighbor) py = this->sizeY() - neighbor - 1;
-				double err = this->meanSquareDifference(ex, 255.0, x, y, px, py, neighbor);
-				if (j == 0) { searcherr = err; spx = px; spy = py; }
-				else if (err < searcherr) { searcherr = err; spx = px; spy = py; }
-			}
-			minerr = searcherr; bestx = spx; besty = spy;
-			//printf("i=%d, %d,%d (neigh=%d, S %d,%d, delta %d,%d\n", i, bestx, besty,neighbor,SX,SY,deltax,deltay);
-			RADIUS /= 2; if (RADIUS < 1) RADIUS = 1;
-			for (k = 0; k < DEPTH && RADIUS>1; k++)
-			{
-				int deltax = bestx / SX, deltay = besty / SY;
-				for (j = 0; j < NSAMPLES; j++) // next levels are closer and closer to previous best
-				{
-					int px = bestx - deltax*SX - RADIUS + (int)(2.0*(double)rand() / (double)RAND_MAX*(double)RADIUS);
-					if (px < neighbor) px = neighbor;
-					if (px >= SX - neighbor) px = SX - neighbor - 1;
-					int py = besty - deltay*SY - RADIUS + (int)(2.0*(double)rand() / (double)RAND_MAX*(double)RADIUS);
-					if (py < neighbor) py = neighbor;
-					if (py >= SY - neighbor) py = SY - neighbor - 1;
-					px += SX*deltax; py += SY*deltay;
-					if (px < neighbor) px = neighbor; if (py < neighbor) py = neighbor;
-					if (px >= this->sizeX() - neighbor) px = this->sizeX() - neighbor - 1;
-					if (py >= this->sizeY() - neighbor) py = this->sizeY() - neighbor - 1;
-					double err = this->meanSquareDifference(ex, 255.0, x, y, px, py, neighbor);
-					if (err < searcherr) { searcherr = err; spx = px; spy = py; }
-				}
-				if (searcherr < minerr) { minerr = searcherr; bestx = spx; besty = spy; }
-				RADIUS /= 2; if (RADIUS < 1) RADIUS = 1;
-			}
-			if (i == 0) { besterr = minerr; rx = bestx; ry = besty; }
-			else if (besterr > minerr) { besterr = minerr; rx = bestx; ry = besty; }
-			//printf("i=%d, best = %d,%d\n", i, rx, ry);
-		}
-	}
 	// Use a random walk like strategy to find best match based on a distance / feature image
 	void refineBestNeighborMatchwdist(hvPictRGB<unsigned char> &thisdist, const hvPictRGB<unsigned char> &ex, const hvPictRGB<unsigned char> &exdist, double weight, int x, int y, int neighbor, int ix[], int iy[], int nn, int &rx, int &ry, int SX = 0, int SY = 0, int DX = 0, int DY = 0)
 	{
@@ -2019,9 +1960,15 @@ public:
 	/******************************************************************************
 	 * Semi-Procedural Texture Synthesis using Point Process Texture Basis Functions.
 	 *
-	 * @param name ...
+	 * Parameter list
+	 * GUIDE: pecentage of guidance to relax constraints no borders of structures (1: full constraints; 0: no constrinats)
+     * STRENGTH 0.5
+     * INITLEVEL 2
+     * BLOCSIZE 64
+     * INITERR 100
+     * INDEXWEIGHT 0
 	 ******************************************************************************/
-	void semiProceduralTextureSynthesis(
+	void execute_semiProceduralTextureSynthesis(
 		// - input texture name
 		const char *name,
 		int STOPATLEVEL,
@@ -2030,12 +1977,20 @@ public:
 		// - input exemplar color and distance map
 		const hvPictRGB<T> &example, const hvPictRGB<T> &exdist,
 		// semi-procedural synthesis parameters
-		double weight, // weight color vs distance
-		double powr, float indweight, int neighbor, int atlevel, int bsize, float ERR,
+		double weight, // weight color vs distance (default: 0.8)
+		double powr, // weight to accentuate or diminish guidance (as a power)
+		// label weight
+		float indweight,
+		// half-patch size for neighborhood search
+		int neighbor,
+		// - smart initialization parameters
+		int atlevel, int bsize, float ERR,
 		// - guidance mask, distance and labels
 		const hvBitmap &mask, const hvPictRGB<T> &guidance,
 		// - synthesized 2D uv coordinates
-		hvArray2<hvVec2<int> > &index )
+		hvArray2<hvVec2<int> > &index,
+		const int nbCorrectionPasses,
+		const bool useSmartInitialization )
 	{
 		// - timer
 		auto startTime = std::chrono::high_resolution_clock::now();
@@ -2239,7 +2194,7 @@ public:
 		std::cout << "\n[SYNTHESIS stage]\n" << std::endl;
 
 		// Number of correction stages (originally 2 in PCTS)
-		const int niter = 2;
+		const int niter = nbCorrectionPasses;
 
 		//synthdist[s].imagefromindex(pyrdist[s], index);
 		printf("starting spt at level:%d, shift:%d,%d\n", s, posx / factor - bsize/factor, posy / factor - bsize/factor);
@@ -2267,6 +2222,8 @@ public:
 	
 /******************************************************************************
  * semiProceduralTextureSynthesis_mainPipeline
+ *
+ * Main algorithm alternating correction and upscaling passes.
  ******************************************************************************/
 void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLEVEL, int shiftx, int shifty, hvPictRGB<T> pyr[], hvPictRGB<T> pyrdist[], hvPict<unsigned char> pyrlabels[],
 	hvPictRGB<T> synth[], hvPictRGB<T> synthdist[], hvPict<unsigned char> synthlabels[],
@@ -2309,7 +2266,7 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 	fclose(fd);
 #endif
 
-	// Iterate thruogh pyramid levels
+	// Iterate through pyramid levels
 	//indweight = 0.0;
 	while ( s > 0 )
 	{
@@ -2328,7 +2285,7 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 			{
 #ifndef USE_NO_GUIDANCE_RELAXATION
 				// Correction pass
-				synth[ s ].correctionPasswdistguidanceV2(
+				synth[ s ].execute_correctionPass(
 					s,
 					shiftx+k, shifty+k,
 					k % 2 != 0,
@@ -2344,10 +2301,10 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 					refinebin );
 #else
 				// Correction pass
-				synth[ s ].correctionPasswdistguidanceV2(
+				synth[ s ].execute_correctionPass(
 					s, // pyramid level
 					shiftx+k, shifty+k,
-					k % 2 != 0, // remove doubles (only at 2nd correction step)
+					/*k % 2 != 0*/false, // remove doubles (only at 2nd correction step)
 					indweight, // label weight (none at at 2nd correction step)
 					6, // nb samples to search randomly around current candidate
 					synthdist[s], synthlabels[s], // synthesized distance and labels
@@ -2405,9 +2362,12 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 			//printf("hit return\n"); fgets(buff, 5, stdin);
 		}
 
+		// Update synthesized color, distance and labels
 		synth[s - 1].upscaleJitterPass(pyr[s - 1], 2, 0, index);
 		synthdist[s - 1].imagefromindex(pyrdist[s - 1], index);
 		synthlabels[s - 1].imagefromindex(pyrlabels[s - 1], index);
+
+		// Update current LOD of the pyramid
 		s--; factor /= 2; strength -= step; if (strength < 0.0) strength = 0.0;
 		shiftx *= 2; shifty *= 2;
 		
@@ -2455,11 +2415,11 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		auto startTime = std::chrono::high_resolution_clock::now();
 
 #ifndef USE_NO_GUIDANCE_RELAXATION
-		if (STOPATLEVEL == 0) synth[s].correctionPasswdistguidanceV2(s, shiftx, shifty, false, 0.0, 4, synthdist[s], synthlabels[s], pyr[s], pyrdist[s], pyrlabels[s], guid[s], labels[s], gmask[s], weight, neighbor, 0.0, index, refinebin);
+		if (STOPATLEVEL == 0) synth[s].execute_correctionPass(s, shiftx, shifty, false, 0.0, 4, synthdist[s], synthlabels[s], pyr[s], pyrdist[s], pyrlabels[s], guid[s], labels[s], gmask[s], weight, neighbor, 0.0, index, refinebin);
 #else
 		if ( STOPATLEVEL == 0 )
 		{
-			synth[s].correctionPasswdistguidanceV2(
+			synth[s].execute_correctionPass(
 								s, // pyramid level
 								shiftx, shifty,
 								false, // remove doubles
@@ -2483,6 +2443,7 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		float elapsedTime = static_cast<float>(std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count());
 		std::cout << "\ntime: " << elapsedTime << " ms\n";
 
+		// Update temporary images
 		offsets.reset(index.sizeX(), index.sizeY(), hvColRGB<unsigned char>());
 		for (i = 0; i < index.sizeX(); i++) for (j = 0; j < index.sizeY(); j++)
 		{
@@ -2524,23 +2485,33 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 #endif
 }
 
-
-
-	void upscaleJitterPass(const hvPictRGB<T> &example, int scale, int jitter, hvArray2<hvVec2<int> > &index)
+	/******************************************************************************
+	 * upscaleJitterPass()
+	 *
+	 * After correction, upscale texture by coping pixel to next finest LOD in pyramid
+	 ******************************************************************************/
+	void upscaleJitterPass( const hvPictRGB<T> &example, int scale, int jitter, hvArray2<hvVec2<int> > &index )
 	{
 		this->reset(index.sizeX()*scale, index.sizeY()*scale, hvColRGB<T>());
+		
 		hvArray2<hvVec2<int> > newid(index.sizeX()*scale, index.sizeY()*scale, hvVec2<int>());
+		
 		int i, j, ii, jj;
 		for (i = 0; i < index.sizeX(); i++) for (j = 0; j < index.sizeY(); j++)
 		{
 			for (ii = 0; ii < scale; ii++) for (jj = 0; jj < scale; jj++)
 			{
 				hvVec2<int> pos = index.get(i, j);
+
+				// Upscale position
 				int px = pos.X()*scale + ii, py = pos.Y()*scale + jj;
+				
 				px += (int)(((double)rand() / (double)RAND_MAX*2.0 - 1.0)*(double)(jitter));
 				if (px < 0) px = 0; if (px >= example.sizeX()) px = example.sizeX() - 1;
+				
 				py += (int)(((double)rand() / (double)RAND_MAX*2.0 - 1.0)*(double)(jitter));
 				if (py < 0) py = 0; if (py >= example.sizeY()) py = example.sizeY() - 1;
+				
 				if (i*scale + ii < this->sizeX() && j*scale + jj < this->sizeY())
 				{
 					this->update(i*scale + ii, j*scale + jj, example.get(px, py));
@@ -2548,6 +2519,8 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 				}
 			}
 		}
+
+		// Swap data to original image buffer
 		index.reset(newid.sizeX(), newid.sizeY(), hvVec2<int>());
 		for (i = 0; i < index.sizeX(); i++) for (j = 0; j < index.sizeY(); j++)
 		{
@@ -2556,9 +2529,12 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 	}
 
 	/******************************************************************************
-	 * correctionPasswdistguidanceV2()
+	 * execute_correctionPass()
+	 *
+	 * Correction pass to look for better candidate pixels
+	 * - look for better UV coordinates by measuring distance/similarity for a neighborhood (ex: 3x3 pixels)
 	 ******************************************************************************/
-	void correctionPasswdistguidanceV2(
+	void execute_correctionPass(
 		int sscale, // pyramid level
 		int shiftx, int shifty,
 		bool wdoublon, // remove doubles (only at 2nd correction step)
@@ -2583,18 +2559,11 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		const float MINTHRESH = 0.05 * strength + 0.2 * ( 1.0 - strength );
 		printf( "\n[x] strength=%g, minthresh to change=%g, scale=%d, index=%d,%d\n", strength, MINTHRESH, sscale, shiftx, shifty );
 
-		//strength = 0.0;
-		//int nneigh = 3;
-		//int nextx[] = { 0,2,0,2,1, 1, 0, 2, 1 };
-		//int nexty[] = { 0,0,2,2,1, 0, 1, 1, 2 };
 		int nneigh = 2;
 		int nextx[] = { 0,1,0,1 };
 		int nexty[] = { 0,1,1,0 };
 		int count = 0;
 		refine.reset(this->sizeX(), this->sizeY(), false);
-		//hvPictRGB<unsigned char> newthis(this->sizeX(), this->sizeY(), hvColRGB<unsigned char>(0));
-		//hvPictRGB<unsigned char> newdist(synthdist.sizeX(), synthdist.sizeY(), hvColRGB<unsigned char>(0));
-		//hvArray2<hvVec2<int> > newindex(index.sizeX(), index.sizeY(), hvVec2<int>(0, 0));
 		
 		//---------------------------------------------------------------------
 		// Pre-processing pass : check whether or not to refine (per pixel)
@@ -2613,8 +2582,6 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		for ( int jj = 0; jj < this->sizeY(); jj++ ) for ( int ii = 0; ii < this->sizeX(); ii++ )
 		{
 			// Retrieve neighbor pixels in index map
-			//int px= index.get(ii , jj ).X(); 
-			//int py = index.get(ii, jj).Y();
 			int ix[16], iy[16], px[16], py[16];
 			ix[0] = index.get((ii - 1) >= 0 ? ii - 1 : 0, (jj - 1) >= 0 ? jj - 1 : 0).X(); iy[0] = index.get((ii - 1) >= 0 ? ii - 1 : 0, (jj - 1) >= 0 ? jj - 1 : 0).Y();
 			ix[1] = index.get((ii + 2) >= index.sizeX() ? index.sizeX() - 1 : ii + 2, (jj - 1) >= 0 ? jj - 1 : 0).X(); iy[1] = index.get((ii + 2) >= index.sizeX() ? index.sizeX() - 1 : ii + 2, (jj - 1) >= 0 ? jj - 1 : 0).Y();
@@ -2624,18 +2591,6 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 			px[1] = (ii + 2) >= this->sizeX() ? this->sizeX() - 1 : ii + 2; py[1] = jj - 1 >= 0 ? jj - 1 : 0;
 			px[2] = ii - 1 >= 0 ? ii - 1 : 0; py[2] = (jj + 2) >= this->sizeY() ? this->sizeY() - 1 : jj + 2;
 			px[3] = (ii + 2) >= this->sizeX() ? this->sizeX() - 1 : ii + 2; py[3] = (jj + 2) >= this->sizeY() ? this->sizeY() - 1 : jj + 2;
-			
-			//for (int ri = 0; ri < 3; ri++) for (int rj = 0; rj < 3; rj++)
-			//{
-			//	int pi = ii + ri -1; if (pi < 0) pi = 0;
-			//	int pj = jj + rj -1; if (pj < 0) pj = 0;
-			//	ix[ri + rj * 3] = index.get(pi % index.sizeX(), pj % index.sizeY()).X();
-			//	iy[ri + rj * 3] = index.get(pi % index.sizeX(), pj % index.sizeY()).Y();
-			//}
-			
-			//int avgx = 0; for (int ri=0; ri<9; ri++) avgx+=ix[ri] ;
-			//int avgy = 0; for (int rj = 0; rj<9; rj++) avgy += iy[rj];
-			//avgx /= 9; avgy /= 9;
 			
 			// Compute associated average spatial position in exemplar
 			int avgx = (ix[0] + ix[1] + ix[2] + ix[3]) / 4;
@@ -2679,17 +2634,6 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 						var = true;
 					}
 
-					//for (k = 0; k < 4; k++)
-					//{
-					//	float err = 0.0;
-					//	float errg = (float)abs(distance.get(ix[k], iy[k]).GREEN() - guidance.get(px[k], py[k]).GREEN())/255.0;
-					//	float errr = (float)abs(distance.get(ix[k], iy[k]).RED() - guidance.get(px[k], py[k]).RED()) / 255.0;
-					//	float errb = (float)abs(distance.get(ix[k], iy[k]).BLUE() - guidance.get(px[k], py[k]).BLUE()) / 255.0;
-					//	err += errg*errg + errr*errr + errb*errb;
-					//	if (err > 3.0*(MINTHRESH*MINTHRESH)) var = true;
-					//	if (indweight > 0.0 && exlabels.get(ix[k], iy[k]) != labels.get(px[k], py[k])) var = true;
-					//	//if (distance.get(ix[4], iy[4]).squaredDifference(guidance.get(ii, jj)) > 10.0*10.0) var = true;
-					//}
 					if (!var) prefine = false;
 				}
 				if (!prefine) count++;
@@ -2770,10 +2714,6 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 								iy[ ri + rj * 5 ] = index.get( pi >= index.sizeX() ? index.sizeX() - 1 : pi, pj >= index.sizeY() ? index.sizeY() - 1 : pj ).Y();
 							}
 							
-							//if (!refine) printf("No refine in %d,%d\n",iii, jjj);
-							//this->refineBestNeighborMatch(example, iii, jjj, neighbor, ix, iy, 4, px, py);
-							//this->refineBestNeighborMatchwdist(synthdist, example, distance, weight, iii, jjj, neighbor, ix, iy, 4, px, py);
-						
 							// Check if refinement is required
 							if ( refine.get( iii, jjj ) )
 							{
@@ -2801,10 +2741,6 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 									synthdist.update( iii, jjj, distance.get( px, py ) );
 									synthlabels.update( iii, jjj, exlabels.get( px, py ) );
 							}
-							
-							//newthis.update(iii, jjj, example.get(px, py));
-							//newdist.update(iii, jjj, distance.get(px, py));
-							//newindex.update(iii, jjj, hvVec2<int>(px, py));
 						}
 					});
 #else
@@ -2868,105 +2804,11 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		endTime = std::chrono::high_resolution_clock::now();
 		elapsedTime = static_cast< float >( std::chrono::duration_cast< std::chrono::milliseconds >( endTime - startTime ).count() );
 		std::cout << "time: " << elapsedTime << " ms\n";
-
-		//--------------------------------------
-		// Post-processing pass : remove duplicates
-		//--------------------------------------
-
-		if ( wdoublon )
-		{
-			printf( "\nremove doubles...\n" );
-			
-			// - timer
-			startTime = std::chrono::high_resolution_clock::now();
-
-			count = 0;
-
-			for (int jj = 4; jj < this->sizeY(); jj++)
-				for ( int ii = 4; ii < this->sizeX(); ii++ )
-			{
-				bool doublon = false;
-
-				int px, py;
-				int ix[16], iy[16];
-				for ( int rj = 0; rj < 4; rj++ )
-					for (int ri = 0; ri < 4; ri++)
-					{
-						int pi = std::min(std::max(0, ii - ri), index.sizeX() - 1);
-						int pj = std::min(std::max(0, jj - rj), index.sizeY() - 1);
-
-						ix[ri + rj * 4] = index.get(pi, pj).X();
-						iy[ri + rj * 4] = index.get(pi, pj).Y();
-
-						if ( ( ri != 0 || rj != 0 ) && ix[ 0 ] == ix[ ri + rj * 4 ] && iy[ 0 ] == iy[ ri + rj * 4 ] )
-							doublon = true;
-					}
-				
-				if ( doublon )
-				{
-//					this->refineBestNeighborMatchwdistguidanceV2Parallel(shiftx, shifty, indweight, samples, synthdist, synthlabels, example, distance, exlabels, guidance, labels, mask,
-//						weight, mask.get(ii, jj) ? nstrength : 0.0, ii, jj, neighbor, ix, iy, 16, px, py, ix, iy, 1, threadPool);
-					this->refineBestNeighborMatchwdistguidanceV2(shiftx, shifty, indweight, samples, synthdist, synthlabels, example, distance, exlabels, guidance, labels, mask,
-						weight, mask.get(ii, jj) ? nstrength : 0.0, ii, jj, neighbor, ix, iy, 16, px, py, ix, iy, 1);
-
-					// Update index map
-					index.update(ii, jj, hvVec2<int>(px, py));
-
-					// Update synthesis (color, distance, labels...)
-					this->update(ii, jj, example.get(px, py));
-					synthdist.update(ii, jj, distance.get(px, py));
-					synthlabels.update(ii, jj, exlabels.get(px, py));
-					
-					count++;
-				}
-			}
-
-			printf( "changed %d / %d double pixels.\n", count, this->sizeX() * this->sizeX() );
-
-			// - timer
-			endTime = std::chrono::high_resolution_clock::now();
-			elapsedTime = static_cast< float >( std::chrono::duration_cast< std::chrono::milliseconds >( endTime - startTime ).count() );
-			std::cout << "time: " << elapsedTime << " ms\n";
-		}
-		
-		//char buff[10];
-		//fgets(buff, 2, stdin);
 	}
 
-
-	void upscaleJitterPass(const hvPictRGB<T> &cumtransfer, hvPictRGB<T> examples[], int scale, int jitter, hvArray2<hvVec3<int> > &index)
-	{
-		this->reset(index.sizeX()*scale, index.sizeY()*scale, hvColRGB<T>());
-		hvArray2<hvVec3<int> > newid(index.sizeX()*scale, index.sizeY()*scale, hvVec3<int>());
-		int i, j, ii, jj;
-		for (i = 0; i < index.sizeX(); i++) for (j = 0; j < index.sizeY(); j++)
-		{
-			for (ii = 0; ii < scale; ii++) for (jj = 0; jj < scale; jj++)
-			{
-				hvVec3<int> pos = index.get(i, j);
-				int k = pos.Z();
-				int px = pos.X()*scale + ii, py = pos.Y()*scale + jj;
-				px += (int)(((double)rand() / (double)RAND_MAX*2.0 - 1.0)*(double)(jitter));
-				if (px < 0) px = 0; if (px >= examples[k].sizeX()) px = examples[k].sizeX() - 1;
-				py += (int)(((double)rand() / (double)RAND_MAX*2.0 - 1.0)*(double)(jitter));
-				if (py < 0) py = 0; if (py >= examples[k].sizeY()) py = examples[k].sizeY() - 1;
-				if (i*scale + ii < this->sizeX() && j*scale + jj < this->sizeY())
-				{
-					/////////////////////////////////////////////////////////////////
-					hvColRGB<double> cc = examples[k].getDoG(px, py, 2);
-					this->update(i*scale + ii, j*scale + jj, examples[k].get(px, py));
-					newid.update(i*scale + ii, j*scale + jj, hvVec3<int>(px, py, k));
-				}
-			}
-		}
-		index.reset( newid.sizeX(), newid.sizeY(), hvVec3<int>() );
-		for (i = 0; i < index.sizeX(); i++) for (j = 0; j < index.sizeY(); j++)
-		{
-			index.update(i, j, newid.get(i, j));
-		}
-	}
-
-	////////////////////////////////////////////////////////////
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	hvColRGB<double> getDoG(int x, int y, int ss)
 	{
 		int i, j, nn=0;
@@ -2983,6 +2825,9 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		return (hvColRGB<double>)this->get(x, y) - cc;
 	}
 
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	template <class U> void blend(const hvPictRGB<T> &example, const hvPict<U> &alpha, U scal, double power, const hvBitmap &mask)
 	{
 		int i,j;
@@ -2998,6 +2843,10 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 			}
 		}
 	}
+
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	template <class U> void blendRect(int px, int py, int x, int y, int sx, int sy, const hvPictRGB<T> &example, const hvPict<U> &alpha, U scal, double power, const hvBitmap &mask, bool mshift=true)
 	{
 		int i,j;
@@ -3018,6 +2867,10 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 			}
 		}
 	}
+
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	template <class U> void shiftedblend(int dx, int dy, const hvPictRGB<T> &example, const hvPict<U> &alpha, U scal, double power, const hvBitmap &mask, hvBitmap &affected, hvPict<hvVec2<int> > *index = 0)
 	{
 		int i,j;
@@ -3038,6 +2891,9 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		}
 	}
 	
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	void seedfill(const hvColRGB<T> &col, int x, int y, hvBitmap &bm, hvVec2<int> &min, hvVec2<int> &max) const
 	{
 		if (x<0 || y<0 || x>= this->sizeX() || y>= this->sizeY()) return;
@@ -3057,6 +2913,10 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 			seedfill(col,i,y+1,bm,min,max); 
 		} 
 	}
+
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	void seedfill(const hvColRGB<T> &col, int x, int y, hvBitmap &bm, hvVec2<int> &min, hvVec2<int> &max, std::vector<hvVec2<unsigned short> > &lpts) const
 	{
 		if (x<0 || y<0 || x>= this->sizeX() || y>= this->sizeY()) return;
@@ -3077,28 +2937,10 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 			seedfill(col,i,y+1,bm,min,max); 
 		} 
 	}
-	void seedfilltorus(const hvColRGB<T> &col, int xx, int yy, hvBitmap &bm, hvVec2<int> &min, hvVec2<int> &max) const
-	{
-		//if (x<0 || y<0 || x>=sizeX() || y>=sizeY()) return;
-		int x = xx; while (x<0) x+= this->sizeX(); while (x>= this->sizeX()) x-= this->sizeX();
-		int y = yy; while (y<0) y+= this->sizeY(); while (y>= this->sizeY()) y-= this->sizeY();
-		if (!(this->get(x,y).equals(col))) return;
-		if (bm.get(x,y)) return;
-		bm.set(x,y,true);
-		min.keepMin(min,hvVec2<int>(xx,yy));
-		max.keepMax(max,hvVec2<int>(xx,yy));
-		int i,a,b;
-		for (i=x+1; i<this->sizeX() && (!bm.get(i,y)) && this->get(i,y).equals(col); i++) { bm.set(i,y, true); max.keepMax(max,hvVec2<int>(i-x+xx,yy)); }
-		b=i-1;
-		for (i=x-1; i>=0 && (!bm.get(i,y)) && this->get(i,y).equals(col); i--) { bm.set(i,y, true); min.keepMin(min,hvVec2<int>(i-x+xx,yy)); }
-		a = i+1;
-		for (i=a; i<=b; i++) 
-		{ 
-			seedfill(col,i-x+xx,yy-1,bm,min,max); 
-			seedfill(col,i-x+xx,yy+1,bm,min,max); 
-		} 
-	}	
-
+	
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	hvVec2<int> chooseMinSquareDiff(int bx, int by, int bsx, int bsy, int x,int y,int sx,int sy, const hvPictRGB<T> &inpict, hvColRGB<double> &minerr) 
 	{
 		int i,j;
@@ -3117,6 +2959,10 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		}
 		return minpos;
 	}
+
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	hvVec2<int> chooseMinSquareDiffBorder(int bx, int by, int bsx, int bsy, int x, int y, int sx, int sy, const hvPictRGB<T> &inpict, hvColRGB<double> &minerr)
 	{
 		int i, j;
@@ -3136,6 +2982,9 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		return minpos;
 	}
 
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	hvVec2<int> chooseMinSquareDiff(int bx, int by, int bsx, int bsy, int x,int y,int sx,int sy, const hvPictRGB<T> &inpict, const hvBitmap &mask, int cx, int cy, hvColRGB<double> &minerr) 
 	{
 		int i,j;
@@ -3159,6 +3008,10 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		if (first) { printf("warning cannot find best minsquare diff on %d,%d\n", cx,cy); }
 		return minpos;
 	}
+
+	/******************************************************************************
+	 * ...
+	 ******************************************************************************/
 	hvVec2<int> chooseWeightedMinSquareDiff(int bx, int by, int bsx, int bsy, int x,int y,int sx,int sy, const hvPictRGB<T> &inpict,  const hvBitmap &mask, const hvPict<double> &weight, int cx, int cy, hvColRGB<double> &minerr) 
 	{
 		int i,j;
@@ -3182,7 +3035,6 @@ void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLE
 		if (first) { printf("warning cannot find best minsquare diff on %d,%d\n", cx,cy); }
 		return minpos;
 	}
-	
 
 };
 
