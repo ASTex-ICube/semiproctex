@@ -27,7 +27,7 @@ Available soon.
 
 Operating systems:
 - [x] Windows 10
-- [ ] Linux (Ubuntu soon, but not yet available...)
+- [ ] Linux (Ubuntu soon available...)
 
 Tested graphics cards:
 - [x] NVidia GeForce 1060 GTX (6Go)
@@ -50,7 +50,7 @@ Technologies:
  Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide tools for experimenting with the PPTBF model:
  - [x] a real-time PPTBF viewer/designer [GPU-accelerated]
  - [x] a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
- - [ ] a PPTBF database generator [GPU-accelerated] (spanning space of parameters) [not yet...]
+ - [ ] a PPTBF database generator [GPU-accelerated] (spanning space of parameters) [soon available...]
 
  ![semiproctex](Images/tools_editing_1024.png)
  
