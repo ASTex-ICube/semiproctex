@@ -85,7 +85,7 @@ Technologies:
   
  * Our database of semi-procedural synthesis used for the supplementals...
  
- ![semiproctex](Images/bdd_textures_1024.jpg)
+ ![semiproctex](Images/bdd_textures_1024.png)
 
 <!--
 ### Prerequisites
