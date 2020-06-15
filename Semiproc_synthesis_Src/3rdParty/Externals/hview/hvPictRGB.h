@@ -39,7 +39,7 @@
  * MACRO
  */
 #define USE_MULTITHREADED_SYNTHESIS
-//#define USE_NO_TEMPORARY_IMAGE_EXPORT
+#define USE_NO_TEMPORARY_IMAGE_EXPORT
 
 /**
  * MACRO used to remove guidance constraints at 2nd correction step
@@ -2041,10 +2041,16 @@ public:
 		auto startTime = std::chrono::high_resolution_clock::now();
 		
 		//--------------------------------------
-		// Preprocessing stage
+		// [stage #1] Preprocessing stage
 		//--------------------------------------
-
+		
 		std::cout << "\n[PREPROCESSING stage]\n" << std::endl;
+
+		//--------------------------------------
+		// Create pyramid of LOD (level of details):
+		// - input exemplar: color, distance and labels
+		// - guidance: distance (from pptbf), mask (from thresholded pptbf) and labels (from pptbf random values generated at feature points)
+		//--------------------------------------
 
 		std::cout << "- build multiscale pyramid" << std::endl;
 
@@ -2052,13 +2058,18 @@ public:
 		int i, j, ii, jj;
 		FILE *fd;
 		
+		// - exemplar color, distance, label and guidance distance and labels
 		hvPictRGB<T> pyr[10], synth[10], pyrdist[10], synthdist[10], guid[10], dist;
 		hvPict<unsigned char> pyrlabels[10], labels[10], synthlabels[10], exlabels;
+		// - guidance mask
 		hvBitmap gmask[10];
 		
 		if (atlevel < 1) atlevel = 1;
+		
+		// Variable of current LOD of the pyramid
 		int s = 0, factor = 1;
 		
+		// Exemplar label and distance pyramids
 		exlabels.reset(exdist.sizeX(), exdist.sizeY(), 0);
 		dist.reset(exdist.sizeX(), exdist.sizeY(), 0);
 		for (ii = 0; ii < dist.sizeX(); ii++) for (jj = 0; jj < dist.sizeY(); jj++)
@@ -2067,8 +2078,10 @@ public:
 			dist.update(ii, jj, hvColRGB<unsigned char>(col.RED(), col.GREEN(), 0));
 			exlabels.update(ii, jj, col.BLUE());
 		}
+		// Exemplar color pyramids
 		example.makepyr( name, dist, exlabels, s, factor, pyr, pyrdist, pyrlabels, atlevel );
 		
+		// Guidance label and distance pyramids + guidance mask pyramids
 		guid[0].reset(guidance.sizeX(), guidance.sizeY(), hvColRGB<unsigned char>(0));
 		labels[0].reset(guidance.sizeX(), guidance.sizeY(), 0);
 		for (ii = 0; ii < guid[0].sizeX(); ii++) for (jj = 0; jj < guid[0].sizeY(); jj++)
@@ -2078,6 +2091,7 @@ public:
 			labels[0].update(ii, jj, col.BLUE());
 		}
 		gmask[0] = mask;
+		// - iterate over all LOD of the guidance pyramids
 		for (i = 1; i <= s; i++)
 		{
 			guid[i].reset(guid[i - 1].sizeX() / 2, guid[i - 1].sizeY() / 2, hvColRGB<unsigned char>(0));
@@ -2112,7 +2126,10 @@ public:
 			fclose(fd);
 #endif
 		}
+
+		// Set index uv map size at first level of the pyramid
 		index.reset(guidance.sizeX() / factor, guidance.sizeY() / factor, hvVec2<int>());
+		// - associated synthesized maps of color, distance and labels (automatically derived from index uv map)
 		synth[s].reset(guidance.sizeX() / factor , guidance.sizeY() / factor , hvColRGB<T>());
 		synthdist[s].reset(guidance.sizeX() / factor , guidance.sizeY() / factor , hvColRGB<T>());
 		synthlabels[s].reset(guidance.sizeX() / factor , guidance.sizeY() / factor , 0);
@@ -2123,8 +2140,13 @@ public:
 		std::cout << "- time: " << elapsedTime << " ms\n";
 
 		//------------------------------------------------
-		// SMART initialization
+		// [stage #2] SMART initialization
 		//------------------------------------------------
+
+		// Smart initialization is used to better initialize the optimization algorithm sued during synthesis.
+		// Originally, PCTS used a uniform tiling of UV coordinates and used jittering to cerate randomness.
+		// Here, we do a kind of lazy "pre-synthesis" using the guidance map to search for good neighborhood.
+		// UV coordinates will have a better 2D coordinates close to the guidance map (ex: thresholded PPTBF)
 
 		startTime = std::chrono::high_resolution_clock::now();
 
@@ -2139,15 +2161,17 @@ public:
 			hvFatal( "guidance size must be divisible by (factor*bsize)" );
 		}
 		// Block initialization
-		this->smartInitialization(posx/factor-bsize, posy/factor-bsize, ERR, indweight, bsize, 
+		this->smartInitialization( posx/factor-bsize, posy/factor-bsize, ERR, indweight, bsize, 
 			guid[s], labels[s], gmask[s], pyr[s], pyrdist[s], pyrlabels[s],
-			index, synth[s], synthdist[s], synthlabels[s]);
+			index, synth[s], synthdist[s], synthlabels[s] );
 
 		// - timer
 		endTime = std::chrono::high_resolution_clock::now();
 		elapsedTime = static_cast<float>(std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count());
 		std::cout << "- time: " << elapsedTime << " ms\n";
 
+		// Temporary images to look at intermediate steps (for debug)
+		// - il will display the current state of the uv map after smart initialization in terms of color, distance and labels.
 		hvPictRGB<unsigned char> pinit(index.sizeX()*factor, index.sizeY()*factor, hvColRGB<unsigned char>(0));
 		hvPictRGB<unsigned char> finit(index.sizeX()*factor, index.sizeY()*factor, hvColRGB<unsigned char>(0));
 		hvPictRGB<unsigned char> labinit(index.sizeX()*factor, index.sizeY()*factor, hvColRGB<unsigned char>(0));
@@ -2205,7 +2229,7 @@ public:
 #endif
 
 		//-------------------------------------------------
-		// SYNTHESIS stage
+		// [stage #3] main SYNTHESIS stage
 		//-------------------------------------------------
 
 		startTime = std::chrono::high_resolution_clock::now();
@@ -2214,10 +2238,14 @@ public:
 
 		std::cout << "\n[SYNTHESIS stage]\n" << std::endl;
 
+		// Number of correction stages (originally 2 in PCTS)
 		const int niter = 2;
+
 		//synthdist[s].imagefromindex(pyrdist[s], index);
 		printf("starting spt at level:%d, shift:%d,%d\n", s, posx / factor - bsize/factor, posy / factor - bsize/factor);
-		this->semiProceduralTextureSynthesisIteration(
+
+		// Launch the main synthesis algortihm
+		this->semiProceduralTextureSynthesis_mainPipeline(
 					name,
 					STOPATLEVEL,
 					posx / factor - bsize/factor, posy / factor - bsize/factor,
@@ -2238,9 +2266,9 @@ public:
 	}
 	
 /******************************************************************************
- * semiProceduralTextureSynthesisIteration
+ * semiProceduralTextureSynthesis_mainPipeline
  ******************************************************************************/
-void semiProceduralTextureSynthesisIteration( const char *name, int STOPATLEVEL, int shiftx, int shifty, hvPictRGB<T> pyr[], hvPictRGB<T> pyrdist[], hvPict<unsigned char> pyrlabels[],
+void semiProceduralTextureSynthesis_mainPipeline( const char *name, int STOPATLEVEL, int shiftx, int shifty, hvPictRGB<T> pyr[], hvPictRGB<T> pyrdist[], hvPict<unsigned char> pyrlabels[],
 	hvPictRGB<T> synth[], hvPictRGB<T> synthdist[], hvPict<unsigned char> synthlabels[],
 	hvPictRGB<T> guid[], hvPict<unsigned char> labels[], hvBitmap gmask[], hvArray2<hvVec2<int> > &index,
 	double weight, double powr,
