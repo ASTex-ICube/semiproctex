@@ -25,7 +25,7 @@ Available soon.
  
  - [ ] **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation (147 images), comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
  
- #### ex: Parameter estimation
+ #### ex: PPTBF Parameter estimation
  
  ![semiproctex](Images/paramter_estimation_1024.png)
  
