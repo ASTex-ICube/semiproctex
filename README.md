@@ -23,22 +23,28 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
 
 ### [1] Texture Synthesis Comparisons
 
- - [ ] **Supplemental #1** : Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods (detail: 11 different texture synthesis methods applied on all of our 138 textures database).
+ - [ ] **Supplemental #1** : Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods.
 
  #### ex: Texture synthesis comparisons
+ 
+ BDD of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods.
  
  ![semiproctex](Images/texture_synthesis_comparisons_1024.jpg) 
   
  ### [2] PPTBF Parameters Estimation, Noise Comparisons and Material Synthesis
  
- - [ ] **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation (147 images), comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
+ - [ ] **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation, comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
  
  #### ex: PPTBF Parameter estimation (i.e. by-example procedural structures)
+ 
+ BDD of 147 segmented images, from automatic parameter estimations to refinement and fine-tuning :
  
  ![semiproctex](Images/paramter_estimation_1024.png)
  
  #### ex: Material synthesis
-  
+ 
+ BDD of 3D scanned materials and procedural PBR materials.
+ 
  ![semiproctex](Images/material_synthesis_spatiallyVarying_1024.png)
  
  ### [3] BDD of input exemplars
