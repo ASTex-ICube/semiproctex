@@ -25,19 +25,21 @@ Available soon.
  
  - [ ] **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation (147 images), comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
  
- #### Parameter Estimation
+ #### ex: Parameter estimation
  
  ![semiproctex](Images/paramter_estimation_1024.png)
  
- #### Material Synthesis
+ #### ex: Material synthesis
   
  ![semiproctex](Images/material_synthesis_spatiallyVarying_1024.png)
  
- ### [3] BDD of Input Exemplars
+ ### [3] BDD of input exemplars
  
  - [ ] **Supplemental #3** : Available soon. This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
  folder Structures_with_PPTBF contains manually segmented binary structures with estimated PPTBF
  parameters, that can be used for procedural structure synthesis.
+ 
+ #### ex: BDD of Textures
  
  ![semiproctex](Images/bdd_textures_1024.png)
 
@@ -72,6 +74,8 @@ Technologies:
  - [x] a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
  - [ ] a PPTBF database generator [GPU-accelerated] (spanning space of parameters) [soon available...]
 
+  #### ex: Real-time PPTBF viewer/designer
+ 
  ![semiproctex](Images/tools_editing_1024.png)
  
 ### [2] Semi-Procedural Texture Synthesis
@@ -93,6 +97,8 @@ Technologies:
  - [ ] Here is a beta version of our semi-procedural texture software synthesizer Semiproctex_synthesis_CPU_Bin (file will be available soon. Cleaning some data and versioning...) (not GPU-accelerated). More info to come about available features and parameters description...
  
  NOTE: The software/CPU version uses the same algorithms than the GPU version. But the GPU one is more than 10 times faster (even far more depending on options). So the software/CPU version is only useful to look at the code, not launching synthesis. But you can try and test.
+ 
+ #### ex: Real-time/interactive GPU semi-procedural texture synthesizer
  
  ![semiproctex](Images/semiproctex_tools_1024.png)
   
