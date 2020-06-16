@@ -20,7 +20,11 @@ Available soon.
 ### [1] Texture Synthesis Comparisons
 
  - [ ] **Supplemental #1** : Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods (detail: 11 different texture synthesis methods applied on all of our 138 textures database).
+
+ #### ex: Texture synthesis comparisons
  
+ ![semiproctex](Images/texture_synthesis_comparisons_1024.jpg) 
+  
  ### [2] PPTBF Parameters Estimation, Noise Comparisons and Material Synthesis
  
  - [ ] **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation (147 images), comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
