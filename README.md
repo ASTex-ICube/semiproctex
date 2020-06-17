@@ -31,6 +31,8 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
  
  BDD of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these experiments, input textures are synthesized 2 times larger. Note: this is not a limit of our method, but due to some deep learning methods this already required between 1 and 2 months of computation even with GPUs...
  
+ ![semiproctex](Images/texture_synthesis_comparisons_header.png)
+ 
  ![semiproctex](Images/texture_synthesis_comparisons_1024.jpg)
   
  ### [2] PPTBF Parameters Estimation, Noise Comparisons and Material Synthesis
