@@ -27,7 +27,7 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
 
  #### ex: Texture synthesis comparisons
  
- BDD of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these experiments, input textures are synthesized 2 times larger. Note: this is not a limit of our method, but due to some deep learning methods this already required between 1 and 2 months of computation even with GPU...
+ BDD of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these experiments, input textures are synthesized 2 times larger. Note: this is not a limit of our method, but due to some deep learning methods this already required between 1 and 2 months of computation even with GPUs...
  
  ![semiproctex](Images/texture_synthesis_comparisons_1024.jpg) 
   
@@ -94,7 +94,7 @@ Technologies:
 
  #### ex: Real-time PPTBF viewer/designer
   
- A single PPTBF incorporates multiple binary structures with different topologies, that are only revealed by different thresholds.
+ A single PPTBF incorporates multiple binary structures with different topologies, that are only revealed by different thresholds, especially when blending window functions.
  
  ![semiproctex](Images/tools_editing_1024.png)
  
@@ -118,7 +118,9 @@ Technologies:
  
  NOTE: The software/CPU version uses the same algorithms than the GPU version. But the GPU one is more than 10 times faster (even far more depending on options). So the software/CPU version is only useful to look at the code, not launching synthesis. But you can try and test.
  
- #### ex: Real-time/interactive GPU semi-procedural texture synthesizer
+ #### ex: Real-time/interactive semi-procedural texture synthesizer on GPU
+ 
+ Trade-off between real-time/interactive texture synthesis design to longer high-quality results depending on user options (ex: "smart" initialization to initialize our optimization-based algorithm to keep the fine grain of input images).
  
  ![semiproctex](Images/semiproctex_tools_1024.png)
   
