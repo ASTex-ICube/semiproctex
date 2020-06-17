@@ -27,7 +27,7 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
 
  #### ex: Texture synthesis comparisons
  
- BDD of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods.
+ BDD of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these exeperiments, input textures are synthesized 2 times larger (note: this is not a limit of our method).
  
  ![semiproctex](Images/texture_synthesis_comparisons_1024.jpg) 
   
@@ -37,7 +37,7 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
  
  #### ex: PPTBF Parameter estimation (i.e. by-example procedural structures)
  
- BDD of 147 segmented images, from automatic parameter estimations to refinement and fine-tuning :
+ BDD of 147 segmented images (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...), from automatic parameter estimations to refinement and fine-tuning :
  
  ![semiproctex](Images/paramter_estimation_1024.png)
  
@@ -54,6 +54,8 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
  parameters, that can be used for procedural structure synthesis.
  
  #### ex: BDD of Textures
+ 
+  BDD of approximately 150 textures, 10 scanned materials and 10 procedural PBR materials. More to come...
  
  ![semiproctex](Images/bdd_textures_1024.png)
 
