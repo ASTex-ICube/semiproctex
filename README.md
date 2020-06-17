@@ -4,7 +4,7 @@ IMPORTANT : Please, wait that we finish our first tag/release version before dow
 
 ![semiproctex](Images/teaser_bdd_structures.png)
 
-![semiproctex](Images/teaser_1024.png)
+![semiproctex](Images/teaser_1024.jpg)
 
 This is the page of our EGSR 2020 CGF track paper:
 
