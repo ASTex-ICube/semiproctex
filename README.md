@@ -20,6 +20,9 @@ Available soon.
 
 This work can be seen as a small step in the spirit of the "Inverse Shade Trees" approach, being able to retrieve the appearance from an image as a graph of nodes and edit it interactively. Node-based texturing tools from industry (such as Substance Designer) could benefit from this kind of "art-directable" textures and materials to create complex appearances. This work also tries to mix Research, Industry and Art to enhance the creativity and productivity of digital artists from the video game and film industries.
 
+## Acknowledgments
+This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Accueil) project funded by the French National Research Agency (project ID: ANR-16-CE33-0001).
+
 ## Supplemental materials
 
 ### [1] Texture Synthesis Comparisons
