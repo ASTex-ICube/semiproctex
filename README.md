@@ -2,7 +2,8 @@
 
 IMPORTANT : Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc...). This will be available at least for the EGSR 2020 conference 29 june - 3 july. We will create a dedicated release/tab v1.0.0 version.
 
-![semiproctex](Images/semiproctex.png)
+![semiproctex](Images/teaser_bdd_structures.png)
+![semiproctex](Images/teaser_1024.jpg)
 
 This is the page of our EGSR 2020 CGF track paper:
 
@@ -17,7 +18,12 @@ Available soon.
 
 ## Note
 
-This work can be seen as a small step in the spirit of the "Inverse Shade Trees" approach, being able to retrieve the appearance from an image as a graph of nodes and edit it interactively. Node-based texturing tools from industry (such as Substance Designer) could benefit from this kind of "art-directable" textures and materials to create complex appearances. This work also tries to mix Research, Industry and Art to enhance the creativity and productivity of digital artists from the video game and film industries.
+This work can be seen as a small step in the spirit of the "Inverse Shade Trees" approach, being able to retrieve the appearance from an image as a graph of nodes and edit it interactively.
+
+This work also tries to mix Research, Industry and Art to enhance the creativity and productivity of digital artists from the video game and film industries. Node-based texturing tools from industry (such as Substance Designer) could benefit from this kind of "art-directable" textures and materials to create complex appearances.
+
+## Acknowledgments
+This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Accueil) project funded by the French National Research Agency (project ID: ANR-16-CE33-0001).
 
 ## Supplemental materials
 
@@ -28,6 +34,8 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
  #### ex: Texture synthesis comparisons
  
  BDD of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these experiments, input textures are synthesized 2 times larger. Note: this is not a limit of our method, but due to some deep learning methods this already required between 1 and 2 months of computation even with GPUs...
+ 
+ ![semiproctex](Images/texture_synthesis_comparisons_header.png)
  
  ![semiproctex](Images/texture_synthesis_comparisons_1024.jpg)
   
