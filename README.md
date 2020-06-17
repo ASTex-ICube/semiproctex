@@ -41,7 +41,7 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
  
  ![semiproctex](Images/paramter_estimation_1024.png)
  
- #### ex: Material synthesis
+ #### ex: Material synthesis (with transitions)
  
  BDD of 3D scanned materials and procedural PBR materials.
  
