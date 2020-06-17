@@ -81,6 +81,8 @@ Technologies:
  to design and edit PPTBF parameters interactively (works under Windows, Linux port soon).
  More tools to come (ex: PPTBF database generator, spanning the space of PPTBF parameters).
 
+ Note: GPU shader code is not optimized, due to back and forth between CPU and GPU versions during development. Cleaning and documentation to come...
+ 
  Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
 
 #### Tools
