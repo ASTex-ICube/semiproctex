@@ -17,7 +17,7 @@ Available soon.
 
 ## Note
 
-This work can be seen as a small step in the spirit of the "Inverse Shade Trees" approach, being able to retrieve the appearance from an image as a graph of nodes and edit it interactively. Node-based texturing tools from industry (such as Substance Designer) could benefit from this kind of "art-directable" textures and materials to create complex appearances. This work also tries to mix Research, Industry and Art to enhance the creativity and productivity of digital artists from video game and film industries.
+This work can be seen as a small step in the spirit of the "Inverse Shade Trees" approach, being able to retrieve the appearance from an image as a graph of nodes and edit it interactively. Node-based texturing tools from industry (such as Substance Designer) could benefit from this kind of "art-directable" textures and materials to create complex appearances. This work also tries to mix Research, Industry and Art to enhance the creativity and productivity of digital artists from the video game and film industries.
 
 ## Supplemental materials
 
@@ -29,7 +29,7 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
  
  BDD of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these experiments, input textures are synthesized 2 times larger. Note: this is not a limit of our method, but due to some deep learning methods this already required between 1 and 2 months of computation even with GPUs...
  
- ![semiproctex](Images/texture_synthesis_comparisons_1024.jpg) 
+ ![semiproctex](Images/texture_synthesis_comparisons_1024.jpg)
   
  ### [2] PPTBF Parameters Estimation, Noise Comparisons and Material Synthesis
  
