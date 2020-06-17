@@ -92,7 +92,9 @@ Technologies:
  - [x] a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
  - [ ] a PPTBF database generator [GPU-accelerated] (spanning space of parameters) [soon available...]
 
-  #### ex: Real-time PPTBF viewer/designer
+ #### ex: Real-time PPTBF viewer/designer
+  
+ A single PPTBF incorporates multiple binary structures with different topologies, that are only revealed by different thresholds.
  
  ![semiproctex](Images/tools_editing_1024.png)
  
