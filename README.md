@@ -143,6 +143,14 @@ Technologies:
   
  - [ ] Our database of semi-procedural texture synthesis parameter files used for the supplementals will be available here soon...
  
+ ### Important
+ 
+ One or more textures bundled with this project have been created with images from [Textures.com](https://www.textures.com/). These images may not be redistributed by default. Please visit [www.textures.com](www.textures.com) for more information.
+ 
+ Our BDD of binary structure exemplars have been manually segmented using filters from Photoshop (usually basic filters: curves, threshold, bilateral filter, etc...), then finished manually. Before we use the same process for each textures, our first textures have been processed non-uniformly.
+ 
+ Method: most of the times, we downloaded textures from textures.com at 1024x1024 resolution, then crop a 512x512 part of it. The goal of our results and comparisons was to synthesize 1024x1024 images that look like the original exemplars (before cropping). But all original images have been segmented entirely, not only the crop. So, we are going to add a file indicating the web address of textures with the crop position so that people can download input exemplar and reproduce our results. But this is a time consuming task, so it will be done step by step !
+ 
 <!--
 ### Prerequisites
 
