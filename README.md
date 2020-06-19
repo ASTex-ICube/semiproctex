@@ -31,7 +31,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
 
  - [ ] **Supplemental #1** : Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods.
 
- #### ex: Texture synthesis comparisons
+ #### e.g.: Texture synthesis comparisons
  
  Database of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these experiments, input textures are synthesized 2 times larger. Note: this is not a limit of our method, but due to some deep learning methods this already required between 1 and 2 months of computation even with GPUs...
  
@@ -43,13 +43,13 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  
  - [ ] **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation, comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
  
- #### ex: PPTBF Parameter estimation (i.e. by-example procedural structures)
+ #### e.g.: PPTBF Parameter estimation (i.e. by-example procedural structures)
  
  Database of 147 segmented images (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...), from automatic parameter estimations to refinement and fine-tuning :
  
  ![semiproctex](Images/paramter_estimation_1024.png)
  
- #### ex: Material synthesis (with transitions)
+ #### e.g.: Material synthesis (with transitions)
  
  Database of 3D scanned materials and procedural PBR materials.
  
@@ -61,7 +61,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  folder Structures_with_PPTBF contains manually segmented binary structures with estimated PPTBF
  parameters, that can be used for procedural structure synthesis.
  
- #### ex: Database of Textures
+ #### e.g.: Database of Textures
  
   Database of approximately 150 textures, 10 scanned materials and 10 procedural PBR materials. More to come...
  
@@ -87,7 +87,7 @@ Technologies:
  The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
  procedural binary structures from files of PPTBF parameters, and a real-time viewer to be able
  to design and edit PPTBF parameters interactively (works under Windows, Linux port soon).
- More tools to come (ex: PPTBF database generator, spanning the space of PPTBF parameters).
+ More tools to come (e.g.: PPTBF database generator, spanning the space of PPTBF parameters).
 
  Note: GPU shader code is not optimized, due to back and forth between CPU and GPU versions during development. Cleaning and documentation to come...
  
@@ -100,7 +100,7 @@ Technologies:
  - [x] a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
  - [ ] a PPTBF database generator [GPU-accelerated] (spanning space of parameters) [soon available...]
 
- #### ex: Real-time PPTBF viewer/designer
+ #### e.g.: Real-time PPTBF viewer/designer
   
  A single PPTBF incorporates multiple binary structures with different topologies, that are only revealed by different thresholds, especially when blending window functions.
  
@@ -126,9 +126,9 @@ Technologies:
  
  NOTE: The software/CPU version uses the same algorithms than the GPU version. But the GPU one is more than 10 times faster (even far more depending on options). So the software/CPU version is only useful to look at the code, not launching synthesis. But you can try and test.
  
- #### ex: Real-time/interactive semi-procedural texture synthesizer and designer on GPU
+ #### e.g.: Real-time/interactive semi-procedural texture synthesizer and designer on GPU
  
- Trade-off between real-time/interactive texture synthesis design to longer high-quality results depending on user options (ex: "smart" initialization to initialize our optimization-based algorithm to keep the fine grain of input images).
+ Trade-off between real-time/interactive texture synthesis design to longer high-quality results depending on user options (e.g.: "smart" initialization to initialize our optimization-based algorithm to keep the fine grain of input images).
  
  Yes, you can edit structures on-the-fly and navigate (translate, rotate, even zoom [zoom is a prototype version]), depending on selected options! :) Some videos will be available soon.
  
