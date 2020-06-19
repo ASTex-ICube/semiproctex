@@ -33,7 +33,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
 
  #### ex: Texture synthesis comparisons
  
- BDD of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these experiments, input textures are synthesized 2 times larger. Note: this is not a limit of our method, but due to some deep learning methods this already required between 1 and 2 months of computation even with GPUs...
+ Database of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these experiments, input textures are synthesized 2 times larger. Note: this is not a limit of our method, but due to some deep learning methods this already required between 1 and 2 months of computation even with GPUs...
  
  ![semiproctex](Images/texture_synthesis_comparisons_header.png)
  
@@ -45,25 +45,25 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  
  #### ex: PPTBF Parameter estimation (i.e. by-example procedural structures)
  
- BDD of 147 segmented images (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...), from automatic parameter estimations to refinement and fine-tuning :
+ Database of 147 segmented images (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...), from automatic parameter estimations to refinement and fine-tuning :
  
  ![semiproctex](Images/paramter_estimation_1024.png)
  
  #### ex: Material synthesis (with transitions)
  
- BDD of 3D scanned materials and procedural PBR materials.
+ Database of 3D scanned materials and procedural PBR materials.
  
  ![semiproctex](Images/material_synthesis_spatiallyVarying_1024.png)
  
- ### [3] BDD of input exemplars
+ ### [3] Database of input exemplars
  
  - [ ] **Supplemental #3** : Available soon. This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
  folder Structures_with_PPTBF contains manually segmented binary structures with estimated PPTBF
  parameters, that can be used for procedural structure synthesis.
  
- #### ex: BDD of Textures
+ #### ex: Database of Textures
  
-  BDD of approximately 150 textures, 10 scanned materials and 10 procedural PBR materials. More to come...
+  Database of approximately 150 textures, 10 scanned materials and 10 procedural PBR materials. More to come...
  
  ![semiproctex](Images/bdd_textures_1024.png)
 
@@ -149,7 +149,7 @@ Technologies:
  
  One or more textures bundled with this project have been created with images from [Textures.com](https://www.textures.com/). These images may not be redistributed by default. Please visit [www.textures.com](www.textures.com) for more information.
  
- Our BDD of binary structure exemplars have been manually segmented using filters from Photoshop (usually basic filters: curves, threshold, bilateral filter, etc...), then finished manually. Before we use the same process for each textures, our first textures have been processed non-uniformly.
+ Our database of binary structure exemplars have been manually segmented using filters from Photoshop (usually basic filters: curves, threshold, bilateral filter, etc...), then finished manually. Before we use the same process for each textures, our first textures have been processed non-uniformly.
  
  Method: most of the times, we downloaded textures from textures.com at 1024x1024 resolution, then crop a 512x512 part of it. The goal of our results and comparisons was to synthesize 1024x1024 images that look like the original exemplars (before cropping). But all original images have been segmented entirely, not only the crop. So, we are going to add a file indicating the web address of textures with the crop position so that people can download input exemplar and reproduce our results. But this is a time consuming task, so it will be done step by step !
  
