@@ -2,6 +2,14 @@
 
 IMPORTANT : Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc...). This will be available at least for the EGSR 2020 conference 29 june - 3 july. We will create a dedicated release/tab v1.0.0 version.
 
+#### Table of contents
+
+1. [Paper](#Paper)
+2. [Supplemental materials](#Supplemental-materials)
+3. [Code and binaries](#Code-and-binaries)
+4. [Data](#Data)
+5. [Citation](#Citation)
+
 ![semiproctex](Images/teaser_bdd_structures.png)
 ![semiproctex](Images/teaser_1024.jpg)
 
@@ -67,7 +75,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  
  ![semiproctex](Images/bdd_textures_1024.png)
 
-## Code
+## Code and Binaries
 
 ### Target Machines
 
