@@ -2,6 +2,12 @@
 
 IMPORTANT : Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc...). This will be available at least for the EGSR 2020 conference 29 june - 3 july. We will create a dedicated release/tab v1.0.0 version.
 
+[Paper][TITLE_Paper]
+[Supplemental materials]
+[Code and binaries]
+[Data]
+[Citation]
+
 ![semiproctex](Images/teaser_bdd_structures.png)
 ![semiproctex](Images/teaser_1024.jpg)
 
@@ -12,7 +18,7 @@ Semi-Procedural Textures Using Point Process Texture Basis Functions.
 To appear in Computer Graphics Forum (EGSR 2020 special issue), 39(4),
 2020.
 
-## Paper
+## [TITLE_Paper]: Paper
 
 Available soon.
 
@@ -67,7 +73,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  
  ![semiproctex](Images/bdd_textures_1024.png)
 
-## Code
+## Code and Binaries
 
 ### Target Machines
 
