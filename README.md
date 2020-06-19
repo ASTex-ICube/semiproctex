@@ -2,7 +2,7 @@
 
 IMPORTANT : Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc...). This will be available at least for the EGSR 2020 conference 29 june - 3 july. We will create a dedicated release/tab v1.0.0 version.
 
-[Paper](semiproctex#paper)
+[Paper](#Paper)
 [Supplemental materials]
 [Code and binaries]
 [Data]
