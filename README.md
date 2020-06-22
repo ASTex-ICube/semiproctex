@@ -56,7 +56,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
 ### [1] Texture Synthesis Comparisons
 -->
 
- - **Supplemental #1** : Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods.
+ - **Supplemental #1**: Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods.
 
 <!--
  #### e.g.: Texture synthesis comparisons
@@ -72,7 +72,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  ### [2] PPTBF Parameters Estimation, Noise Comparisons and Material Synthesis
  -->
  
- - **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation, comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
+ - **Supplemental #2**: Available soon. This supplemental material provides additional results on: PPTBF parameters estimation, comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
  
  <!--
  #### e.g.: PPTBF Parameter estimation (i.e. by-example procedural structures)
@@ -92,9 +92,11 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  ### [3] Database of input exemplars
 -->
  
- - **Supplemental #3** : Available soon. This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
+ - **Supplemental #3**: Available soon. This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
  folder Structures_with_PPTBF contains manually segmented binary structures with estimated PPTBF
  parameters, that can be used for procedural structure synthesis.
+ 
+ - **Supplemental #4**: Available [here](http://igg.unistra.fr/People/semiproctex/paper/Supplemental4.pdf). This supplemental material contains PPTBF implementation details and description of practical choices.
  
  <!--
  #### e.g.: Database of Textures
