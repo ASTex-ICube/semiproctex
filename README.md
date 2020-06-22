@@ -37,8 +37,6 @@ You can grab the paper [here](http://igg.unistra.fr/People/semiproctex/paper/sem
 }
 ```
 
-http://igg.unistra.fr/People/semiproctex/paper/semiproctex.pdf
-
 <!--
 ## Note
 
@@ -47,7 +45,7 @@ This work can be seen as a small step in the spirit of the "Inverse Shade Trees"
 This work also tries to mix Research, Industry and Art to enhance the creativity and productivity of digital artists from the video game and film industries. Node-based texturing tools from industry (such as Substance Designer) could benefit from this kind of "art-directable" textures and materials to create complex appearances.
 -->
 
-## Acknowledgments
+### Acknowledgments
 This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Accueil) project funded by the French National Research Agency (project ID: ANR-16-CE33-0001).
 
 ## Supplemental materials
