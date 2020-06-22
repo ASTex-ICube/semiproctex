@@ -99,11 +99,11 @@ IMPORTANT: Please, wait that we finish our first tag/release version before down
 
 Operating systems:
 - [x] Windows 10
-- [ ] Linux (Ubuntu soon available...)
+- [ ] Linux (Ubuntu version soon available)
 
 Tested graphics cards:
-- [x] NVidia GeForce 1060 GTX (6Go)
-- [x] NVidia RTX 2070 (8 Go)
+- [x] NVidia GeForce 1060 GTX (6 GB)
+- [x] NVidia RTX 2070 (8 GB)
 
 Technologies:
 - OpenGL (4.6, at least >= 4.5, compute shaders), glad, glfw, glm, ImGui, CMake, C++, [Python to come]
