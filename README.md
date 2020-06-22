@@ -145,8 +145,8 @@ Technologies:
  will be made available later.
  
  Note that for reasons of intellectual property, GPU implementation cannot be distributed.
- The GPU implementation of [Parallel controllable texture synthesis](https://dl.acm.org/doi/10.1145/1073204.1073261),
- on which we rely, is protected by a [patent](https://www.lens.org/lens/patent/094-594-510-321-623).
+ The GPU implementation of [Parallel controllable texture synthesis](https://dl.acm.org/doi/10.1145/1073204.1073261)
+ [Lefebvre and Hoppe 2005], on which we rely, is protected by a [patent](https://www.lens.org/lens/patent/094-594-510-321-623).
  
 <!--
  The [Semiproc_synthesis_Src](Semiproc_synthesis_Src) directory contains code required to synthesize
