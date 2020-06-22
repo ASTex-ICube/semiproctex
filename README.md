@@ -91,11 +91,11 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  ![semiproctex](Images/bdd_textures_1024.png)
  -->
 
-## Code and Binaries
+## Code and binaries
 
 IMPORTANT: Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc.). This will be available at least for the EGSR 2020 conference 29 june - 3 july. We will create a dedicated release/tab v1.0.0 version.
 
-### Target Machines
+### Target machines
 
 Operating systems:
 - [x] Windows 10
@@ -108,14 +108,17 @@ Tested graphics cards:
 Technologies:
 - OpenGL (4.6, at least >= 4.5, compute shaders), glad, glfw, glm, ImGui, CMake, C++, [Python to come]
 
-### PPTBF: procedural stochastic structures
+### PPTBF: Point Process Texture Basis Functions
 
  The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
  procedural binary structures from files of PPTBF parameters, and a real-time viewer to be able
  to design and edit PPTBF parameters interactively (works under Windows, Linux port soon).
+ 
+<!--
  More tools to come (e.g.: PPTBF database generator, spanning the space of PPTBF parameters).
+-->
 
- Note: GPU shader code is not optimized, due to back and forth between CPU and GPU versions during development. Cleaning and documentation to come...
+ Note: GPU shader code is not optimized, due to back and forth between CPU and GPU versions during development. Cleaning and documentation to come.
  
  Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
 
@@ -142,23 +145,30 @@ Technologies:
  Check [this file](semiProcTex_file_format.txt) to get a description of the semi-procedural texture file format. Work in progress...
  
 #### Binaries
+
+If you would like to get binaries for our semi-procedural texture synthesis method, please send an email to
+igg-semiproctex [at] icube [dot] unistra [dot] fr with objet "[semiproctex] Binaries".
  
+<!--
  - [ ] The Semiproc_synthesis_Bin archive (file will be available soon. Cleaning some data and versioning...)
  contains Windows binaries for our semi-procedural texture synthesis method. The program is able
  to reproduce our texture synthesis results (i.e. color images) of Supplemental material #1.
  We provide the binaries of our GPU implementation. For reasons of intellectual property, the GPU code cannot be
  distributed). How to: just drag'n'drop input exemplar images onto software 2D viewport to automaticcaly synthesize texture (files are provided with the binaries).
+-->
  
 <!--
  Note that a software version will be made available soon
  Here is a beta version of our semi-procedural texture software synthesizer
 -->
- 
+
+<!--
  - [ ] The Semiproctex_synthesis_CPU_Bin archive (file will be available soon. Cleaning some data and versioning...)
  is a CPU (not GPU-accelerated) version of our semi-procedural texture synthesis method. More info to come about available
  features and parameters description.
  
  NOTE: The software/CPU version uses the same algorithms than the GPU version. But the GPU one is more than 10 times faster (even far more depending on options). So the software/CPU version is only useful to look at the code, not launching synthesis. But you can try and test.
+ -->
  
  #### Application: Real-time/interactive semi-procedural texture synthesizer and designer on GPU
  
