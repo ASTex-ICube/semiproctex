@@ -1,7 +1,11 @@
 # Semi-Procedural Textures Using Point Process Texture Basis Functions
 
+<!--
 ![semiproctex](Images/teaser_bdd_structures.png)
 ![semiproctex](Images/teaser_1024.jpg)
+-->
+
+![semiproctex](Images/semiproctex.png)
 
 This is the page of our EGSR 2020 CGF track paper:
 
@@ -35,10 +39,13 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
 
 ## Supplemental materials
 
+<!--
 ### [1] Texture Synthesis Comparisons
+-->
 
- - [ ] **Supplemental #1** : Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods.
+ - **Supplemental #1** : Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods.
 
+<!--
  #### e.g.: Texture synthesis comparisons
  
  Database of 138 textures (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...) processed by 11 different texture synthesis methods. In these experiments, input textures are synthesized 2 times larger. Note: this is not a limit of our method, but due to some deep learning methods this already required between 1 and 2 months of computation even with GPUs...
@@ -46,11 +53,15 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  ![semiproctex](Images/texture_synthesis_comparisons_header.png)
  
  ![semiproctex](Images/texture_synthesis_comparisons_1024.jpg)
-  
+ -->
+ 
+ <!--
  ### [2] PPTBF Parameters Estimation, Noise Comparisons and Material Synthesis
+ -->
  
- - [ ] **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation, comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
+ - **Supplemental #2** : Available soon. This supplemental material provides additional results on: PPTBF parameters estimation, comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
  
+ <!--
  #### e.g.: PPTBF Parameter estimation (i.e. by-example procedural structures)
  
  Database of 147 segmented images (cells, cracks, dots, lines, scratches, waves, networks, tilings, etc...), from automatic parameter estimations to refinement and fine-tuning :
@@ -62,18 +73,23 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  Database of 3D scanned materials and procedural PBR materials.
  
  ![semiproctex](Images/material_synthesis_spatiallyVarying_1024.png)
+ -->
  
+ <!--
  ### [3] Database of input exemplars
+-->
  
- - [ ] **Supplemental #3** : Available soon. This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
+ - **Supplemental #3** : Available soon. This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
  folder Structures_with_PPTBF contains manually segmented binary structures with estimated PPTBF
  parameters, that can be used for procedural structure synthesis.
  
+ <!--
  #### e.g.: Database of Textures
  
   Database of approximately 150 textures, 10 scanned materials and 10 procedural PBR materials. More to come...
  
  ![semiproctex](Images/bdd_textures_1024.png)
+ -->
 
 ## Code and Binaries
 
@@ -92,7 +108,7 @@ Tested graphics cards:
 Technologies:
 - OpenGL (4.6, at least >= 4.5, compute shaders), glad, glfw, glm, ImGui, CMake, C++, [Python to come]
 
-### [1] PPTBF: procedural stochastic structures
+### PPTBF: procedural stochastic structures
 
  The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
  procedural binary structures from files of PPTBF parameters, and a real-time viewer to be able
@@ -103,27 +119,29 @@ Technologies:
  
  Check [this file](PPTBF_file_format.txt) to get a description of the PPTBF file format.
 
-#### Tools
+#### Binaries
  
  Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide tools for experimenting with the PPTBF model:
  - [x] a real-time PPTBF viewer/designer [GPU-accelerated]
  - [x] a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
  - [ ] a PPTBF database generator [GPU-accelerated] (spanning space of parameters) [soon available...]
 
+<!--
  #### e.g.: Real-time PPTBF viewer/designer
   
  A single PPTBF incorporates multiple binary structures with different topologies, that are only revealed by different thresholds, especially when blending window functions.
  
  ![semiproctex](Images/tools_editing_1024.png)
+ -->
  
-### [2] Semi-Procedural Texture Synthesis
+### Semi-Procedural Texture Synthesis
  
  The [Semiproc_synthesis_Src](Semiproc_synthesis_Src) directory contains code required to synthesize
  textures from files of our semi-procedural texture synthesis parameters and PPTBF parameters (works under Windows, Linux port soon). Work in progress...
 
  Check [this file](semiProcTex_file_format.txt) to get a description of the semi-procedural texture file format. Work in progress...
  
-#### Tools
+#### Binaries
  
  - [ ] The Semiproc_synthesis_Bin (file will be available soon. Cleaning some data and versioning...) archive
  contains Windows binaries for our semi-procedural texture synthesis method. The program is able
@@ -155,6 +173,7 @@ Technologies:
   
  - [ ] Our database of semi-procedural texture synthesis parameter files used for the supplementals will be available here soon...
  
+ <!--
  ### Important
  
  One or more textures bundled with this project have been created with images from [Textures.com](https://www.textures.com/). These images may not be redistributed by default. Please visit [www.textures.com](www.textures.com) for more information.
@@ -162,6 +181,7 @@ Technologies:
  Our database of binary structure exemplars have been manually segmented using filters from Photoshop (usually basic filters: curves, threshold, bilateral filter, etc...), then finished manually. Before we use the same process for each textures, our first textures have been processed non-uniformly.
  
  Method: most of the times, we downloaded textures from textures.com at 1024x1024 resolution, then crop a 512x512 part of it. The goal of our results and comparisons was to synthesize 1024x1024 images that look like the original exemplars (before cropping). But all original images have been segmented entirely, not only the crop. So, we are going to add a file indicating the web address of textures with the crop position so that people can download input exemplar and reproduce our results. But this is a time consuming task, so it will be done step by step !
+ -->
  
 <!--
 ### Prerequisites
