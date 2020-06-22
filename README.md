@@ -227,7 +227,7 @@ to generate this database.
 
 ## Citation
 
-If you use this code for your research, please cite our paper.
+If you use this method for your research, please cite our paper.
 
 ```
 @article{Guehl:EGSR2020,
