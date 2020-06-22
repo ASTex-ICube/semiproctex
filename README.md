@@ -16,15 +16,28 @@ To appear in Computer Graphics Forum (EGSR 2020 special issue), 39(4),
 
 #### Table of contents
 
-1. [Paper](#Paper)
+1. [Paper and citation](#Paper-and-citation)
 2. [Supplemental materials](#Supplemental-materials)
 3. [Code and binaries](#Code-and-binaries)
 4. [Data](#Data)
-5. [Citation](#Citation)
 
-## Paper
+## Paper and citation
 
-Available soon.
+You can grab the paper [here](http://igg.unistra.fr/People/semiproctex/paper/semiproctex.pdf). The paper will appear in the EGSR 2020 proceedings, as well as in the EGSR 2020 special issue of Computer Graphics Forum. Temporary citation is available below in BibTeX format.
+
+```
+@article{Guehl:EGSR2020,
+    author = "P. Guehl and R. All\`egre and J.-M. Dischler and B. Benes and E. Galin",
+    title = "Semi-Procedural Textures Using Point Process Texture Basis Functions",
+    journal = "Computer Graphics Forum (EGSR 2020 special issue)",
+    volume = "39",
+    number = "4",
+    year = "2020",
+    note = "To appear"
+}
+```
+
+http://igg.unistra.fr/People/semiproctex/paper/semiproctex.pdf
 
 <!--
 ## Note
@@ -222,19 +235,3 @@ to generate this database.
  * Clone this repository.
  * ...
 -->
-
-## Citation
-
-If you use this method for your research, please cite our paper.
-
-```
-@article{Guehl:EGSR2020,
-    author = "P. Guehl and R. All\`egre and J.-M. Dischler and B. Benes and E. Galin",
-    title = "Semi-Procedural Textures Using Point Process Texture Basis Functions",
-    journal = "Computer Graphics Forum (EGSR 2020 special issue)",
-    volume = "39",
-    number = "4",
-    year = "2020",
-    note = "To appear"
-}
-```
