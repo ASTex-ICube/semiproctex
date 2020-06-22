@@ -125,9 +125,9 @@ Technologies:
 #### Binaries
  
  Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide tools for experimenting with the PPTBF model:
- - [x] a real-time PPTBF viewer/designer [GPU-accelerated]
- - [x] a PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
- - [ ] a PPTBF database generator [GPU-accelerated] (spanning space of parameters) [soon available...]
+ - [x] A real-time PPTBF viewer/designer [GPU-accelerated]
+ - [x] A PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
+ - [ ] A PPTBF database generator [GPU-accelerated] (spanning space of parameters) [soon available...]
 
 <!--
  #### e.g.: Real-time PPTBF viewer/designer
@@ -139,10 +139,21 @@ Technologies:
  
 ### Semi-Procedural Texture Synthesis
  
+ We provide CPU code (not GPU-accelerated) for our semi-procedural texture synthesis method, available in the
+ [Semiproc_synthesis_Src](Semiproc_synthesis_Src) directory. Note that this code is a preliminary version that
+ does not exactly reproduce the results from the paper. Code to reproduce the synthesis results from the paper
+ will be made available later.
+ 
+ Note that for reasons of intellectual property, GPU implementation cannot be distributed.
+ The GPU implementation of [Parallel controllable texture synthesis](https://dl.acm.org/doi/10.1145/1073204.1073261),
+ on which we rely, is protected by a [patent](https://www.lens.org/lens/patent/094-594-510-321-623).
+ 
+<!--
  The [Semiproc_synthesis_Src](Semiproc_synthesis_Src) directory contains code required to synthesize
  textures from files of our semi-procedural texture synthesis parameters and PPTBF parameters (works under Windows, Linux port soon). Work in progress...
+-->
 
- Check [this file](semiProcTex_file_format.txt) to get a description of the semi-procedural texture file format. Work in progress...
+ Check [this file](semiProcTex_file_format.txt) to get a description of the semi-procedural texture file format.
  
 #### Binaries
 
