@@ -154,7 +154,7 @@ Technologies:
  
  NOTE: The software/CPU version uses the same algorithms than the GPU version. But the GPU one is more than 10 times faster (even far more depending on options). So the software/CPU version is only useful to look at the code, not launching synthesis. But you can try and test.
  
- #### e.g.: Real-time/interactive semi-procedural texture synthesizer and designer on GPU
+ #### Application: Real-time/interactive semi-procedural texture synthesizer and designer on GPU
  
  Trade-off between real-time/interactive texture synthesis design to longer high-quality results depending on user options (e.g.: "smart" initialization to initialize our optimization-based algorithm to keep the fine grain of input images).
  
