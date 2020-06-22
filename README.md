@@ -158,7 +158,7 @@ Technologies:
 #### Binaries
 
 If you would like to get binaries for our semi-procedural texture synthesis method, please send an email to
-igg-semiproctex [at] icube [dot] unistra [dot] fr with objet "[semiproctex] Binaries".
+igg-semiproctex [at] icube [dot] unistra [dot] fr with object "[semiproctex] Binaries".
  
 <!--
  - [ ] The Semiproc_synthesis_Bin archive (file will be available soon. Cleaning some data and versioning...)
