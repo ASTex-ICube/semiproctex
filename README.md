@@ -183,7 +183,7 @@ igg-semiproctex [at] icube [dot] unistra [dot] fr with objet "[semiproctex] Bina
  
 These binaries include a **real-time/interactive semi-procedural texture synthesizer and designer on GPU**. Trade-off between real-time/interactive texture synthesis design to longer high-quality results depending on user options (e.g.: "smart" initialization to initialize our optimization-based algorithm to keep the fine grain of input images).
  
- Yes, you can edit structures on-the-fly and navigate (translate, rotate, even zoom [zoom is a prototype version]), depending on selected options! :) Some videos will be available soon.
+ Yes, you can edit structures on-the-fly and navigate (translate, rotate, even zoom in a prototype version), depending on selected options! :)
  
  ![semiproctex](Images/semiproctex_tools_1024.png)
   
