@@ -1,15 +1,5 @@
 # Semi-Procedural Textures Using Point Process Texture Basis Functions
 
-IMPORTANT : Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc...). This will be available at least for the EGSR 2020 conference 29 june - 3 july. We will create a dedicated release/tab v1.0.0 version.
-
-#### Table of contents
-
-1. [Paper](#Paper)
-2. [Supplemental materials](#Supplemental-materials)
-3. [Code and binaries](#Code-and-binaries)
-4. [Data](#Data)
-5. [Citation](#Citation)
-
 ![semiproctex](Images/teaser_bdd_structures.png)
 ![semiproctex](Images/teaser_1024.jpg)
 
@@ -20,15 +10,25 @@ Semi-Procedural Textures Using Point Process Texture Basis Functions.
 To appear in Computer Graphics Forum (EGSR 2020 special issue), 39(4),
 2020.
 
+#### Table of contents
+
+1. [Paper](#Paper)
+2. [Supplemental materials](#Supplemental-materials)
+3. [Code and binaries](#Code-and-binaries)
+4. [Data](#Data)
+5. [Citation](#Citation)
+
 ## Paper
 
 Available soon.
 
+<!--
 ## Note
 
 This work can be seen as a small step in the spirit of the "Inverse Shade Trees" approach, being able to retrieve the appearance from an image as a graph of nodes and edit it interactively.
 
 This work also tries to mix Research, Industry and Art to enhance the creativity and productivity of digital artists from the video game and film industries. Node-based texturing tools from industry (such as Substance Designer) could benefit from this kind of "art-directable" textures and materials to create complex appearances.
+-->
 
 ## Acknowledgments
 This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Accueil) project funded by the French National Research Agency (project ID: ANR-16-CE33-0001).
@@ -76,6 +76,8 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  ![semiproctex](Images/bdd_textures_1024.png)
 
 ## Code and Binaries
+
+IMPORTANT: Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc.). This will be available at least for the EGSR 2020 conference 29 june - 3 july. We will create a dedicated release/tab v1.0.0 version.
 
 ### Target Machines
 
