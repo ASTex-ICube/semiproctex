@@ -143,14 +143,20 @@ Technologies:
  
 #### Binaries
  
- - [ ] The Semiproc_synthesis_Bin (file will be available soon. Cleaning some data and versioning...) archive
+ - [ ] The Semiproc_synthesis_Bin archive (file will be available soon. Cleaning some data and versioning...)
  contains Windows binaries for our semi-procedural texture synthesis method. The program is able
  to reproduce our texture synthesis results (i.e. color images) of Supplemental material #1.
- We provide the binaries of our GPU implementation. Note that a software version will be
- made available soon (for reasons of intellectual property, the GPU code cannot be
+ We provide the binaries of our GPU implementation. For reasons of intellectual property, the GPU code cannot be
  distributed). How to: just drag'n'drop input exemplar images onto software 2D viewport to automaticcaly synthesize texture (files are provided with the binaries).
  
- - [ ] Here is a beta version of our semi-procedural texture software synthesizer Semiproctex_synthesis_CPU_Bin (file will be available soon. Cleaning some data and versioning...) (not GPU-accelerated). More info to come about available features and parameters description...
+<!--
+ Note that a software version will be made available soon
+ Here is a beta version of our semi-procedural texture software synthesizer
+-->
+ 
+ - [ ] The Semiproctex_synthesis_CPU_Bin archive (file will be available soon. Cleaning some data and versioning...)
+ is a CPU (not GPU-accelerated) version of our semi-procedural texture synthesis method. More info to come about available
+ features and parameters description.
  
  NOTE: The software/CPU version uses the same algorithms than the GPU version. But the GPU one is more than 10 times faster (even far more depending on options). So the software/CPU version is only useful to look at the code, not launching synthesis. But you can try and test.
  
