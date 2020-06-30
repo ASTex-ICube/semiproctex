@@ -24,17 +24,17 @@ To appear in Computer Graphics Forum (EGSR 2020 special issue), 39(4),
 ## Paper and citation
 
 You can grab the paper [here](http://igg.unistra.fr/People/semiproctex/paper/semiproctex.pdf)
-(low resolution version available [here](http://igg.unistra.fr/People/semiproctex/paper/semiproctex_lowres.pdf)). The paper will appear in the EGSR 2020 proceedings, as well as in the EGSR 2020 special issue of Computer Graphics Forum. Temporary citation is available below in BibTeX format.
+(low resolution version available [here](http://igg.unistra.fr/People/semiproctex/paper/semiproctex_lowres.pdf)). The paper will appear in the EGSR 2020 proceedings, as well as in the EGSR 2020 special issue of Computer Graphics Forum. Citation is available below in BibTeX format.
 
 ```
-@article{Guehl:EGSR2020,
-    author = "P. Guehl and R. All\`egre and J.-M. Dischler and B. Benes and E. Galin",
-    title = "Semi-Procedural Textures Using Point Process Texture Basis Functions",
-    journal = "Computer Graphics Forum (EGSR 2020 special issue)",
-    volume = "39",
-    number = "4",
-    year = "2020",
-    note = "To appear"
+@article {10.1111:cgf.14061,
+    journal = {Computer Graphics Forum},
+    title = {{Semi-Procedural Textures Using Point Process Texture Basis Functions}},
+    author = {Guehl, Pascal and Allègre, Remi and Dischler, Jean-Michel and Benes, Bedrich and Galin, Eric},
+    year = {2020},
+    publisher = {The Eurographics Association and John Wiley & Sons Ltd.},
+    ISSN = {1467-8659},
+    DOI = {10.1111/cgf.14061}
 }
 ```
 
