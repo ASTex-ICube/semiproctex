@@ -24,7 +24,7 @@ To appear in Computer Graphics Forum (EGSR 2020 special issue), 39(4),
 ## Paper and citation
 
 You can grab the paper [here](http://igg.unistra.fr/People/semiproctex/paper/semiproctex.pdf)
-(low resolution version available [here](http://igg.unistra.fr/People/semiproctex/paper/semiproctex_lowres.pdf)). The paper will appear in the EGSR 2020 proceedings, as well as in the EGSR 2020 special issue of Computer Graphics Forum. Citation is available below in BibTeX format.
+(low resolution version available [here](http://igg.unistra.fr/People/semiproctex/paper/semiproctex_lowres.pdf)). The paper appears in the EGSR 2020 special issue of Computer Graphics Forum. Citation is available below in BibTeX format.
 
 ```
 @article {10.1111:cgf.14061,
