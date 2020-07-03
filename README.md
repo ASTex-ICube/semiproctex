@@ -91,7 +91,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  ### [3] Database of input exemplars
 -->
  
- - **Supplemental #3**: Available soon. This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
+ - **Supplemental #3**: Available [here](http://igg.unistra.fr/People/semiproctex/data/Supplemental3_v100.zip). This supplemental material contains the database of binary structures used for the paper in full quality. Note that for reasons of terms of use, we do not provide all corresponding texture exemplars. The folder Structures contains manually segmented binary structures. The
  folder Structures_with_PPTBF contains manually segmented binary structures with estimated PPTBF
  parameters, that can be used for procedural structure synthesis.
  
