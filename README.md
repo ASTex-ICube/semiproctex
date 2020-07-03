@@ -71,7 +71,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
  ### [2] PPTBF Parameters Estimation, Noise Comparisons and Material Synthesis
  -->
  
- - **Supplemental #2**: Available soon. This supplemental material provides additional results on: PPTBF parameters estimation, comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
+ - **Supplemental #2**: Available [here](http://igg.unistra.fr/People/semiproctex/data/Supplemental2_v100.zip). This supplemental material provides additional results on: PPTBF parameters estimation, comparisons to noise by example (structure only), material synthesis results, and synthesis results with structure transitions.
  
  <!--
  #### e.g.: PPTBF Parameter estimation (i.e. by-example procedural structures)
