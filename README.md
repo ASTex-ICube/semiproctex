@@ -107,7 +107,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
 
 ## Code and binaries
 
-IMPORTANT: Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc.). This will be available at least for the EGSR 2020 conference June 29-July 3. We will create a dedicated release/tab v1.0.0 version. Stay tuned!
+IMPORTANT: Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc.). We will soon create a dedicated release/tab v1.0.0 version. Stay tuned!
 
 ### Target machines
 
