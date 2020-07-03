@@ -55,7 +55,7 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
 ### [1] Texture Synthesis Comparisons
 -->
 
- - **Supplemental #1**: Available soon. This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods.
+ - **Supplemental #1**: Available [here](http://igg.unistra.fr/People/semiproctex/data/Supplemental1_v100.zip). This supplemental material provides semi-procedural texture synthesis results using our method and comparisons to state-of-the-art texture synthesis methods.
 
 <!--
  #### e.g.: Texture synthesis comparisons
