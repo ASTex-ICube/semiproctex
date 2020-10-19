@@ -140,7 +140,7 @@ Technologies:
  
  Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide tools for experimenting with the PPTBF model:
  - [x] A real-time PPTBF viewer/designer [GPU-accelerated]
- - [x] A PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis)
+ - [x] REPLICABILITY : A PPTBF synthesizer from a PPTBF parameter file [GPU-accelerated] (for procedural PPTBF and binary structures synthesis). We provide a script (launch_pptbf_results.bat) that replicates all binary images from supplemental #2 (Supplemental2/Page1.html webpage), from which our figure 11 in our aticle is an extract.
  - [ ] A PPTBF database generator [GPU-accelerated] (spanning space of parameters) [soon available...]
 
 <!--
@@ -150,6 +150,12 @@ Technologies:
  
  ![semiproctex](Images/tools_editing_1024.png)
  -->
+ 
+#### Replicability
+ 
+The code and binaries are able to reproduce the Figure 11 of our article ("Evaluation of the capability of PPTBF to produce natural structures"), which is a short extract of our supplemental material #2 (available [here](http://igg.unistra.fr/People/semiproctex/data/Supplemental2_v100.zip)), especially page Supplemental2/Page1.html providing additional results on PPTBF parameters estimation.
+Concerning the source code, the "PPTBF_Structures_Src" directory contains code required to produce procedural binary structures from files of PPTBF parameters. For instance, in the supplemental material #2, the directory : "Supplemental2\images\Matching_structures\cells\111357_seg_scrop" contains the original image "111357_seg_scrop.jpg", and we provide a parameter file "111357_seg_scrop_pptbf_params.txt" from which our PPTBF procedural model have generated images "111357_seg_scrop_pptbf.jpg" and its thresholded version "111357_seg_scrop_pptbf_binary.jpg" (that looks like the original image). The goal of our code and binaries is to replicate all files "xxx_pptbf.jpg" and "xxx_pptbf_binary.jpg" from parameter files "xxx_pptbf_params.txt" to looks like original images "xxx.jpg".
+REPLICABILITY: compile code in "PPTBF_Structures_Src" directory following provided "readme.txt". Then, download the binaries file and data "PPTBF_Structures_Bin.zip" (available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip)). Either launch the script "launch_pptbf_results.bat" that will reproduce all images in "Data\Data\Matching_structures", or replace your previously compiled files from your directory "PPTBF_Structures_Src/Install/PPTBFProject/bin/" into the downloaded "Bin" directory and launch the script.
  
 ### Semi-Procedural Texture Synthesis
  
