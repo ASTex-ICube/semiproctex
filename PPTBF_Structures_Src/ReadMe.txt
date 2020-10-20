@@ -10,6 +10,8 @@ We have tested the softwares with the following graphics cards :
 - NVidia GeForce 1060 GTX (6Go)
 - NVidia RTX 2070 (8 Go)
 
+On Windows, we rely on: CMake, Visual Studio, 7-zip file archiver and ".bat" scripts.
+
 -----------------------------------------
 [1] - Compile 3rd party dependencies
 -----------------------------------------
@@ -23,7 +25,8 @@ We have tested the softwares with the following graphics cards :
 
 - launch script build_glad.bat
   => BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..\glad
-  depending on your settings, it could be for instance: cmake -G "Visual Studio 16 2019 Win64" ..\glad                                                                                                                                   cmake -G "Visual Studio 14 2015 Win64" ..\glad
+  depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
+  for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to glad-build directory
 - open and compile gladProject.sln Visual Studio solution
 => NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes
