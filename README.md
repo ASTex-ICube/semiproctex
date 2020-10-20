@@ -153,8 +153,31 @@ Technologies:
  
 #### Replicability
  
-The code and binaries are able to at least reproduce the Figure 11 of our article ("Evaluation of the capability of PPTBF to produce natural structures"), which is a short extract of our supplemental material #2 (available [here](http://igg.unistra.fr/People/semiproctex/data/Supplemental2_v100.zip)), especially page Supplemental2/Page1.html providing additional results on PPTBF parameters estimation.
-Concerning the source code, the "PPTBF_Structures_Src" directory contains code required to produce procedural binary structures from files of PPTBF parameters. For instance, in the supplemental material #2, the directory : "Supplemental2\images\Matching_structures\cells\111357_seg_scrop" contains the original image "111357_seg_scrop.jpg", and we provide a parameter file "111357_seg_scrop_pptbf_params.txt" from which our PPTBF procedural model have generated images "111357_seg_scrop_pptbf.jpg" and its thresholded version "111357_seg_scrop_pptbf_binary.jpg" (that looks like the original image). The goal of our code and binaries is to replicate all files "xxx_pptbf.jpg" and "xxx_pptbf_binary.jpg" from parameter files "xxx_pptbf_params.txt" to looks like original images "xxx.jpg".
+The code and binaries are able to at least reproduce the Figure 11 of our article ("Evaluation of the capability of PPTBF to produce natural structures"), which is a short extract of our supplemental material #2 (available [here](http://igg.unistra.fr/People/semiproctex/data/Supplemental2_v100.zip)), especially page Supplemental2/Page1.html providing additional results on PPTBF parameters estimation (147 results). In the fugure 11, you can find the following replicated images:
+
+LEFT COLUMN (top to bottom):
+- 20181215_153153_seg_scrop_pptbf_binary.png
+- bumpy_hard_concrete_texture_9261475_seg_scrop_pptbf_binary.png [NOTE: for this image, you may find a difference due to a translation in the original article]
+- foam_texture_seg_scrop_pptbf_binary
+- mud_flakes_closeup_150326_seg_scrop_pptbf_binary.png
+
+MIDDLE COLUMN (top to bottom):
+- phasor_seg_scrop_pptbf_binary.png
+- deephexa_seg_scrop_pptbf_binary.png
+- mosaicstones1_seg_scrop_pptbf_binary.png
+- straw_seg_scrop_pptbf_binary.png
+
+RIGHT COLUMN (top to bottom):
+- Marble_seg_scrop_pptbf_binary.png
+- 14596343807_24e447963c_o_seg_scrop_pptbf_binary.png
+- whiteash_seg_scrop_pptbf_binary.png
+- TexturesCom_Crackles0011_S_seg_scrop_pptbf_binary.png
+
+We provide two ways to replicate data: either from a precompiled binary executable or from recompilation of source code from scratch (see below for details). 
+
+[1] Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide a script (launch_pptbf_results.bat) that replicates all binary images from supplemental #2 (Supplemental2/Page1.html webpage), from which our figure 11 in our aticle is an extract.
+
+[2] Concerning the source code, the "PPTBF_Structures_Src" directory contains code required to produce procedural binary structures from files of PPTBF parameters. For instance, in the supplemental material #2, the directory : "Supplemental2\images\Matching_structures\cells\111357_seg_scrop" contains the original image "111357_seg_scrop.jpg", and we provide a parameter file "111357_seg_scrop_pptbf_params.txt" from which our PPTBF procedural model have generated images "111357_seg_scrop_pptbf.jpg" and its thresholded version "111357_seg_scrop_pptbf_binary.jpg" (that looks like the original image). The goal of our code and binaries is to replicate all files "xxx_pptbf.jpg" and "xxx_pptbf_binary.jpg" from parameter files "xxx_pptbf_params.txt" to looks like original images "xxx.jpg".
 To replicate all, compile code in "PPTBF_Structures_Src" directory following provided "readme.txt". Then, download the binaries file and data "PPTBF_Structures_Bin.zip" (available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip)). Either launch the script "launch_pptbf_results.bat" that will reproduce all images in "Data\Data\Matching_structures", or replace your previously compiled files from your directory "PPTBF_Structures_Src/Install/PPTBFProject/bin/" into the downloaded "Bin" directory and launch the script.
  
 ### Semi-Procedural Texture Synthesis
