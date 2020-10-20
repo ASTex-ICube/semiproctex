@@ -7,6 +7,7 @@ rem **************************************************************************
 rem Call the script selecting the CMAKE compiler (Visual Studio 2010, 2012, etc...)
 rem set GS_COMPILER="Visual Studio 14 2015 Win64"
 set GS_COMPILER="Visual Studio 15 2017 Win64"
+rem set GS_COMPILER="Visual Studio 16 2019 Win64"
 
 rem **************************************************************************
 rem CMAKE GENERATION
