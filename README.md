@@ -157,7 +157,7 @@ The code and binaries are able to at least reproduce the Figure 11 of our articl
 
 For this, we provide code required to produce procedural binary structures from files of PPTBF parameters. For instance, in the supplemental material #2, the directory : "Supplemental2\images\Matching_structures\cells\111357_seg_scrop" contains the original image "111357_seg_scrop.jpg", and we provide a parameter file "111357_seg_scrop_pptbf_params.txt" from which our PPTBF procedural model have generated images "111357_seg_scrop_pptbf.jpg" and its thresholded version "111357_seg_scrop_pptbf_binary.jpg" (that looks like the original image). The goal of our code and binaries is to replicate all files "xxx_pptbf.jpg" and "xxx_pptbf_binary.jpg" from parameter files "xxx_pptbf_params.txt" to looks like original images "xxx.jpg".
 
-In the fugure 11, you can find the following replicated images:
+In the figure 11, you can find the following replicated images:
 
 LEFT COLUMN (top to bottom):
 - 20181215_153153_seg_scrop_pptbf_binary.png
