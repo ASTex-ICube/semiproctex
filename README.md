@@ -182,7 +182,9 @@ We provide two ways to replicate data: either from a precompiled binary executab
 [1] REPLICATE FROM BINARIES: Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide a unique script that replicates all binary images from supplemental #2 (see "Supplemental2/Page1.html" webpage), from which our figure 11 in our aticle is an extract. Launch the unique script "launch_pptbf_results.bat" that will generate all images into the "Data\Matching_structures" directory.
 
 [2] REPLICATE FROM SOURCE CODE: To replicate all from scratch, compile code in the "PPTBF_Structures_Src" directory following provided "readme.txt" in the same directory. Then launch the unique script "replicate_pptbfResults_matchingStructures.bat" that will generate all images into the "Install\PPTBFProject\bin\Data\Matching_structures" directory.
- 
+
+NOTE: sometimes, the generation of 1 of the 147 images may seem to crash depending on systems (hardware?).
+
 ### Semi-Procedural Texture Synthesis
  
  We provide CPU code (not GPU-accelerated) for our semi-procedural texture synthesis method, available in the
