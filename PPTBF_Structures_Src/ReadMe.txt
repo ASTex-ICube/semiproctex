@@ -10,7 +10,7 @@ We have tested the softwares with the following graphics cards :
 - NVidia GeForce 1060 GTX (6Go)
 - NVidia RTX 2070 (8 Go)
 
-On Windows, we rely on: CMake, Visual Studio, 7-zip file archiver and ".bat" scripts.
+On Windows, we rely on: CMake, Visual Studio, 7-zip file archiver and ".bat" scripts. Furthermore, the GLAD depency (see below) requires Python (CMake seems to find Python to process files).
 
 -----------------------------------------
 [1] - Compile 3rd party dependencies
@@ -29,7 +29,7 @@ On Windows, we rely on: CMake, Visual Studio, 7-zip file archiver and ".bat" scr
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to glad-build directory
 - open and compile gladProject.sln Visual Studio solution
-=> NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes
+=> NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 => we rely on CMake "ExternalProject_Add" feature to download libraries on-demand at compilation stage from their online github repositories
 
 - Do the same for the scripts : build_glfw.bat and build_glad.bat
