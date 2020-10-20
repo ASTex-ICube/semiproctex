@@ -116,6 +116,7 @@ target_link_libraries( ${PROJECT_NAME} PtGraphics )
 target_link_libraries( ${PROJECT_NAME} glfw )
 
 # glad
+target_include_directories( ${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../../3rdParty/glad/include")
 target_link_libraries( ${PROJECT_NAME} glad::glad )
 
 # ImGui
