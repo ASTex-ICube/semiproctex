@@ -23,6 +23,7 @@ We have tested the softwares with the following graphics cards :
 
 - launch script build_glad.bat
   => BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..\glad
+  depending on your settings, it could be for instance: cmake -G "Visual Studio 16 2019 Win64" ..\glad                                                                                                                                   cmake -G "Visual Studio 14 2015 Win64" ..\glad
 - go to glad-build directory
 - open and compile gladProject.sln Visual Studio solution
 => NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes
@@ -34,7 +35,8 @@ We have tested the softwares with the following graphics cards :
 ---- ImGui ----
 
 - go back to 3rdParty directory
-- unzip the ImGui.7z
+- unzip (here) the ImGui.7z
+  => it requires the 7zip tool (available here: https://www.7-zip.org/)
 - launch script cmake_generateProjects.bat
 - go to Generated directory
 - open and compile ImGui.sln Visual Studio solution
