@@ -53,7 +53,7 @@ You can find all the detailed process in the PDF file: [Replicability_fromBinari
 
 ### REPLICATE FROM SOURCE CODE
 
-To replicate all from scratch, compile code in the "PPTBF_Structures_Src" directory following provided "readme.txt" in the same directory.
+To replicate all from scratch, compile code in the [PPTBF_Structures_Src](../PPTBF_Structures_Src) directory following provided "readme.txt" in the same directory.
 
 Then launch the unique script "replicate_pptbfResults_matchingStructures.bat" that will generate all images into the "Install\PPTBFProject\bin\Data\Matching_structures" directory.
 
