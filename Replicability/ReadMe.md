@@ -45,11 +45,19 @@ We provide two ways to replicate data: either from a precompiled binary executab
 
 ### REPLICATE FROM BINARIES
 
-Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide a unique script that replicates all binary images from supplemental #2 (see "Supplemental2/Page1.html" webpage), from which our figure 11 in our aticle is an extract.
+Windows binaries are available in the archive [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide a unique script that replicates all binary images from supplemental #2 (see "Supplemental2/Page1.html" webpage), from which our figure 11 in our aticle is an extract.
 
 Launch the unique script "launch_pptbf_results.bat" that will generate all images into the "Data\Matching_structures" directory.
 
 You can find all the detailed process in the PDF file: [Replicability_fromBinaries.pdf](Replicability_fromBinaries.pdf)
+
+##### Database info
+
+The "Data" repository (in the binaries archive) contains all PPTBF files (Point Process Texture Basis Functions) of our database:
+- there are currently 147 files storing PPTBF parameters describing the equivalent procedural models (in .txt format)
+- here, they are classified by structures types (cells, lines, networks, dots, ...) BUT it's not mandatory
+- they come from "manual segmentation" from a database of colored textures images (except for the "phasor", coming from the technical paper "Procedural Phasor Noise"),
+  followed by the "parameter estimation" stage describes in our paper ([semi-]automatic followed by manual editing refinement)
 
 ### REPLICATE FROM SOURCE CODE
 
