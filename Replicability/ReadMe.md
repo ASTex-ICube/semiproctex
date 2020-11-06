@@ -13,7 +13,7 @@ Computer Graphics Forum (EGSR 2020 special issue)
 This is a guide to reproduce the "visual structures" results from our procedural stochastic PPTBF model (i.e. binary images).
 
 NOTE : It works on Windows systems for the moment. (Linux port soon)
-We have tested the softwares with the following graphics cards :
+We have tested the softwares with the following graphics cards:
 - NVidia GeForce 1060 GTX (6Go)
 - NVidia RTX 2070 (8 Go)
 
@@ -24,6 +24,8 @@ The code and binaries are able to at least reproduce the Figure 11 (see below) o
 ![figure 11](figure_11_from_paper.png)
 
 This figure is a short extract of our supplemental material #2 (available here), especially page "Supplemental2/Page1.html" providing additional results on PPTBF parameters estimation (147 results). So, this supplemental material #2 is the reference data to compare.
+
+![supplemental 2](supplemental_2_snapshot.png)
 
 For this, we provide code required to produce procedural binary structures from files of PPTBF parameters. For instance, in the supplemental material #2, the directory : "Supplemental2\images\Matching_structures\cells\111357_seg_scrop" contains the original image "111357_seg_scrop.jpg", and we provide a parameter file "111357_seg_scrop_pptbf_params.txt" from which our PPTBF procedural model have generated images "111357_seg_scrop_pptbf.jpg" and its thresholded version "111357_seg_scrop_pptbf_binary.jpg" (that looks like the original image). The goal of our code and binaries is to replicate all files "xxx_pptbf.jpg" and "xxx_pptbf_binary.jpg" from parameter files "xxx_pptbf_params.txt" to looks like original images "xxx.jpg".
 
