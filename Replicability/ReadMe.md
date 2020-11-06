@@ -65,16 +65,18 @@ The command line PPTBF generator works either manually or in batch mode.
  
 ##### BATCH PROCESSING
 Launch the script "launch_pptbf_results.bat"
-=> the script will launch the software "PtBDDGenerator.exe" in the "Bin" directory in batch mode,
+- the script will launch the software "PtBDDGenerator.exe" in the "Bin" directory in batch mode,
    processing each of the 147 PPTBF files named "xxx_seg_scrop_pptbf_params.txt", where "xxx" is the PPTBF name
-=> all PPTBF files are in the "Data\Matching_structures" directory classified by types (cells, etc) in subdirectories
-=> generated images will be saved on disk near the PPTBF file "xxx_seg_scrop_pptbf_params.txt" file.
+- all PPTBF files are in the "Data\Matching_structures" directory classified by types (cells, etc) in subdirectories
+- generated images will be saved on disk near the PPTBF file "xxx_seg_scrop_pptbf_params.txt" file.
+
 CUSTOMIZATION:
-=> User may change data path and data hierarchy structure in the script by modifying the variable "PPTBF_DATA_PATH"
+- User may change data path and data hierarchy structure in the script by modifying the variable "PPTBF_DATA_PATH"
 
 ##### MANUAL PROCESSING
 The PtBDDGenerator.exe software works by providing a PPTBF file as parameter and PPTBF width and height, such as:
 C:\PPTBF\Bin\PtBDDGenerator.exe C:\PPTBF\Data\Matching_structures\cells\111357_seg_scrop\111357_seg_scrop_pptbf_params.txt 400 400
+
 BEWARE: you MUST prefix the exe and file by full path
 
 ### REPLICATE FROM SOURCE CODE
