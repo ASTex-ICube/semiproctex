@@ -55,6 +55,8 @@ We provide two ways to replicate data: either from a precompiled binary executab
 
 Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide a unique script that replicates all binary images from supplemental #2 (see "Supplemental2/Page1.html" webpage), from which our figure 11 in our aticle is an extract. Launch the unique script "launch_pptbf_results.bat" that will generate all images into the "Data\Matching_structures" directory.
 
+You can find all the detailed process in the PDF file: [Replicability_fromBinaries.pdf](Replicability_fromBinaries.pdf)
+
 ## REPLICATE FROM SOURCE CODE
 
 To replicate all from scratch, compile code in the "PPTBF_Structures_Src" directory following provided "readme.txt" in the same directory. Then launch the unique script "replicate_pptbfResults_matchingStructures.bat" that will generate all images into the "Install\PPTBFProject\bin\Data\Matching_structures" directory.
