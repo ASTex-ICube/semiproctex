@@ -19,11 +19,11 @@ We have tested the softwares with the following graphics cards:
 
 # How To
 
-The code and binaries are able to at least reproduce the Figure 11 (see below) of our article, named "Evaluation of the capability of PPTBF to produce natural structures".
+The code and binaries are able to at least reproduce the Figure 11 of our article, named "Evaluation of the capability of PPTBF to produce natural structures" (see below).
 
 ![figure 11](figure_11_from_paper.png)
 
-This figure is a short extract of our supplemental material #2 (available here), especially page "Supplemental2/Page1.html" providing additional results on PPTBF parameters estimation (147 results). So, this supplemental material #2 is the reference data to compare.
+It is a short extract of our supplemental material #2 (available [here](http://igg.unistra.fr/People/semiproctex/data/Supplemental2_v100.zip)), especially page "Supplemental2/Page1.html" providing additional results on PPTBF parameters estimation (147 results). So, this supplemental material #2 is the reference data to compare (see below).
 
 ![supplemental 2](supplemental_2_snapshot.png)
 
@@ -32,26 +32,26 @@ For this, we provide code required to produce procedural binary structures from 
 In the figure 11, you can find the following replicated images:
 
 LEFT COLUMN (top to bottom):
+- 20181215_153153_seg_scrop_pptbf_binary.png
+- bumpy_hard_concrete_texture_9261475_seg_scrop_pptbf_binary.png [NOTE: for this image, you may find a difference due to a translation in the original article]
+- foam_texture_seg_scrop_pptbf_binary
+- mud_flakes_closeup_150326_seg_scrop_pptbf_binary.png
 
-20181215_153153_seg_scrop_pptbf_binary.png
-bumpy_hard_concrete_texture_9261475_seg_scrop_pptbf_binary.png [NOTE: for this image, you may find a difference due to a translation in the original article]
-foam_texture_seg_scrop_pptbf_binary
-mud_flakes_closeup_150326_seg_scrop_pptbf_binary.png
 MIDDLE COLUMN (top to bottom):
+- phasor_seg_scrop_pptbf_binary.png
+- deephexa_seg_scrop_pptbf_binary.png
+- mosaicstones1_seg_scrop_pptbf_binary.png
+- straw_seg_scrop_pptbf_binary.png
 
-phasor_seg_scrop_pptbf_binary.png
-deephexa_seg_scrop_pptbf_binary.png
-mosaicstones1_seg_scrop_pptbf_binary.png
-straw_seg_scrop_pptbf_binary.png
 RIGHT COLUMN (top to bottom):
+- Marble_seg_scrop_pptbf_binary.png
+- 14596343807_24e447963c_o_seg_scrop_pptbf_binary.png
+- whiteash_seg_scrop_pptbf_binary.png
+- TexturesCom_Crackles0011_S_seg_scrop_pptbf_binary.png
 
-Marble_seg_scrop_pptbf_binary.png
-14596343807_24e447963c_o_seg_scrop_pptbf_binary.png
-whiteash_seg_scrop_pptbf_binary.png
-TexturesCom_Crackles0011_S_seg_scrop_pptbf_binary.png
-We provide two ways to replicate data: either from a precompiled binary executable or from recompilation of source code from scratch (see below for details).
+We provide two ways to replicate data: either from a precompiled binary executable or from recompilation of source code from scratch (see below for details). 
 
-[1] REPLICATE FROM BINARIES: Windows binaries are available here. We provide a unique script that replicates all binary images from supplemental #2 (see "Supplemental2/Page1.html" webpage), from which our figure 11 in our aticle is an extract. Launch the unique script "launch_pptbf_results.bat" that will generate all images into the "Data\Matching_structures" directory.
+[1] REPLICATE FROM BINARIES: Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide a unique script that replicates all binary images from supplemental #2 (see "Supplemental2/Page1.html" webpage), from which our figure 11 in our aticle is an extract. Launch the unique script "launch_pptbf_results.bat" that will generate all images into the "Data\Matching_structures" directory.
 
 [2] REPLICATE FROM SOURCE CODE: To replicate all from scratch, compile code in the "PPTBF_Structures_Src" directory following provided "readme.txt" in the same directory. Then launch the unique script "replicate_pptbfResults_matchingStructures.bat" that will generate all images into the "Install\PPTBFProject\bin\Data\Matching_structures" directory.
 
