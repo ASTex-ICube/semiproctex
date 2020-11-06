@@ -1,14 +1,6 @@
 # Replicability
 
-### Technical paper
-
-Semi-Procedural Textures Using Point Process Texture Basis Functions
-
-P. Guehl , R. AllEgre , J.-M. Dischler, B. Benes , and E. Galin
-
-Computer Graphics Forum (EGSR 2020 special issue)
-
-### Overview
+## Overview
 
 This is a guide to reproduce the "visual structures" results from our procedural stochastic PPTBF model (i.e. binary images).
 
@@ -17,7 +9,7 @@ We have tested the softwares with the following graphics cards:
 - NVidia GeForce 1060 GTX (6Go)
 - NVidia RTX 2070 (8 Go)
 
-# How To
+## How To
 
 The code and binaries are able to at least reproduce the Figure 11 of our article, named "Evaluation of the capability of PPTBF to produce natural structures" (see below).
 
@@ -51,7 +43,7 @@ RIGHT COLUMN (top to bottom):
 
 We provide two ways to replicate data: either from a precompiled binary executable or from recompilation of source code from scratch (see below for details). 
 
-## REPLICATE FROM BINARIES
+### REPLICATE FROM BINARIES
 
 Windows binaries are available [here](http://igg.unistra.fr/people/semiproctex/PPTBF_Structures_Bin.zip). We provide a unique script that replicates all binary images from supplemental #2 (see "Supplemental2/Page1.html" webpage), from which our figure 11 in our aticle is an extract.
 
@@ -59,7 +51,7 @@ Launch the unique script "launch_pptbf_results.bat" that will generate all image
 
 You can find all the detailed process in the PDF file: [Replicability_fromBinaries.pdf](Replicability_fromBinaries.pdf)
 
-## REPLICATE FROM SOURCE CODE
+### REPLICATE FROM SOURCE CODE
 
 To replicate all from scratch, compile code in the "PPTBF_Structures_Src" directory following provided "readme.txt" in the same directory.
 
