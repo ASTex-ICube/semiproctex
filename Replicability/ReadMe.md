@@ -32,22 +32,22 @@ For this, we provide code required to produce procedural binary structures from 
 In the figure 11, you can find the following replicated images:
 
 LEFT COLUMN (top to bottom):
-- 20181215_153153_seg_scrop_pptbf_binary.png
-- bumpy_hard_concrete_texture_9261475_seg_scrop_pptbf_binary.png [NOTE: for this image, you may find a difference due to a translation in the original article]
-- foam_texture_seg_scrop_pptbf_binary
-- mud_flakes_closeup_150326_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\cells\20181215_153153_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\dots\bumpy_hard_concrete_texture_9261475_seg_scrop_pptbf_binary.png [NOTE: for this image, you may find a difference due to a translation in the original article]
+- Data\Matching_structures\maps\foam_texture_seg_scrop_pptbf_binary
+- Data\Matching_structures\cells\mud_flakes_closeup_150326_seg_scrop_pptbf_binary.png
 
 MIDDLE COLUMN (top to bottom):
-- phasor_seg_scrop_pptbf_binary.png
-- deephexa_seg_scrop_pptbf_binary.png
-- mosaicstones1_seg_scrop_pptbf_binary.png
-- straw_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\lines\phasor_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\tilings\deephexa_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\cells\mosaicstones1_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\piles\straw_seg_scrop_pptbf_binary.png
 
 RIGHT COLUMN (top to bottom):
-- Marble_seg_scrop_pptbf_binary.png
-- 14596343807_24e447963c_o_seg_scrop_pptbf_binary.png
-- whiteash_seg_scrop_pptbf_binary.png
-- TexturesCom_Crackles0011_S_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\networks\Marble_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\cells\14596343807_24e447963c_o_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\grains\whiteash_seg_scrop_pptbf_binary.png
+- Data\Matching_structures\cells\TexturesCom_Crackles0011_S_seg_scrop_pptbf_binary.png
 
 We provide two ways to replicate data: either from a precompiled binary executable or from recompilation of source code from scratch (see below for details). 
 
