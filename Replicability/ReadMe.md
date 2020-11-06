@@ -1,22 +1,23 @@
------------------------------------------------------------------------------------------------------------------
-Technical paper:
-Semi-Procedural Textures Using Point Process Texture Basis Functions
-P. Guehl , R. AllEgre , J.-M. Dischler, B. Benes , and E. Galin
-Computer Graphics Forum (EGSR 2020 special issue)
------------------------------------------------------------------------------------------------------------------
+# Replicability
 
------------------------------------------------------------------------------------------------------------------
-Guide to reproduce the "visual structures" results from our procedural stochastic PPTBF model (i.e. binary images):
------------------------------------------------------------------------------------------------------------------
+### Technical paper
+
+Semi-Procedural Textures Using Point Process Texture Basis Functions
+
+P. Guehl , R. AllEgre , J.-M. Dischler, B. Benes , and E. Galin
+
+Computer Graphics Forum (EGSR 2020 special issue)
+
+### Overview
+
+This is a guide to reproduce the "visual structures" results from our procedural stochastic PPTBF model (i.e. binary images).
 
 NOTE : It works on Windows systems for the moment. (Linux port soon)
 We have tested the softwares with the following graphics cards :
 - NVidia GeForce 1060 GTX (6Go)
 - NVidia RTX 2070 (8 Go)
 
------------------------
----- REPLICABILITY ----
------------------------
+# How To
 
 The code and binaries are able to at least reproduce the Figure 11 of our article ("Evaluation of the capability of PPTBF to produce natural structures"), which is a short extract of our supplemental material #2 (available here), especially page "Supplemental2/Page1.html" providing additional results on PPTBF parameters estimation (147 results). So, this supplemental material #2 is the reference data to compare.
 
