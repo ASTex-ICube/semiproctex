@@ -38,7 +38,7 @@ https://visualstudio.microsoft.com/fr/downloads/
 
 ## [Step 1] Compile 3rd party dependencies
 
-First, go to ***3rdParty*** directory.
+First, go to ***3rdParty*** directory
 
 ### GLAD, GLFW, GLM
 
@@ -48,7 +48,7 @@ First, go to ***3rdParty*** directory.
   - BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..\glad
   depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
-- go to *glad-build* directory
+- go to ***glad-build*** directory
 - open and compile ***gladProject.sln*** Visual Studio solution
   - NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 
@@ -69,7 +69,7 @@ First, go to ***3rdParty*** directory.
 
 ## [Step 2] Compile the PPTBF project (dll + tools)
 
-- go back to project root directory
+- go back to the *project root directory*
 - launch script ***cmake_generateProjects.bat***
   - BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..
   depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
@@ -87,12 +87,13 @@ BEWARE: you MUST launch it with by prefexing name with current fullpath director
 
 ## [1] Interactive PPTBF Viewer
 
-The ***PtViewer.exe*** software enables to visualize and edit the PPTBF parameters at real-time.
-=> Launch the script ***tool_launchViewer.bat*** at root directory
+The ***PtViewer.exe*** software enables to visualize and edit the PPTBF parameters at real-time ((PPTBF is a model of stochastic procedural structures).
 
-Scene objects:
-- a) PPTBF
-- b) visual structure is the thresholded version of the continuous PPTBF accrding to given threshold (use GUI widget "Binary Structure Map")
+Launch the script ***tool_launchViewer.bat*** at root directory.
+
+Info on displayed scene objects in the viewer:
+- a) PPTBF (model of stochastic procedural structures in grayscale)
+- b) visual structure is the thresholded version of the continuous PPTBF according to given threshold (use GUI widget "Binary Structure Map")
 - c) 3D mesh onto which the PPTBF is mapped (PPTBF or thresholded version)
 
 ### NAVIGATION control in 3D view
@@ -111,7 +112,7 @@ Scene objects:
 
 ## [2] PPTBF GENERATOR
 
-Launching the PPTBF command line generator
+The ***PtBDDGenerator.exe*** software enables to launching the PPTBF command line generator.
 
 ### MANUAL PROCESSING
 
