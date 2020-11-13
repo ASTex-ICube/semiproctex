@@ -8,7 +8,7 @@ Here you can find information to compile source code froms scratch.
 
 Currently, it works on Windows operating systems. (Linux port soon)
 
-## Hardware
+## Hardware Requirements
 
 We have tested the softwares with the following graphics cards :
 - NVIDIA: GeForce GTX 1060, GeForce GTX 1080, RTX 2070 and Quadro P5000.
