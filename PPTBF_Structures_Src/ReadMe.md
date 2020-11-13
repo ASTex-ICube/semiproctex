@@ -113,7 +113,7 @@ First, go to ***3rdParty*** directory
   - ex: the script ***tool_launchViewer.bat*** at project root directory is made for that
   - instead, in command line, type for example : F:\PPTBF\Code\Install\PPTBFProject\bin\PtViewer.bat
 
-# Tool(s)
+# Tools
 
 ## [1] Interactive PPTBF Viewer
 
