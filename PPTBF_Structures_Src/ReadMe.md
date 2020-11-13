@@ -1,10 +1,10 @@
 # Overview
 
-TODO add description: ...
+Here you can find information to compile source code froms scratch.
 
 # Requirements
 
-## OS (Operating Systems)
+## OS [Operating Systems]
 
 Currently, it works on Windows operating systems. (Linux port soon)
 
