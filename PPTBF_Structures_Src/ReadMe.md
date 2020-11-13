@@ -210,3 +210,4 @@ The ***PtBDDGenerator.exe*** software works by providing the desierd PPTBF width
 
 The following batch file is used to generate all the PPTBF images and their binary versions:
 - ***replicate_pptbfResults_matchingStructures.bat***
+- for all PPTBF parameter files located in the ***PPTBF_Structures_Src/Install/PPTBFProject/bin/Data/Matching_structures/*** directory, classified by types (cells, dots, lines, networks, etc...), the generated images will be saved near the parameter files (same directory).
