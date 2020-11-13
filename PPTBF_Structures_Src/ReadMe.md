@@ -136,9 +136,9 @@ Below, you can find short videos showing PPTBF parameters edition at real-time w
 
 This widget is used to edit the thresholded version of the PPTBF which creates a binary structure map (i.e. visual structure).
 
-- *BinaryHistograms* checkbox is used to activate the thresholding of the PPTBF and display a binary versioj of the PPTBF at the bottom right of the screen.
+- *BinaryHistograms* checkbox is used to activate the thresholding of the PPTBF and display a binary version of the PPTBF at the bottom right of the screen.
 - *Nb bins*: is the precision of the histogram of the values of the PPTBF image (number of histogram bins).
-- *Threshold* slider is a value between 0% and 100% whose real associated PPTBF value is displayed below near the *Binary structure map* text. PPTBF values are in [0;1]. Every value greater or equal than the thresholded value is in the binary structre.
+- *Threshold* slider is a value between 0% and 100% whose real associated PPTBF value is displayed below near the *Binary structure map* text. PPTBF values are in [0;1]. Every value greater or equal than the thresholded value is in the binary structure.
 
 Below, you can find a short video showing edition at real-time with the ***PtViewer.exe*** software:
 - rendering binary map: https://vimeo.com/434869996
