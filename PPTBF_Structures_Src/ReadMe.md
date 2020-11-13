@@ -17,24 +17,42 @@ We have tested the softwares with the following graphics cards :
 
 On Windows, we rely on: CMake, Git, Visual Studio (e.g 2015, 2017, 2019), 7-zip file archiver and ".bat" scripts.
 
-We rely on CMake "ExternalProject_Add" feature to download all dependency libraries (GLAD, GLFW and GLM) on-demand at compilation stage by cloning from their online github repositories. So, one needs to install Git on Windows otherwise there will be an error during their cloning step.
-
 Links for installation information of required dependencies can be found below :
 
-- CMake: https://cmake.org/download/
-  - on webpage, search for *Release Candidate*, *Binary distributions*, *Platform* then download the *Windows win64-x64 Installer*, for instance: *cmake-3.19.0-rc3-win64-x64.msi*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
-  
-- Git: https://git-scm.com/download/win
-  - on webpage, download the *64-bit version of Git for Windows* installer, for instance: *Git-2.29.2.2-64-bit.exe*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
+### File archiver
 
-- 7zip: https://www.7-zip.org/
+- 7zip: file archiver with a high compression ratio
+  - https://www.7-zip.org/
   - on webpage, download the *64-bit x64* installer for instance: *7z1900-x64.exe*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
 
-- Python: https://www.anaconda.com/products/individual
-Anaconda is a really simple option on Windows, with which you can install several Python version localy.
+### Build system generator
+
+- CMake: cross-platform, compiler-independent build system generator
+  - https://cmake.org/download/
+  - on webpage, search for *Release Candidate*, *Binary distributions*, *Platform* then download the *Windows win64-x64 Installer*, for instance: *cmake-3.19.0-rc3-win64-x64.msi*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
+  
+- Git: free and open source revision control software
+  - NOTE: We rely on CMake "ExternalProject_Add" feature to download all dependency libraries (GLAD, GLFW and GLM) on-demand at compilation stage by cloning from their online github repositories. So, one needs to install Git on Windows otherwise there will be an error during their cloning step. 
+  - https://git-scm.com/download/win
+  - on webpage, download the *64-bit version of Git for Windows* installer, for instance: *Git-2.29.2.2-64-bit.exe*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
+
+### Compiler, IDE (Integrated development environment)
+
+CMake uses *generators* (with ***-G*** option) to select a compiler to generate a project environment. For instance, it could be a *makefile* on Linux or a Visual Studio *solution*. For instance, to select *Visual Studio 2017 x64 version*, one can use:
+- cmake -G "Visual Studio 15 2017 Win64" ..\glad
+But, by default, not using a dedicated generator CMake will find the first available generator in the PATH:
+- cmake -G ..\glad
+For more info on *genertors*, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 
 - Visual Studio
 https://visualstudio.microsoft.com/fr/downloads/
+
+### Other dependency
+
+- Python: through Anaconda installer
+  - https://www.anaconda.com/products/individual
+  - Anaconda is a really simple option on Windows, with which you can install several Python version localy.
+  - IMPORTANT: try to not install it first. It seems that CMake, while compiling GLAD, try to use Python to modify some GLAD text files. If you have an error while compiling GLAD. Check console error or log windown then install Python if required.
 
 # Compilation
 
