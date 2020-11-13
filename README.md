@@ -116,8 +116,7 @@ Operating systems:
 - [ ] Linux (Ubuntu version soon available)
 
 Tested graphics cards:
-- [x] NVidia GeForce 1060 GTX (6 GB)
-- [x] NVidia RTX 2070 (8 GB)
+- NVIDIA: GeForce GTX 1060, GeForce GTX 1080, RTX 2070 and Quadro P5000.
 
 Technologies:
 - OpenGL (4.6, at least >= 4.5, compute shaders), glad, glfw, glm, ImGui, CMake, C++, [Python to come]
