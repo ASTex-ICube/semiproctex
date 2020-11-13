@@ -130,7 +130,7 @@ There are 3 widgets to play with :
 - Rendering Parameters
 - Binary Structure Map
 
-NOTE: ImGui GUI system uses a ***imgui.ini*** parameter file located in the same directory than the ***PtViewer.exe*** software. It contains the location of each of the 2D widgets on the screen. If one of the widget has disappeared, just delete the ***imgui.ini*** ile to reinitialize the default state. If one of the widget is located behind an overlay window info and cannot be clicked anymore, delete the ***imgui.ini*** file. For instance, for the *Rendering Parameters* widget, you could have for its 2D position *Pos*:
+NOTE: ImGui GUI system uses a ***imgui.ini*** parameter file located in the same directory than the ***PtViewer.exe*** software. It contains the location of each of the 2D widgets on the screen. If one of the widget has disappeared, just delete the ***imgui.ini*** file to reinitialize the default state. If one of the widget is located behind an overlay window info and cannot be clicked anymore, delete the ***imgui.ini*** file. For instance, for the *Rendering Parameters* widget, you could have for its 2D position *Pos*:
 - [Rendering Parameters]
 - Pos=301,20
 
