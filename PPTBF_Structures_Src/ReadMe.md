@@ -67,7 +67,7 @@ First, go to ***3rdParty*** directory.
 - open and compile ***ImGui.sln*** Visual Studio solution
   - NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 
-## [2] - Compile the PPTBF project (dll + tools)
+## [Step 2] Compile the PPTBF project (dll + tools)
 
 - go back to project root directory
 - launch script ***cmake_generateProjects.bat***
