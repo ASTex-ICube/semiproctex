@@ -96,6 +96,28 @@ Info on displayed scene objects in the viewer:
 - b) visual structure is the thresholded version of the continuous PPTBF according to given threshold (use GUI widget "Binary Structure Map")
 - c) 3D mesh onto which the PPTBF is mapped (PPTBF or thresholded version)
 
+### PPTBF PARAMETERS edition
+
+Below, you can find short videos showing PPTBF parameters edition at real-time with the ***PtViewer.exe*** software:
+
+#### Point Process
+- tilling types: https://vimeo.com/434859580
+- jittering: https://vimeo.com/434859687
+
+#### Window Function
+- non-overlapping windows: https://vimeo.com/434859823
+- overlapping windows: https://vimeo.com/434860045
+
+#### Feature Function
+- anisotropic stringed Gabor kernels: https://vimeo.com/434860110
+- bombing & voronoise: https://vimeo.com/434860370
+
+#### Transformation (spatial and deformations)
+- navigation (translation, rotation, zoom) & deformation: https://vimeo.com/434869887
+
+#### Visual Structures
+- rendering binary map: https://vimeo.com/434869996
+
 ### NAVIGATION control in 3D view
 
 [1] CONTROL button
