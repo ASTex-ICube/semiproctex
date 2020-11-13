@@ -205,3 +205,8 @@ The ***PtBDDGenerator.exe*** software works by providing the desierd PPTBF width
 - **```program width height xxx_pptbf_params.txt```**
 - ```C:\PPTBF\Bin\PtBDDGenerator.exe 400 400 C:\PPTBF\Data\Matching_structures\cells\111357_seg_scrop\111357_seg_scrop_pptbf_params.txt```
 - BEWARE: you MUST prefix the exe and file by full path
+
+### BATCH PROCESSING
+
+The following batch file is used to generate all the PPTBF images and their binary versions:
+- ***replicate_pptbfResults_matchingStructures.bat***
