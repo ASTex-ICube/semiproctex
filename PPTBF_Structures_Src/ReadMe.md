@@ -50,7 +50,7 @@ First, go to ***3rdParty*** directory
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to ***glad-build*** directory
 - open and compile ***gladProject.sln*** Visual Studio solution
-  - NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
+  - NOTE: its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 
 - Do the same for the scripts : ***build_glfw.bat*** and ***build_glm.bat***
 
@@ -65,7 +65,7 @@ First, go to ***3rdParty*** directory
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to ***Generated*** directory
 - open and compile ***ImGui.sln*** Visual Studio solution
-  - NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
+  - NOTE: its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 
 ## [Step 2] Compile the PPTBF project (dll + tools)
 
@@ -76,7 +76,7 @@ First, go to ***3rdParty*** directory
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to ***Generated*** directory
 - open and compile ***PPTBFProject.sln*** Visual Studio solution
-  - NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
+  - NOTE: its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 - all code header, lib and executable are copied to ***Install\PPTBFProject*** directory
 => ex: the PPTBF viewer ***PtViewer.exe*** is in ***Install\PPTBFProject\bin*** directory
 BEWARE: you MUST launch it with by prefexing name with current fullpath directory
@@ -112,11 +112,12 @@ Below, you can find short videos showing PPTBF parameters edition at real-time w
 - anisotropic stringed Gabor kernels: https://vimeo.com/434860110
 - bombing & voronoise: https://vimeo.com/434860370
 
-#### Transformation (spatial and deformations)
-- navigation (translation, rotation, zoom) & deformation: https://vimeo.com/434869887
+#### Transformation (spatial and deformations) and navigation
+- spatial trasformations (zoom, rotation, stretch), deformation and navigation (translation): https://vimeo.com/434869887
 
 #### Visual Structures
 - rendering binary map: https://vimeo.com/434869996
+  - NOTE: for the provided code, but not the video, it seems that the thresholded version of the PPTBF (displayed at the bottom right of the viewer window) is not affected by the thresholded value but the 3D model onto which texture is mapped is OK.
 
 ### NAVIGATION control in 3D view
 
