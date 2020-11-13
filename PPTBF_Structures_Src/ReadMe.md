@@ -60,7 +60,7 @@ CMake uses *generators* (with ***-G*** option) to select a compiler to generate 
 - **Python**: through **Anaconda** installer
   - https://www.anaconda.com/products/individual
   - Anaconda is a really simple option on Windows, with which you can install several Python version localy.
-  - IMPORTANT: try to not install it first. It seems that CMake, while compiling GLAD, try to use Python to modify some GLAD text files. If you have an error while compiling GLAD. Check console error or log windown then install Python if required.
+  - IMPORTANT: try to not install it first. It seems that CMake, while compiling GLAD, try to use Python to modify some GLAD text files. If you have an error while compiling GLAD. Check console errors or log window then install Python only if required.
 
 # Compilation
 
