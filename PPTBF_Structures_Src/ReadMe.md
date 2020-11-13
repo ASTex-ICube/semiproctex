@@ -17,22 +17,17 @@ We rely on CMake "ExternalProject_Add" feature to download all dependency librar
 
 Links for installation information of required dependencies can be found below :
 
-### Git
-https://git-scm.com/download/win
-
+- Git: https://git-scm.com/download/win
 If you want a GUI in addition to a bash, you can download: https://gitforwindows.org/
 
-### CMake
-https://cmake.org/download/
+- CMake: https://cmake.org/download/
 
-### 7zip
-https://www.7-zip.org/
+- 7zip: https://www.7-zip.org/
 
-### Python
+- Python: https://www.anaconda.com/products/individual
 Anaconda is a really simple option on Windows, with which you can install several Python version localy.
-https://www.anaconda.com/products/individual
 
-### Visual Studio
+- Visual Studio
 https://visualstudio.microsoft.com/fr/downloads/
 
 # Compilation
