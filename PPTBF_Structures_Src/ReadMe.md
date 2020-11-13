@@ -6,7 +6,9 @@ Here you can find information to compile source code from scratch.
 
 ## OS [Operating Systems]
 
-Currently, it works on Windows operating systems. (Linux port soon)
+Currently, it works on ***Windows*** operating systems. (Linux port soon).
+
+NOTE: For running all the *.bat* scripts, you can either double-click on the file or use the *Command Prompt* on Windows OS. On the command line in the respective folder, where the file was found, just type the file name and execute it.
 
 ## Hardware Requirements
 
