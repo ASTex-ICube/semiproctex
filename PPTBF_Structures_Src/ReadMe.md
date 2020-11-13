@@ -96,24 +96,36 @@ Info on displayed scene objects in the viewer:
 - b) visual structure is the thresholded version of the continuous PPTBF according to given threshold (use GUI widget "Binary Structure Map")
 - c) 3D mesh onto which the PPTBF is mapped (PPTBF or thresholded version)
 
-### PPTBF PARAMETERS edition
+### PPTBF Designer
+
+#### Global Settings
+
+You can choose the resolution of the PPTBF image used for computing. By default 512x512 pixels.
+
+#### PPTBF PARAMETERS edition
 
 Below, you can find short videos showing PPTBF parameters edition at real-time with the ***PtViewer.exe*** software:
 
-#### Point Process
+##### Point Process
 - tilling types: https://vimeo.com/434859580
 - jittering: https://vimeo.com/434859687
 
-#### Window Function
+##### Window Function
 - non-overlapping windows: https://vimeo.com/434859823
 - overlapping windows: https://vimeo.com/434860045
 
-#### Feature Function
+##### Feature Function
 - anisotropic stringed Gabor kernels: https://vimeo.com/434860110
 - bombing & voronoise: https://vimeo.com/434860370
 
-#### Transformation (spatial and deformations) and navigation
+##### Model Transform and Deformations
 - spatial trasformations (zoom, rotation, stretch), deformation and navigation (translation): https://vimeo.com/434869887
+
+### Binary Structure Map
+
+- *BinaryHistogrames* checkbox is used to activate the thresholding of the PPTBF and display a binary versioj of the PPTBF at the bottom right of the screen.
+- *Nb bins*: is the precision of the histogram of the values of the PPTBF image (number of histogram bins).
+- *Threshold* slider is a value between 0% and 100% whose real associated PPTBF value is displayed below near the *Binary structure map* text. PPTBF values are in [0;1]. Every value greater or equal than the thresholded value is in the binary structre.
 
 #### Visual Structures
 - rendering binary map: https://vimeo.com/434869996
