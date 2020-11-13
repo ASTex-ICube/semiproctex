@@ -1,18 +1,39 @@
------------------------------------------------------------------------------------------------------------------
-Technical paper:
-Semi-Procedural Textures Using Point Process Texture Basis Functions
-P. Guehl , R. AllEgre , J.-M. Dischler, B. Benes , and E. Galin
-Computer Graphics Forum (EGSR 2020 special issue)
------------------------------------------------------------------------------------------------------------------
+# Requirements
 
-NOTE : It works on Windows systems for the moment. (Linux port soon)
+## OS (Operating Systems)
+
+Currently, it works on Windows operating systems. (Linux port soon)
+
+## Hardwares
+
 We have tested the softwares with the following graphics cards :
-- NVidia GeForce 1060 GTX (6Go)
-- NVidia RTX 2070 (8 Go)
+- NVIDIA: GeForce GTX 1060, GeForce GTX 1080, RTX 2070 and Quadro P5000.
 
-On Windows, we rely on: CMake, Visual Studio, 7-zip file archiver and ".bat" scripts.
+##: Software Requirements
 
-We rely on CMake "ExternalProject_Add" feature to download all dependency libraries on-demand at compilation stage from their online github repositories. NOTE: The GLAD depency (see below) requires Python (CMake seems to find Python to process files).
+On Windows, we rely on: CMake, Git, Visual Studio (e.g 2015, 2017, 2019), 7-zip file archiver and ".bat" scripts.
+
+We rely on CMake "ExternalProject_Add" feature to download all dependency libraries (GLAD, GLFW and GLM) on-demand at compilation stage by cloning from their online github repositories. So, one needs to install Git on Windows otherwise there will be an error during their cloning step.
+
+Links for installation information of required dependencies can be found below :
+
+### Git
+https://git-scm.com/download/win
+
+If you want a GUI in addition to a bash, you can download: https://gitforwindows.org/
+
+### CMake
+https://cmake.org/download/
+
+### 7zip
+https://www.7-zip.org/
+
+### Python
+Anaconda is a really simple option on Windows, with which you can install several Python version localy.
+https://www.anaconda.com/products/individual
+
+### Visual Studio
+https://visualstudio.microsoft.com/fr/downloads/
 
 -----------------------------------------
 [1] - Compile 3rd party dependencies
