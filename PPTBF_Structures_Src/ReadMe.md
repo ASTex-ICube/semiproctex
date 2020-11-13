@@ -1,3 +1,7 @@
+# Overview
+
+TODO add description: ...
+
 # Requirements
 
 ## OS (Operating Systems)
@@ -85,7 +89,7 @@ Scene objects:
 - b) visual structure is the thresholded version of the continuous PPTBF accrding to given threshold (use GUI widget "Binary Structure Map")
 - c) 3D mesh onto which the PPTBF is mapped (PPTBF or thresholded version)
 
-NAVIGATION control in 3D view
+### NAVIGATION control in 3D view
 
 [1] CONTROL button
 + LEFT mouse   : object rotation
@@ -103,7 +107,7 @@ NAVIGATION control in 3D view
 
 Launching the PPTBF command line generator
 
-MANUAL PROCESSING
+### MANUAL PROCESSING
 
 The PtBDDGenerator.exe software works by providing a PPTBF file as parameter and PPTBF width and height, such as :
 C:\PPTBF\Bin\PtBDDGenerator.exe C:\PPTBF\Data\Matching_structures\cells\111357_seg_scrop\111357_seg_scrop_pptbf_params.txt 400 400
