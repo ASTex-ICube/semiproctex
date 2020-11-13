@@ -41,7 +41,7 @@ Links for installation information of required dependencies can be found below :
 ### Compiler, IDE (Integrated development environment)
 
 CMake uses *generators* (with ***-G*** option) to select a compiler to generate a project environment. For instance, it could be a *makefile* on Linux or a Visual Studio *solution*. For more info on *generators*, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7).
-- for instance, to select *Visual Studio 2017 x64 version*, one can use: *cmake -G "Visual Studio 15 2017 Win64" ..\glad*. But, by default, not using a dedicated generator CMake will find the first available generator in the PATH: *cmake ..\glad*
+- for instance, to select *Visual Studio 2017 x64 version*, one can use: ***cmake -G "Visual Studio 15 2017 Win64" ..\glad***. But, by default, not using a dedicated generator CMake will find the first available generator in the PATH: ***cmake ..\glad***
 
 - **Visual Studio**: IDE
   - https://visualstudio.microsoft.com/fr/downloads/
