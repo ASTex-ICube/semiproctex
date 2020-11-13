@@ -36,13 +36,11 @@ https://visualstudio.microsoft.com/fr/downloads/
 
 # Compilation
 
-## [1] - Compile 3rd party dependencies
+## [Step 1] - Compile 3rd party dependencies
 
-### 3rdParty dependencies
+First, go to 3rdParty directory.
 
-- go to 3rdParty directory
-
-#### GLAD, GLFW, GLM
+### GLAD, GLFW, GLM
 
 - go to Externals directory
 
@@ -56,7 +54,7 @@ https://visualstudio.microsoft.com/fr/downloads/
 
 - Do the same for the scripts : build_glfw.bat and build_glad.bat
 
-#### ImGui
+### ImGui
 
 - go back to 3rdParty directory
 - unzip (here) the ImGui.7z
