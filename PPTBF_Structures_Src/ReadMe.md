@@ -54,7 +54,7 @@ For more info on *genertors*, check CMake website (https://cmake.org/cmake/help/
   rem set GS_COMPILER="Visual Studio 16 2019 Win64"
   cmake -G %GS_COMPILER% ..
 ```
-- as mentioned, removing the *-G* generator name should work, and CMake will look at your (latest installed) compiler/IDE in PATH environment variable:
+  - as mentioned, removing the *-G* generator name *should work*, and CMake will look at your (latest installed) compiler/IDE in PATH environment variable:
 ```
   cmake -G ..
 ```
