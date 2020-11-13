@@ -46,16 +46,16 @@ CMake uses *generators* (with ***-G*** option) to select a compiler to generate 
 - **Visual Studio**: IDE
   - https://visualstudio.microsoft.com/fr/downloads/
   - this will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
-  - IMPORTANT: we tried the 2015, 2017 and 2019 versions. By default, the 2017 is selected in the CMake command in our *.bat* scripts files (change it to correct value or remove the name of the genrator just after the *-G* option). For instance, in our *.bat* script files select generator where we use commenting with DOS *rem* command:
+  - IMPORTANT: we tried the 2015, 2017 and 2019 versions. By default, the 2017 is selected in the CMake command in our *.bat* scripts files (change it to correct value or remove the *-G* option and the name of the generator just after). For instance, in our *.bat* script files select generator where we use commenting with DOS *rem* command:
 ```
   rem set GS_COMPILER="Visual Studio 14 2015 Win64"
   set GS_COMPILER="Visual Studio 15 2017 Win64"
   rem set GS_COMPILER="Visual Studio 16 2019 Win64"
   cmake -G %GS_COMPILER% ..
 ```
-  - as mentioned, removing the *-G* generator name *should work*, and CMake will look at your (latest installed) compiler/IDE in PATH environment variable:
+  - as mentioned, removing the *-G* option and its generator name *should work*, and CMake will look at your (latest installed) compiler/IDE in PATH environment variable:
 ```
-  cmake -G ..
+  cmake ..
 ```
 
 ### Other dependency
