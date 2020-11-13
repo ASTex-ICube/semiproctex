@@ -108,11 +108,10 @@ First, go to ***3rdParty*** directory
 - go to ***Generated*** directory
 - open and compile ***PPTBFProject.sln*** Visual Studio solution
   - NOTE: its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
-- all code header, lib and executable are copied to ***Install\PPTBFProject*** directory
-=> ex: the PPTBF viewer ***PtViewer.exe*** is in ***Install\PPTBFProject\bin*** directory
-BEWARE: you MUST launch it with by prefexing name with current fullpath directory
-=> ex: the script ***tool_launchViewer.bat*** at project root directory is made for that
-=> instead, in command line, type for example : F:\PPTBF\Code\Install\PPTBFProject\bin\PtViewer.bat
+- all code header, lib and executable are copied to ***Install\PPTBFProject*** directory, for instance: the PPTBF viewer ***PtViewer.exe*** is in ***Install\PPTBFProject\bin*** directory
+- BEWARE: you MUST launch it with by prefexing name with current fullpath directory
+  - => ex: the script ***tool_launchViewer.bat*** at project root directory is made for that
+  - => instead, in command line, type for example : F:\PPTBF\Code\Install\PPTBFProject\bin\PtViewer.bat
 
 # Tool(s)
 
