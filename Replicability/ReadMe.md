@@ -4,10 +4,16 @@
 
 This is a guide to reproduce the "visual structures" results from our procedural stochastic PPTBF model (i.e. binary images).
 
-NOTE : It works on Windows systems for the moment. (Linux port soon)
+## Requirements
+
+### OS (Operating Systems)
+
+Currently, code and binaries works on Windows operating system. (Linux port soon)
+
+### Hardware Requirements
+
 We have tested the softwares with the following graphics cards:
-- NVidia GeForce 1060 GTX (6Go)
-- NVidia RTX 2070 (8 Go)
+- NVIDIA: GeForce GTX 1060, GeForce GTX 1080, RTX 2070 and Quadro P5000.
 
 ## How To
 
