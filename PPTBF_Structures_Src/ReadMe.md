@@ -8,12 +8,12 @@ TODO add description: ...
 
 Currently, it works on Windows operating systems. (Linux port soon)
 
-## Hardwares
+## Hardware
 
 We have tested the softwares with the following graphics cards :
 - NVIDIA: GeForce GTX 1060, GeForce GTX 1080, RTX 2070 and Quadro P5000.
 
-##: Software Requirements
+## Software Requirements
 
 On Windows, we rely on: CMake, Git, Visual Studio (e.g 2015, 2017, 2019), 7-zip file archiver and ".bat" scripts.
 
