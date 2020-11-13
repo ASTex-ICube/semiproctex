@@ -202,6 +202,6 @@ The ***PtBDDGenerator.exe*** software enables to launching the PPTBF command lin
 ### MANUAL PROCESSING
 
 The ***PtBDDGenerator.exe*** software works by providing the desierd PPTBF width and height then a PPTBF file as parameter, such as :
-- ```program width height xxx_pptbf_params.txt```
+- **```program width height xxx_pptbf_params.txt```**
 - ```C:\PPTBF\Bin\PtBDDGenerator.exe 400 400 C:\PPTBF\Data\Matching_structures\cells\111357_seg_scrop\111357_seg_scrop_pptbf_params.txt```
 - BEWARE: you MUST prefix the exe and file by full path
