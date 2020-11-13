@@ -25,6 +25,7 @@ Links for installation information of required dependencies can be found below :
 If you want a GUI in addition to a bash, you can download: https://gitforwindows.org/
 
 - CMake: https://cmake.org/download/
+  - Search for *Release Candidate*, *Binary distributions*, "Platform" then download the *Windows win64-x64 Installer*, for instance: *cmake-3.19.0-rc3-win64-x64.msi*
 
 - 7zip: https://www.7-zip.org/
 
