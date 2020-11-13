@@ -38,57 +38,57 @@ https://visualstudio.microsoft.com/fr/downloads/
 
 ## [Step 1] Compile 3rd party dependencies
 
-First, go to *3rdParty* directory.
+First, go to ***3rdParty*** directory.
 
 ### GLAD, GLFW, GLM
 
-- go to *Externals* directory
+- go to ***Externals*** directory
 
-- launch *script build_glad.bat*
+- launch ***script build_glad.bat***
   - BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..\glad
   depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to *glad-build* directory
-- open and compile *gladProject.sln* Visual Studio solution
+- open and compile ***gladProject.sln*** Visual Studio solution
   - NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 
-- Do the same for the scripts : *build_glfw.bat* and *build_glm.bat*
+- Do the same for the scripts : ***build_glfw.bat*** and ***build_glm.bat***
 
 ### ImGui
 
-- go back to 3rdParty directory
-- unzip (here) the ImGui.7z
+- go back to ***3rdParty*** directory
+- unzip (here) the ***ImGui.7z***
   => it requires the 7zip tool (available here: https://www.7-zip.org/)
-- launch script cmake_generateProjects.bat
+- launch script ***cmake_generateProjects.bat***
   - BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..
   depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
-- go to Generated directory
-- open and compile ImGui.sln Visual Studio solution
+- go to ***Generated*** directory
+- open and compile ***ImGui.sln*** Visual Studio solution
   - NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 
 ## [2] - Compile the PPTBF project (dll + tools)
 
 - go back to project root directory
-- launch script cmake_generateProjects.bat
+- launch script ***cmake_generateProjects.bat***
   - BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..
   depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
-- go to Generated directory
-- open and compile PPTBFProject.sln Visual Studio solution
+- go to ***Generated*** directory
+- open and compile ***PPTBFProject.sln*** Visual Studio solution
   - NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
-- all code header, lib and executable are copied to Install\PPTBFProject directory
-=> ex: the PPTBF viewer PtViewer.exe is in Install\PPTBFProject\bin directory
+- all code header, lib and executable are copied to ***Install\PPTBFProject*** directory
+=> ex: the PPTBF viewer ***PtViewer.exe*** is in ***Install\PPTBFProject\bin*** directory
 BEWARE: you MUST launch it with by prefexing name with current fullpath directory
-=> ex: the script tool_launchViewer.bat at project root directory is made for that
+=> ex: the script ***tool_launchViewer.bat*** at project root directory is made for that
 => instead, in command line, type for example : F:\PPTBF\Code\Install\PPTBFProject\bin\PtViewer.bat
 
 # Tool(s)
 
 ## [1] Interactive PPTBF Viewer
 
-The PtViewer.exe software enables to visualize and edit the PPTBF parameters at real-time.
-=> Launch the script "tool_launchViewer.bat" at root directory
+The ***PtViewer.exe*** software enables to visualize and edit the PPTBF parameters at real-time.
+=> Launch the script ***tool_launchViewer.bat*** at root directory
 
 Scene objects:
 - a) PPTBF
@@ -115,6 +115,6 @@ Launching the PPTBF command line generator
 
 ### MANUAL PROCESSING
 
-The PtBDDGenerator.exe software works by providing a PPTBF file as parameter and PPTBF width and height, such as :
+The ***PtBDDGenerator.exe*** software works by providing a PPTBF file as parameter and PPTBF width and height, such as :
 C:\PPTBF\Bin\PtBDDGenerator.exe C:\PPTBF\Data\Matching_structures\cells\111357_seg_scrop\111357_seg_scrop_pptbf_params.txt 400 400
 BEWARE: you MUST prefix the exe and file by full path
