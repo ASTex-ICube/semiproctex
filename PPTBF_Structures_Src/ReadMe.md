@@ -35,14 +35,15 @@ https://www.anaconda.com/products/individual
 ### Visual Studio
 https://visualstudio.microsoft.com/fr/downloads/
 
------------------------------------------
-[1] - Compile 3rd party dependencies
------------------------------------------
+# Compilation
+
+## [1] - Compile 3rd party dependencies
+
+### 3rdParty dependencies
 
 - go to 3rdParty directory
 
--------------------------
----- GLAD, GLFW, GLM ----
+#### GLAD, GLFW, GLM
 
 - go to Externals directory
 
@@ -56,8 +57,7 @@ https://visualstudio.microsoft.com/fr/downloads/
 
 - Do the same for the scripts : build_glfw.bat and build_glad.bat
 
----------------
----- ImGui ----
+#### ImGui
 
 - go back to 3rdParty directory
 - unzip (here) the ImGui.7z
@@ -81,11 +81,11 @@ BEWARE: you MUST launch it with by prefexing name with current fullpath director
 => instead, in command line, type for example : F:\PPTBF\Code\Install\PPTBFProject\bin\PtViewer.bat
 
 -----------------------------------------------------------------------------------------------------------------
-Tool(s)
+# Tool(s)
 -----------------------------------------------------------------------------------------------------------------
 
 --------------------------------------
----- [1] Interactive PPTBF Viewer ----
+## [1] Interactive PPTBF Viewer ----
 --------------------------------------
 
 The PtViewer.exe software enables to visualize and edit the PPTBF parameters at real-time.
@@ -111,7 +111,7 @@ Scene objects:
 [3] 'R' key : reset 3D view
 
 -----------------------------
----- [2] PPTBF GENERATOR ----
+## [2] PPTBF GENERATOR ----
 -----------------------------
 
 ---- Launching the PPTBF command line generator  ---- 
