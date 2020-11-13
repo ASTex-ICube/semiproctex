@@ -62,8 +62,12 @@ https://visualstudio.microsoft.com/fr/downloads/
 - unzip (here) the ImGui.7z
   => it requires the 7zip tool (available here: https://www.7-zip.org/)
 - launch script cmake_generateProjects.bat
+=> BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..\glad
+  depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
+  for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to Generated directory
 - open and compile ImGui.sln Visual Studio solution
+=> NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 
 ## [2] - Compile the PPTBF project (dll + tools)
 
