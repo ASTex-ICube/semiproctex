@@ -1,6 +1,6 @@
 # Overview
 
-Here you can find information to compile source code froms scratch.
+Here you can find information to compile source code from scratch.
 
 # Requirements
 
