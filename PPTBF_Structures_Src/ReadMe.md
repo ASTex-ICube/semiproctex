@@ -21,17 +21,17 @@ Links for installation information of required dependencies can be found below :
 
 ### File archiver
 
-- 7zip: file archiver with a high compression ratio
+- **7zip**: file archiver with a high compression ratio
   - https://www.7-zip.org/
   - on webpage, download the *64-bit x64* installer for instance: *7z1900-x64.exe*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
 
 ### Build system generator
 
-- CMake: cross-platform, compiler-independent build system generator
+- **CMake**: cross-platform, compiler-independent build system generator
   - https://cmake.org/download/
   - on webpage, search for *Release Candidate*, *Binary distributions*, *Platform* then download the *Windows win64-x64 Installer*, for instance: *cmake-3.19.0-rc3-win64-x64.msi*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
   
-- Git: free and open source revision control software
+- **Git**: free and open source revision control software
   - NOTE: We rely on CMake "ExternalProject_Add" feature to download all dependency libraries (GLAD, GLFW and GLM) on-demand at compilation stage by cloning from their online github repositories. So, one needs to install Git on Windows otherwise there will be an error during their cloning step. 
   - https://git-scm.com/download/win
   - on webpage, download the *64-bit version of Git for Windows* installer, for instance: *Git-2.29.2.2-64-bit.exe*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
@@ -40,7 +40,7 @@ Links for installation information of required dependencies can be found below :
 
 CMake uses *generators* (with ***-G*** option) to select a compiler to generate a project environment. For instance, it could be a *makefile* on Linux or a Visual Studio *solution*. For more info on *genertors*, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7). For instance, to select *Visual Studio 2017 x64 version*, one can use: - cmake -G "Visual Studio 15 2017 Win64" ..\glad. But, by default, not using a dedicated generator CMake will find the first available generator in the PATH: cmake -G ..\glad
 
-- Visual Studio: IDE
+- **Visual Studio**: IDE
   - https://visualstudio.microsoft.com/fr/downloads/
   - this will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
   - IMPORTANT: we tried the 2015, 2017 and 2019 versions. By default, the 2017 is selected in the CMake command in our *.bat* scripts files (change it to correct value or remove the name of the genrator just after the *-G* option). For instance, in our *.bat* script files select generator where we use commenting with DOS *rem* command:
@@ -57,7 +57,7 @@ CMake uses *generators* (with ***-G*** option) to select a compiler to generate 
 
 ### Other dependency
 
-- Python: through Anaconda installer
+- **Python**: through **Anaconda** installer
   - https://www.anaconda.com/products/individual
   - Anaconda is a really simple option on Windows, with which you can install several Python version localy.
   - IMPORTANT: try to not install it first. It seems that CMake, while compiling GLAD, try to use Python to modify some GLAD text files. If you have an error while compiling GLAD. Check console error or log windown then install Python if required.
