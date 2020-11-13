@@ -96,7 +96,14 @@ Info on displayed scene objects in the viewer:
 - b) visual structure is the thresholded version of the continuous PPTBF according to given threshold (use GUI widget "Binary Structure Map")
 - c) 3D mesh onto which the PPTBF is mapped (PPTBF or thresholded version)
 
-### PPTBF Designer
+There are 3 widgets to play with :
+- PPTBF Designer
+- Rendering Parameters
+- Binary Structure Map
+
+### WIDGET: PPTBF Designer
+
+This widget is used to edit the PPTBF parameters.
 
 #### Global Settings
 
@@ -121,15 +128,24 @@ Below, you can find short videos showing PPTBF parameters edition at real-time w
 ##### Model Transform and Deformations
 - spatial trasformations (zoom, rotation, stretch), deformation and navigation (translation): https://vimeo.com/434869887
 
-### Binary Structure Map
+### WIDGET: Binary Structure Map
+
+This widget is used to edit the thresholded version of the PPTBF which creates a binary structure map (i.e. visual structure).
 
 - *BinaryHistogrames* checkbox is used to activate the thresholding of the PPTBF and display a binary versioj of the PPTBF at the bottom right of the screen.
 - *Nb bins*: is the precision of the histogram of the values of the PPTBF image (number of histogram bins).
 - *Threshold* slider is a value between 0% and 100% whose real associated PPTBF value is displayed below near the *Binary structure map* text. PPTBF values are in [0;1]. Every value greater or equal than the thresholded value is in the binary structre.
 
-#### Visual Structures
+Below, you can find a short video showing edition at real-time with the ***PtViewer.exe*** software:
 - rendering binary map: https://vimeo.com/434869996
   - NOTE: for the provided code, but not the video, it seems that the thresholded version of the PPTBF (displayed at the bottom right of the viewer window) is not affected by the thresholded value but the 3D model onto which texture is mapped is OK.
+
+### WIDGET: Rendering Parameters
+
+This widget is used to edit the 3D model onto which the PPTBF is mapped.
+
+- Mesh Settings: choose a 3D model (grid, wave, cylinder, torus or sphere)
+- Rendering Mode: either display the PPTBF is grayscale or its binary version (after applygin current *threshold* value)
 
 ### NAVIGATION control in 3D view
 
