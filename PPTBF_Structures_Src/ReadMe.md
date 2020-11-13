@@ -62,7 +62,7 @@ https://visualstudio.microsoft.com/fr/downloads/
 - unzip (here) the ImGui.7z
   => it requires the 7zip tool (available here: https://www.7-zip.org/)
 - launch script cmake_generateProjects.bat
-=> BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..\glad
+=> BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..
   depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to Generated directory
