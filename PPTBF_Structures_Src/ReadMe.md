@@ -101,6 +101,10 @@ There are 3 widgets to play with :
 - Rendering Parameters
 - Binary Structure Map
 
+NOTE: ImGui GUI system uses a ***imgui.ini*** parameter file located in the same directory than the ***PtViewer.exe*** software. It contains the location of each of the 2D widgets on the screen. If one of the widget has disappeared, just delete the ***imgui.ini*** ile to reinitialize the default state. If one of the widget is located behind an overlay window info and cannot be clicked anymore, delete the ***imgui.ini*** file. For instance, for the *Rendering Parameters* widget, you could have for its 2D position *Pos*:
+- [Rendering Parameters]
+- Pos=301,20
+
 ### WIDGET: PPTBF Designer
 
 This widget is used to edit the PPTBF parameters.
@@ -132,7 +136,7 @@ Below, you can find short videos showing PPTBF parameters edition at real-time w
 
 This widget is used to edit the thresholded version of the PPTBF which creates a binary structure map (i.e. visual structure).
 
-- *BinaryHistogrames* checkbox is used to activate the thresholding of the PPTBF and display a binary versioj of the PPTBF at the bottom right of the screen.
+- *BinaryHistograms* checkbox is used to activate the thresholding of the PPTBF and display a binary versioj of the PPTBF at the bottom right of the screen.
 - *Nb bins*: is the precision of the histogram of the values of the PPTBF image (number of histogram bins).
 - *Threshold* slider is a value between 0% and 100% whose real associated PPTBF value is displayed below near the *Binary structure map* text. PPTBF values are in [0;1]. Every value greater or equal than the thresholded value is in the binary structre.
 
