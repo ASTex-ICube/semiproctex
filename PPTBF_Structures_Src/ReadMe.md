@@ -66,9 +66,7 @@ https://visualstudio.microsoft.com/fr/downloads/
 - go to Generated directory
 - open and compile ImGui.sln Visual Studio solution
 
------------------------------------------
-[2] - Compile the PPTBF project (dll + tools)
------------------------------------------
+## [2] - Compile the PPTBF project (dll + tools)
 
 - go back to project root directory
 - launch script cmake_generateProjects.bat
@@ -80,13 +78,9 @@ BEWARE: you MUST launch it with by prefexing name with current fullpath director
 => ex: the script tool_launchViewer.bat at project root directory is made for that
 => instead, in command line, type for example : F:\PPTBF\Code\Install\PPTBFProject\bin\PtViewer.bat
 
------------------------------------------------------------------------------------------------------------------
 # Tool(s)
------------------------------------------------------------------------------------------------------------------
 
---------------------------------------
-## [1] Interactive PPTBF Viewer ----
---------------------------------------
+## [1] Interactive PPTBF Viewer
 
 The PtViewer.exe software enables to visualize and edit the PPTBF parameters at real-time.
 => Launch the script "tool_launchViewer.bat" at root directory
@@ -96,7 +90,7 @@ Scene objects:
 - b) visual structure is the thresholded version of the continuous PPTBF accrding to given threshold (use GUI widget "Binary Structure Map")
 - c) 3D mesh onto which the PPTBF is mapped (PPTBF or thresholded version)
 
----- NAVIGATION control in 3D view ----
+NAVIGATION control in 3D view
 
 [1] CONTROL button
 + LEFT mouse   : object rotation
@@ -110,11 +104,9 @@ Scene objects:
 
 [3] 'R' key : reset 3D view
 
------------------------------
-## [2] PPTBF GENERATOR ----
------------------------------
+## [2] PPTBF GENERATOR
 
----- Launching the PPTBF command line generator  ---- 
+Launching the PPTBF command line generator
 
 MANUAL PROCESSING
 
