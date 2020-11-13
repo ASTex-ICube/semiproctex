@@ -36,23 +36,23 @@ https://visualstudio.microsoft.com/fr/downloads/
 
 # Compilation
 
-## [Step 1] - Compile 3rd party dependencies
+## [Step 1] Compile 3rd party dependencies
 
-First, go to 3rdParty directory.
+First, go to *3rdParty* directory.
 
 ### GLAD, GLFW, GLM
 
-- go to Externals directory
+- go to *Externals* directory
 
-- launch script build_glad.bat
+- launch *script build_glad.bat*
   - BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..\glad
   depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
-- go to glad-build directory
-- open and compile gladProject.sln Visual Studio solution
+- go to *glad-build* directory
+- open and compile *gladProject.sln* Visual Studio solution
   - NOTE : its better and simpler to use in Visual Studio menu : "Build" then "Batch Build" then check boxes for all "Debug" and "Release" projects to build all in Debug and Release modes, and install all files directly
 
-- Do the same for the scripts : build_glfw.bat and build_glad.bat
+- Do the same for the scripts : *build_glfw.bat* and *build_glm.bat*
 
 ### ImGui
 
