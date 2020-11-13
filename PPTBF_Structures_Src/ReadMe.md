@@ -21,13 +21,14 @@ We rely on CMake "ExternalProject_Add" feature to download all dependency librar
 
 Links for installation information of required dependencies can be found below :
 
-- Git: https://git-scm.com/download/win
-If you want a GUI in addition to a bash, you can download: https://gitforwindows.org/
-
 - CMake: https://cmake.org/download/
-  - Search for *Release Candidate*, *Binary distributions*, "Platform" then download the *Windows win64-x64 Installer*, for instance: *cmake-3.19.0-rc3-win64-x64.msi*
+  - on webpage, search for *Release Candidate*, *Binary distributions*, *Platform* then download the *Windows win64-x64 Installer*, for instance: *cmake-3.19.0-rc3-win64-x64.msi*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
+  
+- Git: https://git-scm.com/download/win
+  - on webpage, download the *64-bit version of Git for Windows* installer, for instance: *Git-2.29.2.2-64-bit.exe*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
 
 - 7zip: https://www.7-zip.org/
+  - on webpage, download the *64-bit x64* installer for instance: *7z1900-x64.exe*. This will install the software and add path into the Windows PATH environment variable (select this choice of adding to PATH if it asks).
 
 - Python: https://www.anaconda.com/products/individual
 Anaconda is a really simple option on Windows, with which you can install several Python version localy.
