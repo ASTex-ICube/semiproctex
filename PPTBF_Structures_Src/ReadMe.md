@@ -197,7 +197,7 @@ This widget is used to edit the 3D model onto which the PPTBF is mapped.
 
 ## [2] PPTBF GENERATOR
 
-The ***PtBDDGenerator.exe*** software enables to launching the PPTBF command line generator.
+The ***PtBDDGenerator.exe*** software enables to launch the PPTBF command line generator.
 
 ### MANUAL PROCESSING
 
