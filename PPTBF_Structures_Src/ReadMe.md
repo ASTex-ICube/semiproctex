@@ -126,7 +126,7 @@ Info on displayed scene objects in the viewer:
 - b) visual structure is the thresholded version of the continuous PPTBF according to given threshold (use GUI widget "Binary Structure Map")
 - c) 3D mesh onto which the PPTBF is mapped (PPTBF or thresholded version)
 
-There are 3 widgets to play with :
+There are 3 widgets to play with (see following sections to see parameters in action in videos):
 - PPTBF Designer
 - Rendering Parameters
 - Binary Structure Map
