@@ -117,7 +117,7 @@ First, go to ***3rdParty*** directory
 
 ## [1] Interactive PPTBF Viewer
 
-The ***PtViewer.exe*** software enables to visualize and edit the PPTBF parameters at real-time ((PPTBF is a model of stochastic procedural structures).
+The ***PtViewer.exe*** software enables to visualize and edit the PPTBF parameters at real-time (PPTBF is a model of stochastic procedural structures).
 
 Launch the script ***tool_launchViewer.bat*** at root directory.
 
