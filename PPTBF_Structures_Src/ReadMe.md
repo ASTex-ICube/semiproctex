@@ -179,7 +179,7 @@ Below, you can find a short video showing edition at real-time with the ***PtVie
 This widget is used to edit the 3D model onto which the PPTBF is mapped.
 
 - Mesh Settings: choose a 3D model (grid, wave, cylinder, torus or sphere)
-- Rendering Mode: either display the PPTBF is grayscale or its binary version (after applygin current *threshold* value)
+- Rendering Mode: either display the PPTBF in grayscale or its binary version (after applying current *threshold* value)
 
 ### NAVIGATION control in 3D view
 
