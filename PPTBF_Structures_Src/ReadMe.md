@@ -76,8 +76,8 @@ First, go to ***3rdParty*** directory
 - go to ***Externals*** directory
 
 - launch ***script build_glad.bat***
-  - BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..\glad
-  depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
+  - BEWARE: choose your CMake generator in the script, exemple: ***cmake -G "Visual Studio 15 2017 Win64" ..\glad***
+  depending on your settings, the generator *G* could be replaced by: ***"Visual Studio 16 2019 Win64"***, ***"Visual Studio 14 2015 Win64"***, ...
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to ***glad-build*** directory
 - open and compile ***gladProject.sln*** Visual Studio solution
@@ -91,8 +91,8 @@ First, go to ***3rdParty*** directory
 - unzip (here) the ***ImGui.7z***
   - it requires the 7zip tool (available here: https://www.7-zip.org/)
 - launch script ***cmake_generateProjects.bat***
-  - BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..
-  depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
+  - BEWARE: choose your CMake generator in the script, exemple: ***cmake -G "Visual Studio 15 2017 Win64" ..***
+  depending on your settings, the generator G could be replaced by: ***"Visual Studio 16 2019 Win64"***, ***"Visual Studio 14 2015 Win64"***, ...
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to ***Generated*** directory
 - open and compile ***ImGui.sln*** Visual Studio solution
@@ -102,8 +102,8 @@ First, go to ***3rdParty*** directory
 
 - go back to the *project root directory*
 - launch script ***cmake_generateProjects.bat***
-  - BEWARE: choose your CMake generator in the script, exemple: cmake -G "Visual Studio 15 2017 Win64" ..
-  depending on your settings, the generator G could be replaced by: "Visual Studio 16 2019 Win64", "Visual Studio 14 2015 Win64", ...
+  - BEWARE: choose your CMake generator in the script, exemple: ***cmake -G "Visual Studio 15 2017 Win64" ..***
+  depending on your settings, the generator G could be replaced by: ***"Visual Studio 16 2019 Win64"***, ***"Visual Studio 14 2015 Win64"***, ...
   for more info, check CMake website (https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#cmake-generators-7)
 - go to ***Generated*** directory
 - open and compile ***PPTBFProject.sln*** Visual Studio solution
