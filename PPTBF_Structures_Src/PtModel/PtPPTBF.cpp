@@ -23,6 +23,7 @@
 #include <iostream>
 #include <algorithm>
 #include <set>
+#include <cmath>
 
 // Project
 #include "PtWindow.h"
@@ -50,7 +51,7 @@ using namespace Pt;
 
 float PtPPTBF::getNorm( float inorm )
 {
-	return inorm < 0.5f ? 1.0f + pow( inorm / 0.5f, 0.2f ) : 2.0f + pow( ( inorm - 0.5f ) / 0.5f, 5.0f ) * 50.0f;
+	return inorm < 0.5f ? 1.0f + std::pow( inorm / 0.5f, 0.2f ) : 2.0f + std::pow( ( inorm - 0.5f ) / 0.5f, 5.0f ) * 50.0f;
 }
 
 /******************************************************************************
@@ -999,11 +1000,11 @@ static float cdistance(
 	
 	//printf("cdist: ddx=%g,ddy=%g, ex=%g, ey=%g, dx=%g,dy=%g\n", ddx, ddy, ex, ey, dx, dy);
 	
-	/*return ( pRectangularToVoronoiShapeBlend * (float)pow( pow( abs( ddx ), pCellularWindowNorm ) + pow( abs( ddy ), pCellularWindowNorm ), 1.0 / pCellularWindowNorm )
+	/*return ( pRectangularToVoronoiShapeBlend * (float)std::pow( std::pow( abs( ddx ), pCellularWindowNorm ) + std::pow( abs( ddy ), pCellularWindowNorm ), 1.0 / pCellularWindowNorm )
 		+ ( 1.0 - pRectangularToVoronoiShapeBlend ) * ( ex > ey ? ex : ey ) );*/
 
 	// p-norm (Voronoi cell shapes)
-	const float distanceToVoronoiCell = static_cast< float >( pow( pow( abs( ddx ), pCellularWindowNorm ) + pow( abs( ddy ), pCellularWindowNorm ), 1.0 / pCellularWindowNorm ) );
+	const float distanceToVoronoiCell = static_cast< float >( std::pow( std::pow( abs( ddx ), pCellularWindowNorm ) + std::pow( abs( ddy ), pCellularWindowNorm ), 1.0 / pCellularWindowNorm ) );
 	// normalized rho-norm (rectangular cell shapes)
 	const float distanceToRectangularCell = ( ex > ey ? ex : ey );
 
@@ -1029,7 +1030,7 @@ static int cclosest(float xx, float yy, float cx[], float cy[], int nc,
 		float dd = cdistance(xx, yy, cx[k], cy[k], pCellularWindowNorm, cnx[k], cny[k], dx[k], dy[k], pRectangularToVoronoiShapeBlend);
 		//float dx = xx - cx[k];
 		//float dy = yy - cy[k];
-		//float dd = (float)pow(pow(abs(dx), pCellularWindowNorm) + pow(abs(dy), pCellularWindowNorm), 1.0 / pCellularWindowNorm);
+		//float dd = (float)std::pow(std::pow(abs(dx), pCellularWindowNorm) + std::pow(abs(dy), pCellularWindowNorm), 1.0 / pCellularWindowNorm);
 		if (k == 0) { mind = dd; }
 		else if (mind > dd) { closestFeatureID = k; mind = dd; }
 	}
@@ -1093,7 +1094,7 @@ static float celldist(float ixx, float iyy, int k, int closestFeatureID, float c
 	//printf("%g : k=%d, closestFeatureID=%d, ddx=%g, ddy=%g, midx=%g,midy=%g, cx=%g,cy=%g,cnx=%g,cny=%g,dx=%g,dy=%g\n", cdi, k, closestFeatureID, ddx, ddy, midx, midy, cx[k], cy[k], cnx[k], cny[k], dx[k], dy[k]);
 	return cdi;
 	//dx = cx[k] - midx, dy = cy[k] - midy;
-	//return (float)pow(pow(abs(dx), pCellularWindowNorm) + pow(abs(dy), pCellularWindowNorm), 1.0 / pCellularWindowNorm);
+	//return (float)std::pow(std::pow(abs(dx), pCellularWindowNorm) + std::pow(abs(dy), pCellularWindowNorm), 1.0 / pCellularWindowNorm);
 	//return sqrt(dx*dx + dy*dy);
 }
 
@@ -1136,7 +1137,7 @@ static void nthclosest(
 		
 		//float dx = xx - cx[k];
 		//float dy = yy - cy[k];
-		//float dd = (float)pow(pow(abs(dx), pCellularWindowNorm) + pow(abs(dy), pCellularWindowNorm), 1.0 / pCellularWindowNorm);
+		//float dd = (float)std::pow(std::pow(abs(dx), pCellularWindowNorm) + std::pow(abs(dy), pCellularWindowNorm), 1.0 / pCellularWindowNorm);
 
 		dist[ k ] = dd;
 	}
@@ -1241,8 +1242,8 @@ float PtPPTBF::eval( const float x, const float y,
 	/*ampli[0] = 0.0487949;
 	ampli[1] = 0.0461046;
 	ampli[2] = 0.0271428;*/
-	//pCellularWindowNorm = getNorm( inorm );//<=0.5 ? 1.0f + inorm / 0.5f : 2.0f + pow((inorm - 0.5f) / 0.5f, 0.5f)*50.0f;
-	//pFeatureNorm = getNorm( inormgauss ); // <= 0.5 ? 1.0f + inormgauss / 0.5f : 2.0f + pow((inormgauss - 0.5f) / 0.5f, 0.5f)*50.0f;
+	//pCellularWindowNorm = getNorm( inorm );//<=0.5 ? 1.0f + inorm / 0.5f : 2.0f + std::pow((inorm - 0.5f) / 0.5f, 0.5f)*50.0f;
+	//pFeatureNorm = getNorm( inormgauss ); // <= 0.5 ? 1.0f + inormgauss / 0.5f : 2.0f + std::pow((inormgauss - 0.5f) / 0.5f, 0.5f)*50.0f;
 	//------------------------------------
 
 	// Sparse convolution: P x ( F W )
@@ -1307,11 +1308,11 @@ float PtPPTBF::eval( const float x, const float y,
 				float deltay = ( y - ly[ i ] ) / ndy[ closestFeatureIDs[ k ] ];
 				float ddx = pGaborStripesCurvature * ( deltax * cos( -angle[ i ] ) - deltay * sin( -angle[ i ] ) );
 				float ddy = deltax * sin( -angle[ i ] ) + deltay * cos( -angle[ i ] );
-				float dd2 = (float)pow( pow( abs( ddx ), pFeatureNorm ) + pow( abs( ddy ), pFeatureNorm ), 1.0 / pFeatureNorm );
+				float dd2 = (float)std::pow( std::pow( abs( ddx ), pFeatureNorm ) + std::pow( abs( ddy ), pFeatureNorm ), 1.0 / pFeatureNorm );
 				
 				const float gaborSinusoidalWave = 0.5f + 0.5f * cos( 2.0f * static_cast< float >( M_PI ) * ( (float)pGaborStripesFrequency ) * dd2 );
 				const float gaborGaussian = exp( -dd2 * sigma[ i ] ); // beware: gaussian vs RBF !!!!
-				const float gaborKernel = pow( gaborSinusoidalWave, 1.0f / pGaborStripesThickness ) * gaborGaussian;
+				const float gaborKernel = std::pow( gaborSinusoidalWave, 1.0f / pGaborStripesThickness ) * gaborGaussian;
 				
 				featureFunction += gaborKernel;
 			}
@@ -1361,7 +1362,7 @@ float PtPPTBF::eval( const float x, const float y,
 				cellularWindow = 1.0f;
 			}
 
-			cellularWindow = pow( cellularWindow, pCellularWindowDecay );
+			cellularWindow = std::pow( cellularWindow, pCellularWindowDecay );
 		}
 
 		// Blend between cellular and gaussian windows

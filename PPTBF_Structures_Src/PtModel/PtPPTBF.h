@@ -127,7 +127,7 @@ public:
 	/**
 	 * ...
 	 */
-	inline static float getNorm( float inorm );
+	/*inline*/ static float getNorm( float inorm );
 
 	/**
 	 * PPTBF size
