@@ -24,6 +24,11 @@ project( PtBDDGenerator )
 #set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP" )
 #set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /MP" )
 
+IF (WIN32)
+ELSE()
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath='$ORIGIN'")
+ENDIF()
+
 # Remove some compilation warnings
 add_definitions( -D_CRT_SECURE_NO_WARNINGS ) 
 
