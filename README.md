@@ -106,7 +106,10 @@ This work is supported by the [HDWorlds](http://hdworlds.unistra.fr/index.php/Ac
 
 ## Code and binaries
 
+<!--
 IMPORTANT: Please, wait that we finish our first tag/release version before downloading code and binaries (cleaning some files, images rights, etc.). We will soon create a dedicated release/tab v1.0.0 version. Stay tuned!
+ -->
+IMPORTANT: Our submission *Semi-Procedural Textures Using Point Process Texture Basis Functions* has been awarded the Replicability Stamp, which is visible on the replicability stamp website http://www.replicabilitystamp.org and on the publisher's website (CGF, Computer Graphics Forum). We have tagged a version *Replicability Stamp* associated with this stamp.
 
 ### Target machines
 
