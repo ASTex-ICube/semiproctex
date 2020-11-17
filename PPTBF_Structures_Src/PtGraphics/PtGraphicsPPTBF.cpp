@@ -29,6 +29,7 @@
 #include <iomanip>
 #include <vector>
 #include <fstream>
+#include <cmath>
 
 // Project
 #include "PtNoise.h"
@@ -3645,8 +3646,12 @@ bool *keep = new bool[pptbf_count];
 		int count = 0;
 		for (int i = 0; i < width * height; i++)
 		{
-			if (!isnan<float>(f_pptbf[i]))
-			{
+#ifdef _WIN32
+			if (!std::isnan<float>(f_pptbf[i]))
+#else
+			if (!std::isnan(f_pptbf[i]))
+#endif
+				{
 				f_avg += f_pptbf[i]; count++;
 				if (i == 0) { f_min = f_avg; f_max = f_avg; }
 				if (f_min > f_pptbf[i]) f_min = f_pptbf[i];
@@ -4488,7 +4493,11 @@ void PtGraphicsPPTBF::sampleParameterSpace( const unsigned int pWidth, const uns
 		int count = 0;
 		for (int i = 0; i < width * height; i++)
 		{
+#ifdef _WIN32
 			if (!isnan<float>(f_pptbf[i]))
+#else
+			if (!isnan(f_pptbf[i]))
+#endif
 			{
 				f_avg += f_pptbf[i]; count++;
 				if (i == 0) { f_min = f_avg; f_max = f_avg; }
@@ -5039,7 +5048,11 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 	// TESTing for "nan" and "inf"
 	for (int i = 0; i < width * height; i++)
 	{
+#ifdef _WIN32
 		if (isnan<float>(f_pptbf[i]) || isinf<float>(f_pptbf[i])) // TODO: add isinf also?
+#else
+		if (isnan(f_pptbf[i]) || isinf(f_pptbf[i])) // TODO: add isinf also?
+#endif
 		{
 			f_pptbf[i] = 0.f;
 		}
@@ -5080,7 +5093,11 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 		int count = 0;
 		for (int i = 0; i < width * height; i++)
 		{
+#ifdef _WIN32
 			if ( !isnan<float>(f_pptbf[i]) && !isinf<float>(f_pptbf[i]) ) // TODO: add isinf also?
+#else
+			if ( !isnan(f_pptbf[i]) && !isinf(f_pptbf[i]) ) // TODO: add isinf also?
+#endif
 			{
 				f_avg += f_pptbf[i]; count++;
 
@@ -5141,7 +5158,11 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 		for (int i = 0; i < bins; i++) histo[i] = 0.0f;
 		for (int i = 0; i < width * height; i++)
 		{
+#ifdef _WIN32
 			if ( !isnan<float>(f_pptbf[i]) && !isinf<float>(f_pptbf[i]) ) // TODO: add isinf also?
+#else
+			if ( !isnan(f_pptbf[i]) && !isinf(f_pptbf[i]) ) // TODO: add isinf also?
+#endif
 			{
 				if (f_pptbf[i] < f_avg)
 				{
