@@ -11,8 +11,7 @@ This is the page of our EGSR 2020 CGF track paper:
 
 P. [Guehl](http://pascal.guehl.pagesperso-orange.fr/index.html), R. [Allègre](https://igg.icube.unistra.fr/index.php/R%C3%A9mi_All%C3%A8gre), J.-M. [Dischler](https://dpt-info.di.unistra.fr/~dischler/), B. [Benes](http://hpcg.purdue.edu/bbenes/), E. [Galin](https://perso.liris.cnrs.fr/eric.galin/).
 Semi-Procedural Textures Using Point Process Texture Basis Functions.
-To appear in Computer Graphics Forum (EGSR 2020 special issue), 39(4),
-2020.
+Computer Graphics Forum (EGSR 2020 special issue), 39(4), 2020.
 
 #### Table of contents
 
