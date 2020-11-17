@@ -53,8 +53,16 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/Externals/bin
     PATTERN "*.dll"
 )
 # glad
+IF (WIN32)
 file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/glad/bin/glad.dll DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/Install/PPTBFProject/bin )
 file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/glad/bin/gladd.dll DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/Install/PPTBFProject/bin )
+ELSE()
+file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/glad/lib/libglad.so DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/Install/PPTBFProject/bin )
+ENDIF()
 # GLFW
+IF (WIN32)
 file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/glfw/bin/glfw3.dll DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/Install/PPTBFProject/bin )
 file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/glfw/bin/glfw3d.dll DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/Install/PPTBFProject/bin )
+ELSE()
+file( COPY ${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/glfw/lib/libglfw.so DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/Install/PPTBFProject/bin )
+ENDIF()
