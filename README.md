@@ -209,6 +209,8 @@ These binaries include a **real-time/interactive semi-procedural texture synthes
  Yes, you can edit structures on-the-fly and navigate (translate, rotate, even zoom in a prototype version), depending on selected options! :)
  
  ![semiproctex](Images/semiproctex_tools_1024.png)
+ 
+ NOTE: It seems there is a bug after drag'n'dropping parameter files in the synthesizer window: the texture is synthesized but the GUI values are not updated correctly (todo: BUG to fix).
   
  ## Data
  
