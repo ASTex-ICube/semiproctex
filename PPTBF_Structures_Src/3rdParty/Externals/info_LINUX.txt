@@ -1,0 +1,14 @@
+
+-------------------------------------
+GLFW: CMake requirements
+-------------------------------------
+
+sudo apt-get install -y libx11-dev
+sudo apt-get install -y xserver-xorg-dev
+sudo apt-get install xorg-dev libglu1-mesa-dev
+sudo apt-get install -y libxrandr-dev
+sudo apt-get install -y x11proto-xinerama-dev
+
+
+
+
