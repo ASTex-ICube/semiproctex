@@ -127,11 +127,18 @@ set_property( TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11 )
 ##################################################################################
 
 # Libraries
+IF (WIN32)
 install( TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin )
 install( TARGETS ${PROJECT_NAME} ARCHIVE DESTINATION lib )
-IF (WIN32)
 ELSE()
-install( TARGETS ${PROJECT_NAME} LIBRARY DESTINATION bin )
+#install( TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin )
+#install( TARGETS ${PROJECT_NAME} ARCHIVE DESTINATION lib )
+#install( TARGETS ${PROJECT_NAME} LIBRARY DESTINATION bin )
+install( TARGETS ${PROJECT_NAME}
+         RUNTIME DESTINATION bin
+         ARCHIVE DESTINATION lib
+         LIBRARY DESTINATION bin
+)
 ENDIF()
 install( FILES ${resList} DESTINATION include/PtGraphics )
 
