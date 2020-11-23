@@ -32,7 +32,7 @@ So, threshold value lies in [0;1.0]
 
 The second line contains the concatenated list of PPTBF procedural parameters.
 They describe 5 types of PPTBF parameters :
-- code PPTBF model: point process, window function and feature feature
+- code PPTBF model: point process, window function and feature function.
 - additional parameters: transformations and deformations
 
 -----------------------
