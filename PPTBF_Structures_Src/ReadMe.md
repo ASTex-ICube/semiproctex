@@ -6,7 +6,7 @@ Here you can find information to compile source code from scratch.
 
 ## OS [Operating Systems]
 
-Currently, it works on ***Windows*** operating systems. A Linux port has been added but not its documentation (just use ".sh" scripts instead ".bat" ones).
+Currently, it works on ***Windows*** operating systems. A Linux port has been added but not yet its documentation (just use ".sh" scripts instead ".bat" ones).
 - [x] Windows 10
 - [x] Linux (tested version: Ubuntu 18.04 LTS)
 
