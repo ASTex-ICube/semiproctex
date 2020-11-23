@@ -113,10 +113,6 @@ IMPORTANT: Our submission *Semi-Procedural Textures Using Point Process Texture 
 
 ### Target machines
 
-Operating systems:
-- [x] Windows 10
-- [x] Linux (tested version: Ubuntu 18.04 LTS) [NOT yet for final the textured colored synthesizer]
-
 Tested graphics cards:
 - NVIDIA: GeForce GTX 1060, GeForce GTX 1080, RTX 2070 and Quadro P5000.
 
@@ -128,7 +124,11 @@ Technologies:
  The [PPTBF_Structures_Src](PPTBF_Structures_Src) directory contains code required to produce
  procedural binary structures from files of PPTBF parameters, and a real-time viewer to be able
  to design and edit PPTBF parameters interactively (works under Windows and Linux).
- 
+  
+#### Target Operating Systems:
+- [x] Windows 10
+- [x] Linux (tested version: Ubuntu 18.04 LTS)
+
 <!--
  More tools to come (e.g.: PPTBF database generator, spanning the space of PPTBF parameters).
 -->
@@ -162,6 +162,10 @@ For replicability of our results, go to the dedicated directory [Replicability](
  [Semiproc_synthesis_Src](Semiproc_synthesis_Src) directory. Note that this code is a preliminary version that
  does not exactly reproduce the results from the paper. Code to reproduce the synthesis results from the paper
  will be made available later.
+ 
+ #### Target Operating Systems
+- [x] Windows 10
+- [ ] Linux [NOT yet. Work in progress...]
  
  Note that for reasons of intellectual property, GPU implementation cannot be distributed.
  The GPU implementation of [Parallel controllable texture synthesis](https://dl.acm.org/doi/10.1145/1073204.1073261)
