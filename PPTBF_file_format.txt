@@ -35,14 +35,16 @@ They describe 5 types of PPTBF parameters :
 - code PPTBF model: point process, window function and feature function.
 - additional parameters: transformations and deformations
 
+NOTE: Below, in "values", you will find some values we used in our GUI (graphical user inrterface). Some could be changed, such as minNbKernels and maxNbKernels if you want more kernels to add in your feature function.
+
 -----------------------
 ---- Point process ----
 -----------------------
 
 Point set parameters:
 
-- [0] tiling type               : tiling type (e.g., regular, irregular...)
-- [1] jittering                 : randomness
+- [0] tiling type               : tiling type (e.g., regular, irregular...) - values: {0, 17}
+- [1] jittering                 : randomness - values: [0, 1]
 
 ------------------------
 ---- Transformation ----
@@ -50,9 +52,9 @@ Point set parameters:
 
 NOTE: also used for normalization parameters during parameter estimation.
 
-- [2] resolution                : uniform scale (zoom/unzoom)
-- [3] rotation                  : rotation around world coordinate frame at origin (0.0;0.0)
-- [4] aspect ratio              : shear on X axis (scale)
+- [2] resolution                : uniform scale (zoom/unzoom) - values: {1, 1000}
+- [3] rotation                  : rotation around world coordinate frame at origin (0.0;0.0) - values: [0, 2]
+- [4] aspect ratio              : shear on X axis (scale) - values: [0.01, 10]
 
 --------------------
 ---- Turbulence ----
@@ -60,9 +62,9 @@ NOTE: also used for normalization parameters during parameter estimation.
 
 Brownian distorsion parameters:
 
-- [5] distorsion base amplitude :
-- [6] distorsion amplitude gain :
-- [7] distorsion frequency      :
+- [5] distorsion base amplitude : - values: [0, 0.25]
+- [6] distorsion amplitude gain : - values: [0, 4]
+- [7] distorsion frequency      : - values: [0, 1]
 
 -------------------------
 ---- Window function ----
@@ -70,13 +72,13 @@ Brownian distorsion parameters:
 
 Window function parameters:
 
-- [8] window shape              : window function type
-- [9] window arity              : number of control points for smoothing
-- [10] window larp              : anisotropy of cellular basis window
-- [11] window norm              : cellular basis window norm
-- [12] window smoothness        : degree of smoothing
-- [13] window blend             : linear combination of the two basis windows
-- [14] window sigwcell          : sigma of window
+- [8] window shape              : window function type - values: {0, 3}
+- [9] window arity              : number of control points for smoothing - values: [2, 10]
+- [10] window larp              : anisotropy of cellular basis window - values: [0, 1]
+- [11] window norm              : cellular basis window norm - values: [0, 3]
+- [12] window smoothness        : degree of smoothing - values: [0, 2]
+- [13] window blend             : linear combination of the two basis windows - values: [0, 1]
+- [14] window sigwcell          : sigma of window - values: [0.01, 4]
 
 --------------------------
 ---- Feature function ----
@@ -84,16 +86,16 @@ Window function parameters:
 
 Feature function parameters:
 
-- [15] feature bombing          : mixture model
-- [16] feature norm             : feature norm
-- [17] feature winfeatcorrel    : correlation with centroids
-- [18] feature aniso            : anisotropy
-- [19] feature minNbKernels     : min number of kernels
-- [20] feature maxNbKernels     : max number of kernels
-- [21] feature sigcos           : sigma of Gabor kernel
-- [22] feature sigcosvar        : random variation of [21] (sigma of Gabor kernel)
-- [23] feature frequency        : frequency of stringed Gabor stripes
-- [24] feature phaseShift
-- [25] feature thickness        : thickness of stringed Gabor stripes
-- [26] feature curvature        : curvature of stringed Gabor stripes
-- [27] feature orientation      : orientation of stringed Gabor stripes
+- [15] feature bombing          : mixture model - values: {0, 4}
+- [16] feature norm             : feature norm - values: [0, 3]
+- [17] feature winfeatcorrel    : correlation with centroids - values: [0, 1]
+- [18] feature aniso            : anisotropy - values: [0, 5]
+- [19] feature minNbKernels     : min number of kernels - values: {0, 8}
+- [20] feature maxNbKernels     : max number of kernels - values: {0, 8}
+- [21] feature sigcos           : sigma of Gabor kernel - values: [0, 10]
+- [22] feature sigcosvar        : random variation of [21] (sigma of Gabor kernel) - values: [0, 1]
+- [23] feature frequency        : frequency of stringed Gabor stripes - values: {0, 16}
+- [24] feature phaseShift       : - values: [0, 1]
+- [25] feature thickness        : thickness of stringed Gabor stripes - values: [0.001, 1]
+- [26] feature curvature        : curvature of stringed Gabor stripes - values: [0, 1]
+- [27] feature orientation      : orientation of stringed Gabor stripes - values: [0, 0.5]
