@@ -9,6 +9,10 @@ sudo apt-get install xorg-dev libglu1-mesa-dev
 sudo apt-get install -y libxrandr-dev
 sudo apt-get install -y x11proto-xinerama-dev
 
+-------------------------------------
+7zip: requirement
+-------------------------------------
 
+sudo apt install p7zip-full
 
 
