@@ -5043,8 +5043,26 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 #endif
 	glGetTextureImage( mPPTBFTexture, 0/*level*/, GL_RED, GL_FLOAT, sizeof( float ) * width * height, f_pptbf.data() );
 
+	std::vector<float>::iterator it = f_pptbf.begin();
+	float max_value = f_pptbf[0];
+	float min_value = f_pptbf[0];
+	while (it != f_pptbf.end()) {
+		if ((*it) > max_value)
+			max_value = (*it);
+		if ((*it) < min_value)
+			min_value = (*it);
+		++it;
+	}
+	std::cout << "Max value: " << max_value << std::endl;
+	std::cout << "Min value: " << min_value << std::endl;
+	for (int i = 0; i < width * height; i++)
+		f_pptbf[i] = f_pptbf[i] / max_value;
+
 	//-----------------------------------------------------------------------------------------------------------------------------------
-		   	  
+	
+	/*
+	unsigned int cc = 0;
+	
 	// TESTing for "nan" and "inf"
 	for (int i = 0; i < width * height; i++)
 	{
@@ -5054,9 +5072,15 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 		if (isnan(f_pptbf[i]) || isinf(f_pptbf[i])) // TODO: add isinf also?
 #endif
 		{
+			if (isinf<float>(f_pptbf[i]))
+				cc++;
+
 			f_pptbf[i] = 0.f;
 		}
 	}
+
+	std::cout << "Is inf: " << cc << std::endl;
+	*/
 	 
 	//-------------------
 	// Export data
@@ -5072,6 +5096,7 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 		//const std::string pptbfName = std::string( "pptbf_TEST" )/*name*/;
 		const std::string pptbfName = textureName + std::string( "_pptbf" );
 		const std::string pptbfFilename = textureDirectory + std::string( "/" ) + pptbfName + std::string( ".png" );
+		//const std::string pptbfFilename = pptbfName + std::string(".png");
 		std::cout << "write PPTBF: " << pptbfFilename << std::endl;
 		PtImageHelper::saveImage( pptbfFilename.c_str(), width, height, 1/*nb channels*/, u_pptbf.data() );
 	}
@@ -5088,7 +5113,6 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 	//const float percent = threshold;
 	const float percent = 1.f - threshold;
 	//-------------------
-		
 		float f_avg = 0.0; float f_min = 0.0, f_max = 0.0;
 		int count = 0;
 		for (int i = 0; i < width * height; i++)
@@ -5202,6 +5226,7 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 		}
 		//float ratio = 0.5f;
 		//printf("compute Thresh bin =%d, sum=%g, percent=%g\n", i, sum, percent);
+
 		float rangea =  ((float)(i - 1) / (float)bins + ratio / (float)bins);
 
 		for (int i = 0; i < width * height; i++)
@@ -5222,6 +5247,7 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 			else f_pptbf[i] = 0.0;
 		}
 
+
 	//-----------------------------------------------------------------------------------------------------------------------------------
 	
 	//std::cout << "----------- 3" << std::endl;
@@ -5240,6 +5266,7 @@ void PtGraphicsPPTBF::generatePPTBF( const unsigned int pWidth, const unsigned i
 	//const std::string pptbfName = std::string( "pptbf_binary_TEST" )/*name*/;
 	const std::string pptbfName = textureName + std::string( "_pptbf_binary" );
 	const std::string pptbfFilename = textureDirectory + std::string( "/" ) + pptbfName + std::string( ".png" );
+	//const std::string pptbfFilename = pptbfName + std::string( ".png" );
 	std::cout << "write PPTBF binary: " << pptbfFilename << std::endl;
 	PtImageHelper::saveImage( pptbfFilename.c_str(), width, height, 1/*nb channels*/, u_pptbf.data() );
 	
