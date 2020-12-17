@@ -446,12 +446,24 @@ int PP_distribute(
 			}
 		}
 	}
+	
+	/*
+	float jitter_eps = jitter == 0.0 ? 0.015 : jitter;
 
+	for ( i = 0; i < np; i++ )
+	{
+		cx[ i ] = cx[ i ] * jitter_eps + ncx[ i ] * ( 1.0 - jitter_eps );
+		cy[ i ] = cy[ i ] * jitter_eps + ncy[ i ] * ( 1.0 - jitter_eps );
+	}
+	*/
+
+	
 	for ( i = 0; i < np; i++ )
 	{
 		cx[ i ] = cx[ i ] * jitter + ncx[ i ] * ( 1.0 - jitter );
 		cy[ i ] = cy[ i ] * jitter + ncy[ i ] * ( 1.0 - jitter );
 	}
+	
 	
 	return np;
 }
@@ -1314,36 +1326,50 @@ float procedural_pptbf(
 		
 		// compute cellular distance value
 		float cv = 0.0;
-		if ( k == 0 ) // if inside closest cell then compute cellular value, outside it is 0
+		//if ( k == 0 ) // if inside closest cell then compute cellular value, outside it is 0
+		
+		if ( k == 0 && sdd<0.0001 ) { cv=1.0; } // if on center of cell
+        else if ( k == 0 ) // else if inside closest cell then compute cellular value, outside it is 0 
 		{
 			// Old version: single distance
-			//float celldd = celldist(x, y, mink[k], mink[0], px, py, nc, norm, ncx, ncy, ndx, ndy, larp);
+			/*
+			float celldd = celldist(x, y, mink[k], mink[0], px, py, nc, 2.0, ncx, ncy, ndx, ndy, larp);
 			//float dd = hvNoise::cdistance(x, y, px[mink[k]], py[mink[k]], norm, ncx[mink[k]], ncy[mink[k]], ndx[mink[k]], ndy[mink[k]], larp);
-			//float dist = celldd < 0.0001 ? 0.0 : dd / (celldd);
-			//cv = 1.0 - dist;
+			float dd = sdd;
+			float dist = celldd < 0.0001 ? 0.0 : dd / (celldd);
+			cv = 1.0 - dist;
 			//printf("it celldd=%g, dd=%g, dist=%g, cv=%g\n", celldd, dd,dist,cv);
-			//if (cv < 0.0) cv = 0.0; else if (cv > 1.0) cv = 1.0;
+			if (cv < 0.0) cv = 0.0; else if (cv > 1.0) cv = 1.0;
+			*/
 
+			
 			// new version: apply a smooth cellular function
 			//////////////////////////////////////////////////////////
 			// compute position inside cell in  polar coordinates
 			ddx /= sdd; ddy /= sdd; 
 			float dd = sdd;
-			float alpha = acos( ddx );
+			//float alpha = acos( ddx );
+			float alpha = acos( clamp(ddx,-1.0, 1.0) );
+			
 			if ( ddy < 0.0 ) alpha = 2.0 * M_PI - alpha;
 			float palpha = alpha - rotalpha;
 			if ( palpha < 0.0 ) palpha += 2.0 * M_PI;
 			int ka = int( palpha / dalpha );
+			
 			float rka = palpha / dalpha - float( ka );
 			//printf("(%g,%g), (%g,%g) sdd=%g, ka=%d, alpha=%g\n", x,y,ddx, ddy, dd, ka, alpha/M_PI);
 			float ptx = px[ mink[ 0 ] ] + 0.1 * cos( dalpha * float( ka ) + rotalpha );
 			float pty = py[ mink[ 0 ] ] + 0.1 * sin( dalpha * float( ka ) + rotalpha );
 			float celldd1 = celldist( ptx, pty, mink[ k ], mink[ 0 ], px, py, nc, 2.0, ncx, ncy, ndx, ndy, larp );
+			//
+			
 			float startx = px[ mink[ 0 ] ] + celldd1 * cos( dalpha * float( ka ) + rotalpha );
 			float starty = py[ mink[ 0 ] ] + celldd1 * sin( dalpha * float( ka ) + rotalpha );
 			ptx = px[ mink[ 0 ] ] + 0.1 * cos( dalpha * float( ka ) + dalpha + rotalpha );
 			pty = py[ mink[ 0 ] ] + 0.1 * sin( dalpha * float( ka ) + dalpha + rotalpha );
 			float celldd2 = celldist( ptx, pty, mink[ k ], mink[ 0 ], px, py, nc, 2.0, ncx, ncy, ndx, ndy, larp );
+			//
+			
 			float endx = px[ mink[ 0 ] ] + celldd2 * cos( dalpha * float( ka ) + dalpha + rotalpha );
 			float endy = py[ mink[ 0 ] ] + celldd2 * sin( dalpha * float( ka ) + dalpha + rotalpha );
 
@@ -1355,7 +1381,9 @@ float procedural_pptbf(
 			float midno = sqrt( middx * middx + middy * middy );
 			middx /= midno; middy /= midno;
 			//printf("acos=%g, dalpha=%g\n", acos(middx*ddx + middy*ddy) / M_PI, dalpha/M_PI);
-			float midalpha = acos( middx );
+			//float midalpha = acos( middx );
+			float midalpha = acos( clamp(middx,-1.0, 1.0) );
+			
 			if ( middy < 0.0 ) midalpha = 2.0 * M_PI - midalpha;
 			//midalpha = midalpha - rotalpha;
 			//if (midalpha >2.0*M_PI) midalpha -= 2.0*M_PI;
@@ -1371,6 +1399,9 @@ float procedural_pptbf(
 				ptx = px[ mink[ 0 ] ] + 0.1 * cos( dalpha * float( ka ) + 2.0 * dalpha + rotalpha );
 				pty = py[ mink[ 0 ] ] + 0.1 * sin( dalpha * float( ka ) + 2.0 * dalpha + rotalpha );
 				float celldd = celldist( ptx, pty, mink[ k ], mink[ 0 ], px, py, nc, 2.0, ncx, ncy, ndx, ndy, larp );
+				// ADDED BY REMI
+				// if (celldd < 0.0001) celldd = 0.0;
+				
 				float nendx = px[ mink[ 0 ] ] + celldd * cos( dalpha * float( ka ) + 2.0 * dalpha + rotalpha );
 				float nendy = py[ mink[ 0 ] ] + celldd * sin( dalpha * float( ka ) + 2.0 * dalpha + rotalpha );
 				float vvx = ( endx - startx ), vvy = ( endy - starty );
@@ -1395,6 +1426,9 @@ float procedural_pptbf(
 				ptx = px[ mink[ 0 ] ] + 0.1 * cos( dalpha * float( ka ) - dalpha + rotalpha );
 				pty = py[ mink[ 0 ] ] + 0.1 * sin( dalpha * float( ka ) - dalpha + rotalpha );
 				float celldd = celldist( ptx, pty, mink[ k ], mink[ 0 ], px, py, nc, 2.0, ncx, ncy, ndx, ndy, larp );
+				// ADDED BY REMI
+				//if (celldd < 0.0001) celldd = 0.0;
+				
 				float nstartx = px[ mink[ 0 ] ] + celldd * cos( dalpha * float( ka ) - dalpha + rotalpha );
 				float nstarty = py[ mink[ 0 ] ] + celldd * sin( dalpha * float( ka ) - dalpha + rotalpha );
 				float vvx = ( startx - nstartx ), vvy = ( starty - nstarty );
@@ -1427,9 +1461,18 @@ float procedural_pptbf(
 			//	squaredist *= sqrt(tan(palpha - M_PI / 2.0)*tan(palpha - M_PI / 2.0) + 1.0);
 			//float px = squaredist*cos(palpha);
 			//float py = squaredist*sin(palpha);
+			
+			// ADDED BY REMI
+			//float dist = 0.0;
+			//if (smoothdist < 1.0) dist = dd;
+			//else dist = dd / smoothdist;
+			//
+			
 			if ( wsmooth < 1.0 ) cv = ( 1.0 - wsmooth ) * ( 1.0 - dd / lambda ) + wsmooth * ( 1.0 - dd / smoothdist );
 			else if ( wsmooth < 2.0 ) cv = ( 2.0 - wsmooth ) * ( 1.0 - dd / smoothdist ) + ( wsmooth - 1.0 ) * ( 1.0 - dd / splinedist );
 			else cv = 1.0 - dd / splinedist;
+			
+			//cv = 1.0 - dist;
 			if ( cv < 0.0 ) cv = 0.0; else if ( cv > 1.0 ) cv = 1.0;
 		}
 		
@@ -1538,13 +1581,19 @@ float procedural_pptbf(
 		if ( bomb !=3 && bomb!=4 ) { vv += (coeff1+coeff2) * feat;  }
 		//printf("k=%d, coeff=%g, feat=%g, vv=%g\n", k, coeff, feat, vv);
 	}
+	
 	if ( ( bomb != 3 && bomb!=4) && winshape == 0 && winsum > 0.0 ) vv /= winsum;
+	
 	//if ( ( bomb != 3 && bomb!=4) && winshape == 0 && winsum > 0.0 ) vv = vv + vv2/winsum;
 	//else if (bomb != 3 && bomb!=4) vv = vv + vv2;
 	//if (  bomb != 3 && bomb!=4) vv += vv2/winsum;
 	//else vv += vv2;
 	if ( vv < 0.0 ) vv = 0.0;
 	
+	// ADDED BY REMI
+	//if (vv > 0.8) vv = 1.0;
+	
+	//if (vv == 1.0) vv = 0.0;
 			
 	pptbf = vv;
 	
